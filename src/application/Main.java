@@ -12,7 +12,7 @@ public class Main extends Application {
 
 		// A simple memory game
 		
-		try {
+		
 			GridPane root = new GridPane();
 
 			Scene scene = new Scene(root,400,400);
@@ -22,7 +22,6 @@ public class Main extends Application {
 			
 			//random comment from EseBring3n
 		
-		}
 		
 	public static void main(String[] args) {
 		launch(args);
