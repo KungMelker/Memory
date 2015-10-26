@@ -3,8 +3,8 @@ package application;
 public class Player {
 	String name;
 	int points;
-	
-	Player(String name){
+
+	Player(String name) {
 		this.name = name;
 	}
 
@@ -19,6 +19,5 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	
-	
+
 }
