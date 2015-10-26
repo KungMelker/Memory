@@ -11,6 +11,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		// A simple memory game
+		//shgsjöoskfäplsdf
+		//asdas
 		
 	
 			GridPane root = new GridPane();
