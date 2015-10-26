@@ -1,0 +1,7 @@
+KLASSER;
+
+PLAYER  -----> Namn, poäng
+IMAGE	-----> ett gäng sköna bilder
+GAME ENGINE --> flipp image, check image, random board
+LAYOUT
+COMPUTER ----> poäng
