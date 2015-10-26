@@ -21,6 +21,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			//Adds title to main window
 			primaryStage.setTitle("Memory v0.1");
 			
 			//random comment from EseBring3n
