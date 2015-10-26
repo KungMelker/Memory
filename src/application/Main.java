@@ -13,7 +13,7 @@ public class Main extends Application {
 		// A simple memory game
 		//shgsjöoskfäplsdf
 		//asdas
-		//hej hur är det
+		
 		
 			GridPane root = new GridPane();
 
