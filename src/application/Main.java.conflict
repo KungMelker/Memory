@@ -1,0 +1,81 @@
+package application;
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+<<<<<<< HEAD
+import javafx.scene.layout.FlowPane;
+=======
+>>>>>>> 525c97f21d51f75beff9e368d5eb3e389562759d
+import javafx.scene.layout.GridPane;
+
+public class Main extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+<<<<<<< HEAD
+
+		// A simple memory game
+
+		FlowPane root = new FlowPane();
+=======
+
+
+		GridPane root = new GridPane();
+		
+
+		Image cardImage[][] = new Image[10][10];
+		for(int i=0;i<10;i++)
+			for(int j=0;j<10;j++)
+				cardImage[i][j]= new Image("http://mobile-visuals.com/icon.png",30,30, true, true);
+		
+		ImageView imageView[][] = new ImageView[10][10];
+		for(int i=0;i<10;i++)
+			for(int j=0;j<10;j++)
+				imageView[i][j] = new ImageView(cardImage[i][j]);
+>>>>>>> 525c97f21d51f75beff9e368d5eb3e389562759d
+
+		Scene scene = new Scene(root, 400, 400);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+<<<<<<< HEAD
+		primaryStage.show();
+		// Adds title to main window
+		primaryStage.setTitle("Memory v0.1");
+
+		// random comment from EseBring3n
+
+		root.getChildren().addAll(createImageArray());
+		
+		}
+=======
+
+		root.setAlignment(Pos.CENTER);
+		for(int i= 0;i<10;i++)
+			for(int j = 0;j<10;j++)
+				root.addRow(i, imageView[i][j]);
+
+		primaryStage.show();
+		primaryStage.setTitle("Memory v0.1");
+
+	}
+>>>>>>> 525c97f21d51f75beff9e368d5eb3e389562759d
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	public ImageView[] createImageArray() {
+
+		//Creates an array of images
+		ImageView[] array_of_images = new ImageView[20];
+		for (int i = 0; i < array_of_images.length; i++) {
+			array_of_images[i] = new ImageView(
+					new Image("https://avatars0.githubusercontent.com/u/15321448?v=3&s=400", 30, 30, true, true));
+
+		}
+		return array_of_images;
+	}
+}
