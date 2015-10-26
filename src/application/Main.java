@@ -12,20 +12,28 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 
-		// A simple memory game
-
 
 		GridPane root = new GridPane();
+		
 
-		Image cardImage = new Image("http://mobile-visuals.com/icon.png");
-		ImageView imageView = new ImageView(cardImage);
+		Image cardImage[][] = new Image[10][10];
+		for(int i=0;i<10;i++)
+			for(int j=0;j<10;j++)
+				cardImage[i][j]= new Image("http://mobile-visuals.com/icon.png",30,30, true, true);
+		
+		ImageView imageView[][] = new ImageView[10][10];
+		for(int i=0;i<10;i++)
+			for(int j=0;j<10;j++)
+				imageView[i][j] = new ImageView(cardImage[i][j]);
 
 		Scene scene = new Scene(root, 400, 400);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
 		root.setAlignment(Pos.CENTER);
-		root.addRow(0, imageView);
+		for(int i= 0;i<10;i++)
+			for(int j = 0;j<10;j++)
+				root.addRow(i, imageView[i][j]);
 
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.1");
