@@ -14,6 +14,7 @@ public class Main extends Application {
 
 		// A simple memory game
 
+
 		GridPane root = new GridPane();
 
 		Image cardImage = new Image("http://mobile-visuals.com/icon.png");
