@@ -12,9 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 
-
 		GridPane root = new GridPane();
-		
 
 		Image cardImage[][] = new Image[10][10];
 		for(int i=0;i<10;i++)
