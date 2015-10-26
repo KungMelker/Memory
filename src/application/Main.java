@@ -22,7 +22,7 @@ public class Main extends Application {
 			primaryStage.setTitle("Memory v0.1");
 			
 			//random comment from EseBring3n
-		
+	}
 		
 	public static void main(String[] args) {
 		launch(args);
