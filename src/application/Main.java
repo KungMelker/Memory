@@ -15,10 +15,10 @@ public class Main extends Application {
 		// A simple memory game
 
 		GridPane root = new GridPane();
-		
+
 		Image cardImage = new Image("http://mobile-visuals.com/icon.png");
 		ImageView imageView = new ImageView(cardImage);
-		
+
 		Scene scene = new Scene(root, 400, 400);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
