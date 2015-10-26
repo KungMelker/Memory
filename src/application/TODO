@@ -1,7 +1,30 @@
 KLASSER;
 
 PLAYER  -----> Namn, poäng
-IMAGE	-----> ett gäng sköna bilder
+CARD	-----> ett gäng sköna bilder
 GAME ENGINE --> flipp image, check image, random board
-LAYOUT
+LAYOUT  ---> 
 COMPUTER ----> poäng
+
+
+GAMEENGINE METODER:
+Räkna poäng
+Random board - en matris, med vilken bild som ligger på vilken kordinat
+När UI vänder bild skickas koordinaterna till flippImage, skickar tillbaka den nya bilden
+
+
+
+LAYOUT:
+Presentera aktuell poängställning
+Namn på spelare
+Win/loose ratio - pie chart
+Word97-effekter
+
+
+
+
+GUI:
+Johan, Sam, Melker
+
+Engine:
+Anton, Gustav, Simon
