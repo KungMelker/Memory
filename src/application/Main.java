@@ -72,24 +72,23 @@ public class Main extends Application {
 		// centerBox
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
+		int row_column = 2;
+		Image cardImage[][] = new Image[row_column][row_column];
 
-		Image cardImage[][] = new Image[2][2];
-
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
-		
-		ImageView imageView[][] = new ImageView[2][2];
+
+		ImageView imageView[][] = new ImageView[row_column][row_column];
 		// imageView = gameEngine.getCardImages(antal par);
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				// kalla på funktion för get image
 				imageView[i][j] = new ImageView(cardImage[i][j]);
 
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				centerBox.addRow(i, imageView[i][j]);
-
 
 		// bottomBox
 
@@ -125,7 +124,6 @@ public class Main extends Application {
 		});
 
 	}
-
 
 	public static void main(String[] args) {
 		launch(args);
