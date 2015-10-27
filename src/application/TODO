@@ -10,7 +10,7 @@ STATS FILE ---> läsa/skriva till fil, poäng/highscore
 
 
 GAMEENGINE METODER:
-Räkna poäng
+Räkna poäng, ta tid, räkna försök
 Random board - en matris, med vilken bild som ligger på vilken kordinat
 När UI vänder bild skickas koordinaterna till flippImage, skickar tillbaka den nya bilden
 

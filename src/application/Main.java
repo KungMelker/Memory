@@ -78,22 +78,26 @@ public class Main extends Application {
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
 				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
-
+		
 		ImageView imageView[][] = new ImageView[2][2];
 		// imageView = gameEngine.getCardImages(antal par);
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
+				// kalla på funktion för get image
 				imageView[i][j] = new ImageView(cardImage[i][j]);
 
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
 				centerBox.addRow(i, imageView[i][j]);
 
+
 		// bottomBox
+
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
-		bottomBox.setPadding(new Insets(15));
+		bottomBox.setPadding(new Insets(20));
 		Button sQuit = new Button("Save & Quit");
+		sQuit.setId("QuitSave");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
@@ -121,6 +125,7 @@ public class Main extends Application {
 		});
 
 	}
+
 
 	public static void main(String[] args) {
 		launch(args);
