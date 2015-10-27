@@ -16,6 +16,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class Main extends Application {
+	
+	GameEngine gameEngine = new GameEngine();
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -52,11 +54,13 @@ public class Main extends Application {
 		centerBox.setAlignment(Pos.CENTER);
 
 		Image cardImage[][] = new Image[2][2];
+		
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
 				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
 
 		ImageView imageView[][] = new ImageView[2][2];
+		//imageView = gameEngine.getCardImages(antal par);
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
 				imageView[i][j] = new ImageView(cardImage[i][j]);
@@ -90,6 +94,7 @@ public class Main extends Application {
 		
 		imageView[0][0].setOnMouseClicked(event -> {
 			imageView[0][0].setImage(new Image("images/44.jpg", 100, 100, true, true));
+			//imageView[0][0].setImage --- gameEngine.flipImage(index)
 		});
  
 
