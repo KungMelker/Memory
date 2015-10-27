@@ -26,7 +26,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
-		Scene scene = new Scene(root, 400, 400);
+		Scene scene = new Scene(root, 1000, 600);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
@@ -54,7 +54,7 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
-
+		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -72,24 +72,26 @@ public class Main extends Application {
 		// centerBox
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
+		int row_column = 2;
+		Image cardImage[][] = new Image[row_column][row_column];
 
-		Image cardImage[][] = new Image[2][2];
-
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
 
-		ImageView imageView[][] = new ImageView[2][2];
+		ImageView imageView[][] = new ImageView[row_column][row_column];
 		// imageView = gameEngine.getCardImages(antal par);
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
+				// kalla på funktion för get image
 				imageView[i][j] = new ImageView(cardImage[i][j]);
 
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				centerBox.addRow(i, imageView[i][j]);
 
 		// bottomBox
+
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
