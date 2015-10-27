@@ -71,6 +71,7 @@ public class Main extends Application {
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(15));
 		Button sQuit = new Button("Save & Quit");
+		sQuit.setId("QuitSave");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
