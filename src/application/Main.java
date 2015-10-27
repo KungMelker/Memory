@@ -84,13 +84,16 @@ public class Main extends Application {
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.1");
 		
+		//TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event ->{primaryStage.close();} );
 		
 		
 		imageView[0][0].setOnMouseClicked(event -> {
 			imageView[0][0].setImage(new Image("http://vk.com/images/gifts/256/44.jpg", 40, 40, true, true));
 		});
+ 
 
+		
 	}
 
 	public static void main(String[] args) {
