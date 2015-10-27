@@ -24,6 +24,7 @@ public class Main extends Application {
 		ImageView imageView[][] = new ImageView[2][2];
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
+				// kalla på funktion för get image
 				imageView[i][j] = new ImageView(cardImage[i][j]);
 
 		Scene scene = new Scene(root, 400, 400);
