@@ -1,5 +1,5 @@
 .root{ 
-     -fx-background-color: rgb(000, 150, 103);
+     -fx-background-color: rgb(000, 150, 150);
      }
     
 #NewGame{
@@ -12,5 +12,5 @@
 	-fx-font-size: 16pt;
     -fx-font-family: "Courier New";
     -fx-base: rgb(225, 0, 0);
-    -fx-background: rgb(225, 0, 0);
+    -fx-background: rgb(225, 228, 203);
     }
