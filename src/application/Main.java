@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -33,11 +34,11 @@ public class Main extends Application {
 		topBox.getChildren().add(titel);
 
 		// rightBox
-		VBox rightBox = new VBox(5);
-		//rightBox.setAlignment(Pos.CENTER);
+		VBox rightBox = new VBox(15);
 		Label player = new Label("Player");
 		player.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		rightBox.getChildren().add(0,player);
+		rightBox.setAlignment(Pos.CENTER);
 		
 		Label points = new Label("Points");
 		points.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
@@ -54,7 +55,7 @@ public class Main extends Application {
 		Image cardImage[][] = new Image[2][2];
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
-				cardImage[i][j] = new Image("http://mobile-visuals.com/icon.png", 40, 40, true, true);
+				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
 		
 		ImageView imageView[][] = new ImageView[2][2];
 		for (int i = 0; i < 2; i++)
@@ -69,12 +70,15 @@ public class Main extends Application {
 		
 		
 		//bottomBox
-		HBox bottomBox = new HBox(5);
-		bottomBox.setAlignment(Pos.CENTER);
+		HBox bottomBox = new HBox(50);
+		bottomBox.setAlignment(Pos.TOP_CENTER);
+		bottomBox.setPadding(new Insets(15));
 		Button sQuit = new Button("Save & Quit");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
 		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		newGame.setRotate(5.0);
 		bottomBox.getChildren().addAll(sQuit,newGame);
 		
 		root.setTop(topBox);
@@ -84,11 +88,17 @@ public class Main extends Application {
 
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.1");
-
+		
+		//TODO - add a save function to sQuit - setOnAction
+		sQuit.setOnAction(event ->{primaryStage.close();} );
+		
+		
 		imageView[0][0].setOnMouseClicked(event -> {
-			imageView[0][0].setImage(new Image("http://vk.com/images/gifts/256/44.jpg", 40, 40, true, true));
+			imageView[0][0].setImage(new Image("images/44.jpg", 100, 100, true, true));
 		});
+ 
 
+		
 	}
 
 
