@@ -54,7 +54,7 @@ public class Main extends Application {
 		Image cardImage[][] = new Image[2][2];
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
-				cardImage[i][j] = new Image("http://mobile-visuals.com/icon.png", 40, 40, true, true);
+				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
 
 		ImageView imageView[][] = new ImageView[2][2];
 		for (int i = 0; i < 2; i++)
@@ -89,7 +89,7 @@ public class Main extends Application {
 		
 		
 		imageView[0][0].setOnMouseClicked(event -> {
-			imageView[0][0].setImage(new Image("http://vk.com/images/gifts/256/44.jpg", 40, 40, true, true));
+			imageView[0][0].setImage(new Image("images/44.jpg", 100, 100, true, true));
 		});
  
 
