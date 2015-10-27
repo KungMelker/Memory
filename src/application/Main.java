@@ -54,7 +54,7 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
-
+		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
