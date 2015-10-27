@@ -1,7 +1,10 @@
 .root{ 
      -fx-background-color: rgb(000, 150, 150);
      }
-    
+#game-title{
+	-fx-font-size: 50pt;
+    -fx-font-family: "Ar Destine";	
+	 }   
 #NewGame{
 	-fx-font-size: 16pt;
     -fx-font-family: "Courier New";
