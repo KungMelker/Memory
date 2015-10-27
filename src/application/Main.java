@@ -92,7 +92,7 @@ public class Main extends Application {
 		// bottomBox
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
-		bottomBox.setPadding(new Insets(15));
+		bottomBox.setPadding(new Insets(20));
 		Button sQuit = new Button("Save & Quit");
 		sQuit.setId("QuitSave");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
