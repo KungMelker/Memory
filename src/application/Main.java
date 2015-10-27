@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -70,14 +71,15 @@ public class Main extends Application {
 				centerBox.addRow(i, imageView[i][j]);
 
 		//bottomBox
-		HBox bottomBox = new HBox(5);
+		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
+		bottomBox.setPadding(new Insets(15));
 		Button sQuit = new Button("Save & Quit");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		//sQuit.setRotate(1.0);
+		sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
 		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		//newGame.setRotate(1.0);
+		newGame.setRotate(5.0);
 		bottomBox.getChildren().addAll(sQuit,newGame);
 		
 		root.setTop(topBox);
