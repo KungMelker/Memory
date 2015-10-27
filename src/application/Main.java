@@ -99,6 +99,7 @@ public class Main extends Application {
 		sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
 		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		newGame.setId("NewGame");
 		newGame.setRotate(5.0);
 		bottomBox.getChildren().addAll(sQuit, newGame);
 
