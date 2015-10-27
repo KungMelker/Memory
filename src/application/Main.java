@@ -67,11 +67,13 @@ public class Main extends Application {
 
 		//bottomBox
 		HBox bottomBox = new HBox(5);
-		bottomBox.setAlignment(Pos.CENTER);
+		bottomBox.setAlignment(Pos.TOP_CENTER);
 		Button sQuit = new Button("Save & Quit");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		//sQuit.setRotate(1.0);
 		Button newGame = new Button("New Game");
 		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		//newGame.setRotate(1.0);
 		bottomBox.getChildren().addAll(sQuit,newGame);
 		
 		root.setTop(topBox);
@@ -81,7 +83,10 @@ public class Main extends Application {
 
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.1");
-
+		
+		sQuit.setOnAction(event ->{primaryStage.close();} );
+		
+		
 		imageView[0][0].setOnMouseClicked(event -> {
 			imageView[0][0].setImage(new Image("http://vk.com/images/gifts/256/44.jpg", 40, 40, true, true));
 		});
