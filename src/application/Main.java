@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -56,7 +57,9 @@ public class Main extends Application {
 		//bottomBox
 		HBox bottomBox = new HBox(5);
 		bottomBox.setAlignment(Pos.CENTER);
-		
+		Button sQuit = new Button("Save & Quit");
+		Button newGame = new Button("New Game");
+		bottomBox.getChildren().addAll(sQuit,newGame);
 		
 		root.setTop(topBox);
 		root.setRight(rightBox);
