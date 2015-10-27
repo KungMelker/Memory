@@ -70,10 +70,10 @@ public class Main extends Application {
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		Button sQuit = new Button("Save & Quit");
 		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		//sQuit.setRotate(1.0);
+		sQuit.setRotate(15.0);
 		Button newGame = new Button("New Game");
 		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		//newGame.setRotate(1.0);
+		newGame.setRotate(-15.0);
 		bottomBox.getChildren().addAll(sQuit,newGame);
 		
 		root.setTop(topBox);
