@@ -69,7 +69,9 @@ public class Main extends Application {
 		HBox bottomBox = new HBox(5);
 		bottomBox.setAlignment(Pos.CENTER);
 		Button sQuit = new Button("Save & Quit");
+		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		Button newGame = new Button("New Game");
+		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		bottomBox.getChildren().addAll(sQuit,newGame);
 		
 		root.setTop(topBox);
