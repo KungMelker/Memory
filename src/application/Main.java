@@ -37,7 +37,7 @@ public class Main extends Application {
 		topBox.setAlignment(Pos.CENTER);
 		Label titel = new Label("Memory");
 		titel.setId("game-title");
-		titel.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 25));
+		
 		topBox.getChildren().add(titel);
 
 		Reflection refl = new Reflection();
@@ -47,15 +47,15 @@ public class Main extends Application {
 		// rightBox
 		VBox rightBox = new VBox(15);
 		Label player = new Label("Player");
-		player.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+	
 		rightBox.getChildren().add(0, player);
 		rightBox.setAlignment(Pos.CENTER);
 		Label points = new Label("Points");
-		points.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+	
 		rightBox.getChildren().add(1, points);
 
 		Label pointresult = new Label("0");
-		pointresult.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+	
 		rightBox.getChildren().add(2, pointresult);
 
 		// leftBox
