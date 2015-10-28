@@ -50,6 +50,13 @@ public class GameEngine {
 
 		return index;
 	}
+	
+	boolean compareCards(int card1, int card2){
+		
+		if(card1==card2){return true;}
+		else{return false;}
+		
+	}
 
 	Image getFrontImage(int index) {
 
