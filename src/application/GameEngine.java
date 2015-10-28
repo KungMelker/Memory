@@ -23,7 +23,7 @@ public class GameEngine {
 		for (int i = 0; i < row_column; i++)
 			for (int j = 0; j < row_column; j++) {
 				// calls method to make new image
-				imageView[i][j] = new ImageView(newCard());
+			//	imageView[i][j] = new ImageView(newCard());
 				// newCard(i, j);
 			}
 		return imageView;
