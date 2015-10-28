@@ -46,7 +46,6 @@ public class Main extends Application {
 		
 		// rightBox
 		VBox rightBox = new VBox(15);
-
 		Label player = new Label("Player");
 	
 		rightBox.getChildren().add(0, player);
@@ -64,10 +63,16 @@ public class Main extends Application {
 		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
+		pairs_2.setId("pairs2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
+		pairs_4.setId("pairs4");
 		RadioButton pairs_6 = new RadioButton("6 x 6");
+		pairs_6.setId("pairs6");
 		RadioButton pairs_8 = new RadioButton("8 x 8");
+		pairs_8.setId("pairs8");
 		RadioButton pairs_10 = new RadioButton("10 x 10");
+		pairs_10.setId("pairs10");
+		
 		pairs_2.setToggleGroup(pairsGroup);
 		pairs_4.setToggleGroup(pairsGroup);
 		pairs_6.setToggleGroup(pairsGroup);
@@ -82,13 +87,16 @@ public class Main extends Application {
 		int row_column = 2;
 		Image cardImage[][] = new Image[row_column][row_column];
 
-		ImageView[][] imageView = gameEngine.imageView;
-		gameEngine.newCard(2, 2);
-		gameEngine.addView();
-		
 		for (int i = 0; i < row_column; i++)
 			for (int j = 0; j < row_column; j++)
 				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
+
+		ImageView imageView[][] = new ImageView[row_column][row_column];
+		// imageView = gameEngine.getCardImages(antal par);
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
+				// kalla på funktion för get image
+				imageView[i][j] = new ImageView(cardImage[i][j]);
 
 		for (int i = 0; i < row_column; i++)
 			for (int j = 0; j < row_column; j++)
@@ -124,21 +132,8 @@ public class Main extends Application {
 		});
 
 		imageView[0][0].setOnMouseClicked(event -> {
-			// imageView[0][0].setImage(new Image("images/44.jpg", 100, 100,
-			// true true));
+			imageView[0][0].setImage(new Image("images/44.jpg", 100, 100, true, true));
 			// imageView[0][0].setImage --- gameEngine.flipImage(index)
-
-			// method call to engine flip, coordinates x,y
-			gameEngine.flipImage(0, 0);
-		});
-		imageView[1][0].setOnMouseClicked(event -> {
-			gameEngine.flipImage(1, 0);
-		});
-		imageView[0][1].setOnMouseClicked(event -> {
-			gameEngine.flipImage(0, 1);
-		});
-		imageView[1][1].setOnMouseClicked(event -> {
-			gameEngine.flipImage(1, 1);
 		});
 
 	}
