@@ -74,6 +74,7 @@ public class Main extends Application {
 		pairs_6.setToggleGroup(pairsGroup);
 		pairs_8.setToggleGroup(pairsGroup);
 		pairs_10.setToggleGroup(pairsGroup);
+		pairs_2.setSelected(true);
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
@@ -166,6 +167,10 @@ public class Main extends Application {
 			}
 
 	}
+	private GridPane board(){
+		
+		return new GridPane();
+	} 
 
 	public static void main(String[] args) {
 		launch(args);
