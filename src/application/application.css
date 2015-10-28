@@ -48,7 +48,7 @@
 #game-title
 	{
 	-fx-font-size: 100px;
-    -fx-font-family:  "Ar Destine";	
+    -fx-font-family:  "Ar Destine", "Times New Roman";	
 	-fx-text-fill: #123456;
 	}   
 #NewGame
