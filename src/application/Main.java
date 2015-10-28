@@ -45,7 +45,6 @@ public class Main extends Application {
 		
 		// rightBox
 		VBox rightBox = new VBox(15);
-
 		Label player = new Label("Player");
 		player.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		rightBox.getChildren().add(0, player);
