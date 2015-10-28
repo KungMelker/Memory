@@ -63,15 +63,10 @@ public class Main extends Application {
 		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
-		pairs_2.setId("pairs2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
-		pairs_4.setId("pairs4");
 		RadioButton pairs_6 = new RadioButton("6 x 6");
-		pairs_6.setId("pairs6");
 		RadioButton pairs_8 = new RadioButton("8 x 8");
-		pairs_8.setId("pairs8");
 		RadioButton pairs_10 = new RadioButton("10 x 10");
-		pairs_10.setId("pairs10");
 		
 		pairs_2.setToggleGroup(pairsGroup);
 		pairs_4.setToggleGroup(pairsGroup);
