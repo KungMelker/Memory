@@ -73,23 +73,25 @@ public class Main extends Application {
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
 
-		Image cardImage[][] = new Image[2][2];
-
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
-				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
-		
-		ImageView imageView[][] = new ImageView[2][2];
-		// imageView = gameEngine.getCardImages(antal par);
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
-				// kalla på funktion för get image
-				imageView[i][j] = new ImageView(cardImage[i][j]);
+		ImageView[][] imageView = gameEngine.imageView;
+		gameEngine.newCard(2, 2);
+		gameEngine.addView();
+		/*
+		 * Image cardImage[][] = new Image[2][2];
+		 * 
+		 * for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++)
+		 * cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
+		 * 
+		 * ImageView imageView[][] = new ImageView[2][2]; // imageView =
+		 * gameEngine.getCardImages(antal par); for (int i = 0; i < 2; i++) for
+		 * (int j = 0; j < 2; j++) // kalla på funktion för get image
+		 * imageView[i][j] = new ImageView(cardImage[i][j]);
+		 * 
+		 */
 
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
 				centerBox.addRow(i, imageView[i][j]);
-
 
 		// bottomBox
 
@@ -120,12 +122,24 @@ public class Main extends Application {
 		});
 
 		imageView[0][0].setOnMouseClicked(event -> {
-			imageView[0][0].setImage(new Image("images/44.jpg", 100, 100, true, true));
+			// imageView[0][0].setImage(new Image("images/44.jpg", 100, 100,
+			// true true));
 			// imageView[0][0].setImage --- gameEngine.flipImage(index)
+
+			// method call to engine flip, coordinates x,y
+			gameEngine.flipImage(0, 0);
+		});
+		imageView[1][0].setOnMouseClicked(event -> {
+			gameEngine.flipImage(1, 0);
+		});
+		imageView[0][1].setOnMouseClicked(event -> {
+			gameEngine.flipImage(0, 1);
+		});
+		imageView[1][1].setOnMouseClicked(event -> {
+			gameEngine.flipImage(1, 1);
 		});
 
 	}
-
 
 	public static void main(String[] args) {
 		launch(args);
