@@ -22,12 +22,14 @@ import javafx.scene.text.FontWeight;
 public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
+	int row_column = 2;
+	ImageView imageView[];
+	int index;
 
 	@Override
 	public void start(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
-		root.setPadding(new Insets(20));
 		Scene scene = new Scene(root, 1000, 600);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
@@ -43,7 +45,7 @@ public class Main extends Application {
 		Reflection refl = new Reflection();
 		refl.setFraction(0.8);
 		titel.setEffect(refl);
-		
+
 		// rightBox
 		VBox rightBox = new VBox(15);
 
@@ -73,26 +75,16 @@ public class Main extends Application {
 		pairs_6.setToggleGroup(pairsGroup);
 		pairs_8.setToggleGroup(pairsGroup);
 		pairs_10.setToggleGroup(pairsGroup);
+		pairs_2.setSelected(true);
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// centerBox
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
-		int row_column = 2;
-		Image cardImage[][] = new Image[row_column][row_column];
 
-		ImageView[][] imageView = gameEngine.imageView;
-		gameEngine.newCard(2, 2);
-		gameEngine.addView();
-		
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++)
-				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
-
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++)
-				centerBox.addRow(i, imageView[i][j]);
+		displayBoard(centerBox);
+		flipImage();
 
 		// bottomBox
 
@@ -123,23 +115,59 @@ public class Main extends Application {
 			primaryStage.close();
 		});
 
-		imageView[0][0].setOnMouseClicked(event -> {
-			// imageView[0][0].setImage(new Image("images/44.jpg", 100, 100,
-			// true true));
-			// imageView[0][0].setImage --- gameEngine.flipImage(index)
+		pairs_2.setOnAction(event -> {
+			row_column = 2;
+			displayBoard(centerBox);
+			flipImage();
+		});
 
-			// method call to engine flip, coordinates x,y
-			gameEngine.flipImage(0, 0);
+		pairs_4.setOnAction(event -> {
+			row_column = 4;
+			displayBoard(centerBox);
+			flipImage();
 		});
-		imageView[1][0].setOnMouseClicked(event -> {
-			gameEngine.flipImage(1, 0);
+
+		pairs_6.setOnAction(event -> {
+			row_column = 6;
+			displayBoard(centerBox);
+			flipImage();
 		});
-		imageView[0][1].setOnMouseClicked(event -> {
-			gameEngine.flipImage(0, 1);
+
+		pairs_8.setOnAction(event -> {
+			row_column = 8;
+			displayBoard(centerBox);
+			flipImage();
 		});
-		imageView[1][1].setOnMouseClicked(event -> {
-			gameEngine.flipImage(1, 1);
+
+		pairs_10.setOnAction(event -> {
+			row_column = 10;
+			displayBoard(centerBox);
+			flipImage();
 		});
+
+	}
+
+	private void flipImage() {
+		index = 0;
+		for (ImageView i : imageView){
+			i.setOnMouseClicked(event -> {
+				i.setImage(gameEngine.getFrontImage(index));
+			});
+			index++;
+		}
+
+	}
+
+	private void displayBoard(GridPane centerBox) {
+		centerBox.getChildren().clear();
+		imageView = gameEngine.initBoard(row_column);
+		int index = 0;
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++) {
+
+				centerBox.add(imageView[index], j, i);
+				index++;
+			}
 
 	}
 

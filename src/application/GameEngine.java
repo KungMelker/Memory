@@ -7,65 +7,47 @@ import javafx.scene.image.ImageView;
 
 public class GameEngine {
 
-	int row_column = 2;
-	Image cardImage[][] = new Image[row_column][row_column];
-	ImageView imageView[][] = new ImageView[row_column][row_column];
+	Card cards[];
+	int takenCard[];
+	int numCards;
+	Random rand = new Random();
 
-	// method to be implemented in Card.java?
-	// creates card with coordinates and image
-	public Image[][] newCard(int x, int y) {
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++)
-				for (int j2 = 0; j2 < 50; j2++) {
-					cardImage[i][j] = new Image("/images/" + j2 + ".jpg", 40, 40, true, true);
-				}
-		return cardImage;
+	ImageView[] initBoard(int row_column) {
+
+		numCards = (int) Math.pow(row_column, 2);
+
+		ImageView tempIV[] = new ImageView[numCards];
+		cards = new Card[numCards / 2];
+		takenCard = new int[numCards / 2];
+
+		for (int i = 0; i < cards.length; i++) {
+			cards[i] = new Card(i, 500 / row_column);
+			takenCard[i] = 0;
+		}
+
+		for (int i = 0; i < tempIV.length; i++)
+			tempIV[i] = new ImageView(cards[randomCard(cards.length)].getFront());
+
+		return tempIV;
 	}
 
-	// adds ImageView array and calls method to create cards
-	// functionality to be implemented in Card.java?
-	public ImageView[][] addView() {
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++) {
-				// calls method to make new image
-				imageView[i][j] = new ImageView(cardImage[i][j]);
-				newCard(i, j);
+	int randomCard(int max) {
+		int index = 0;
+		boolean foundFree = false;
+
+		while (!foundFree) {
+			index = rand.nextInt(max);
+			if (takenCard[index] < 2) {
+				takenCard[index]++;
+				foundFree = true;
 			}
-		return imageView;
+		}
+
+		return index;
 	}
 
-
-	// not used yet,
-	public ImageView getImageAtPosition(int x, int y) {
-		ImageView imageAtPosition = imageView[x][y];
-
-		return imageAtPosition;
+	Image getFrontImage(int index){
+		
+		return cards[index].getFront();
 	}
-
-	public void flipImage(int x, int y) {
-		// Randomizing a new picture when flipped
-		Random rand = new Random();
-		//interval should be regulated depending on board size
-		int randomImageValue = rand.nextInt(20);
-		String randomImage = null;
-		randomImage = Integer.toString(randomImageValue);
-		imageView[x][y].setImage(new Image("/images/" + randomImage + ".jpg", 40, 40, true, true));
-	}
-
-	public void click(int x, int y) {
-		imageView[x][y].setOnMouseClicked(event -> {
-			// method call to engine flip, coordinates x,y
-			flipImage(x, y);
-		});
-	}
-
-	// needed?
-	public void createCouples() {
-	}
-	
-	// pseudo code && methods
-	// create method that lets user click two cards,
-	// if not same, wait X time and then turn them back, add "attempt" to score tracking
-	// if same (couple), mark as done, add score,  exit method and restart it? let user click new card
-
 }
