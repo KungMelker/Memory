@@ -17,16 +17,21 @@ public class GameEngine {
 		numCards = (int) Math.pow(row_column, 2);
 
 		ImageView tempIV[] = new ImageView[numCards];
-		cards = new Card[numCards / 2];
+		cards = new Card[numCards];
+
+		Card cardsTemp[] = new Card[numCards / 2];
 		takenCard = new int[numCards / 2];
 
-		for (int i = 0; i < cards.length; i++) {
-			cards[i] = new Card(i, 500 / row_column);
+		for (int i = 0; i < cardsTemp.length; i++) {
+			cardsTemp[i] = new Card(i, 500 / row_column);
 			takenCard[i] = 0;
 		}
-
-		for (int i = 0; i < tempIV.length; i++)
-			tempIV[i] = new ImageView(cards[randomCard(cards.length)].getFront());
+		int index;
+		for (int i = 0; i < tempIV.length; i++) {
+			index = randomCard(cardsTemp.length);
+			tempIV[i] = new ImageView(cardsTemp[index].getFront());
+			cards[i] = cardsTemp[index];
+		}
 
 		return tempIV;
 	}
@@ -46,8 +51,8 @@ public class GameEngine {
 		return index;
 	}
 
-	Image getFrontImage(int index){
-		
+	Image getFrontImage(int index) {
+
 		return cards[index].getFront();
 	}
 }
