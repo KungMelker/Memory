@@ -90,13 +90,6 @@ public class Main extends Application {
 			for (int j = 0; j < row_column; j++)
 				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
 
-		ImageView imageView[][] = new ImageView[row_column][row_column];
-		// imageView = gameEngine.getCardImages(antal par);
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++)
-				// kalla på funktion för get image
-				imageView[i][j] = new ImageView(cardImage[i][j]);
-
 		for (int i = 0; i < row_column; i++)
 			for (int j = 0; j < row_column; j++)
 				centerBox.addRow(i, imageView[i][j]);

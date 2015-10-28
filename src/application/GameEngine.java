@@ -7,14 +7,15 @@ import javafx.scene.image.ImageView;
 
 public class GameEngine {
 
-	Image cardImage[][] = new Image[2][2];
-	ImageView imageView[][] = new ImageView[2][2];
+	int row_column = 2;
+	Image cardImage[][] = new Image[row_column][row_column];
+	ImageView imageView[][] = new ImageView[row_column][row_column];
 
 	// method to be implemented in Card.java?
 	// creates card with coordinates and image
 	public Image[][] newCard(int x, int y) {
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				for (int j2 = 0; j2 < 50; j2++) {
 					cardImage[i][j] = new Image("/images/" + j2 + ".jpg", 40, 40, true, true);
 				}
@@ -24,8 +25,8 @@ public class GameEngine {
 	// adds ImageView array and calls method to create cards
 	// functionality to be implemented in Card.java?
 	public ImageView[][] addView() {
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++) {
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++) {
 				// calls method to make new image
 				imageView[i][j] = new ImageView(cardImage[i][j]);
 				newCard(i, j);
