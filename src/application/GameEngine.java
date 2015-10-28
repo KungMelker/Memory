@@ -7,71 +7,51 @@ import javafx.scene.image.ImageView;
 
 public class GameEngine {
 
-	int firstCard;
-	int secondCard;
-	int numberOfPickedCards;
-	int matchedPairs;
-	int attempts;
+	Card cards[];
+	int takenCard[];
+	int numCards;
+	Random rand = new Random();
 
-	int row_column = 4;
-	Image cardImage[] = new Image[row_column];
-	ImageView imageView[][] = new ImageView[row_column][row_column];
+	ImageView[] initBoard(int row_column) {
 
-	// adds ImageView array and calls method to create cards
-	// functionality to be implemented in Card.java?
-	public ImageView[][] addView() {
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++) {
-				// calls method to make new image
-			//	imageView[i][j] = new ImageView(newCard());
-				// newCard(i, j);
-			}
-		return imageView;
-	}
 
-	// method to be implemented in Card.java?
-	// creates card with coordinates and image
-	public Image[] newCard() {
-		for (int i = 0; i < 40; i++) {
-			String randomImage = Integer.toString(i);
-			cardImage[i] = new Image("/images/" + randomImage + ".jpg");
+		numCards = (int) Math.pow(row_column, 2);
+
+
+		ImageView tempIV[] = new ImageView[numCards];
+		cards = new Card[numCards / 2];
+		takenCard = new int[numCards / 2];
+
+
+		for (int i = 0; i < cards.length; i++) {
+			cards[i] = new Card(i, 500 / row_column);
+			takenCard[i] = 0;
 		}
-		return cardImage;
+
+		for (int i = 0; i < tempIV.length; i++)
+			tempIV[i] = new ImageView(cards[randomCard(cards.length)].getFront());
+
+		return tempIV;
 	}
 
-	// not used yet,
-	public ImageView getImageAtPosition(int x, int y) {
-		ImageView imageAtPosition = imageView[x][y];
 
-		return imageAtPosition;
+	int randomCard(int max) {
+		int index = 0;
+		boolean foundFree = false;
+
+		while (!foundFree) {
+			index = rand.nextInt(max);
+			if (takenCard[index] < 2) {
+				takenCard[index]++;
+				foundFree = true;
+			}
+		}
+
+		return index;
 	}
 
-	public void flipImage(int x, int y) {
-		// Randomizing a new picture when flipped
-		Random rand = new Random();
-		// interval should be regulated depending on board size
-		int randomImageValue = rand.nextInt(20);
-		String randomImage = null;
-		randomImage = Integer.toString(randomImageValue);
-		imageView[x][y].setImage(new Image("/images/" + randomImage + ".jpg", 40, 40, true, true));
+	Image getFrontImage(int index){
+		
+		return cards[index].getFront();
 	}
-
-	public void click(int x, int y) {
-		imageView[x][y].setOnMouseClicked(event -> {
-			// method call to engine flip, coordinates x,y
-			flipImage(x, y);
-		});
-	}
-
-	// needed?
-	public void createCouples() {
-	}
-
-	// pseudo code && methods
-	// create method that lets user click two cards,
-	// if not same, wait X time and then turn them back, add "attempt" to score
-	// tracking
-	// if same (couple), mark as done, add score, exit method and restart it?
-	// let user click new card
-
 }

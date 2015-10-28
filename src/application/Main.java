@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Reflection;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -22,12 +21,14 @@ import javafx.scene.text.FontWeight;
 public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
+	int row_column = 2;
+	ImageView imageView[];
+	int index;
 
 	@Override
 	public void start(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
-		root.setPadding(new Insets(20));
 		Scene scene = new Scene(root, 1000, 600);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
@@ -43,7 +44,7 @@ public class Main extends Application {
 		Reflection refl = new Reflection();
 		refl.setFraction(0.8);
 		titel.setEffect(refl);
-		
+
 		// rightBox
 		VBox rightBox = new VBox(15);
 		Label player = new Label("Player");
@@ -73,23 +74,17 @@ public class Main extends Application {
 		pairs_6.setToggleGroup(pairsGroup);
 		pairs_8.setToggleGroup(pairsGroup);
 		pairs_10.setToggleGroup(pairsGroup);
+		pairs_2.setSelected(true);
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// centerBox
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
-		int row_column = 3;
 
+		displayBoard(centerBox);
+		flipImage();
 
-		ImageView[][] imageView = gameEngine.imageView;
-		//gameEngine.newCard(2, 2);
-		gameEngine.addView();
-
-
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++)
-				centerBox.addRow(i, imageView[i][j]);
 
 
 		// bottomBox
@@ -121,10 +116,60 @@ public class Main extends Application {
 			primaryStage.close();
 		});
 
-		imageView[0][0].setOnMouseClicked(event -> {
-			imageView[0][0].setImage(new Image("images/44.jpg", 100, 100, true, true));
-			// imageView[0][0].setImage --- gameEngine.flipImage(index)
+
+		pairs_2.setOnAction(event -> {
+			row_column = 2;
+			displayBoard(centerBox);
+			flipImage();
 		});
+
+		pairs_4.setOnAction(event -> {
+			row_column = 4;
+			displayBoard(centerBox);
+			flipImage();
+		});
+
+		pairs_6.setOnAction(event -> {
+			row_column = 6;
+			displayBoard(centerBox);
+			flipImage();
+		});
+
+		pairs_8.setOnAction(event -> {
+			row_column = 8;
+			displayBoard(centerBox);
+			flipImage();
+		});
+
+		pairs_10.setOnAction(event -> {
+			row_column = 10;
+			displayBoard(centerBox);
+			flipImage();
+		});
+
+	}
+
+	private void flipImage() {
+		index = 0;
+		for (ImageView i : imageView){
+			i.setOnMouseClicked(event -> {
+				i.setImage(gameEngine.getFrontImage(index));
+			});
+			index++;
+		}
+
+	}
+
+	private void displayBoard(GridPane centerBox) {
+		centerBox.getChildren().clear();
+		imageView = gameEngine.initBoard(row_column);
+		int index = 0;
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++) {
+
+				centerBox.add(imageView[index], j, i);
+				index++;
+			}
 
 	}
 
