@@ -16,6 +16,10 @@ När UI vänder bild skickas koordinaterna till flippImage, skickar tillbaka den n
 
 Poäng, relateras till tid och antal försök
 
+En array med hela brädet, med två identiska objekt av varje
+eller
+två identiska arrays, jämföra om identiska?
+
 CARD:
 
 
