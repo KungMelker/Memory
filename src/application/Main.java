@@ -27,6 +27,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
+		root.setPadding(new Insets(20));
 		Scene scene = new Scene(root, 1000, 600);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
