@@ -38,7 +38,7 @@ public class Main extends Application {
 		topBox.setAlignment(Pos.CENTER);
 		Label titel = new Label("Memory");
 		titel.setId("game-title");
-		
+
 		topBox.getChildren().add(titel);
 
 		Reflection refl = new Reflection();
@@ -48,15 +48,15 @@ public class Main extends Application {
 		// rightBox
 		VBox rightBox = new VBox(15);
 		Label player = new Label("Player");
-	
+
 		rightBox.getChildren().add(0, player);
 		rightBox.setAlignment(Pos.CENTER);
 		Label points = new Label("Points");
-	
+
 		rightBox.getChildren().add(1, points);
 
 		Label pointresult = new Label("0");
-	
+
 		rightBox.getChildren().add(2, pointresult);
 
 		// leftBox
@@ -68,7 +68,7 @@ public class Main extends Application {
 		RadioButton pairs_6 = new RadioButton("6 x 6");
 		RadioButton pairs_8 = new RadioButton("8 x 8");
 		RadioButton pairs_10 = new RadioButton("10 x 10");
-		
+
 		pairs_2.setToggleGroup(pairsGroup);
 		pairs_4.setToggleGroup(pairsGroup);
 		pairs_6.setToggleGroup(pairsGroup);
@@ -82,11 +82,7 @@ public class Main extends Application {
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
 
-
-		displayBoard(centerBox);
-		flipImage();
-
-
+		
 		// bottomBox
 
 		HBox bottomBox = new HBox(50);
@@ -115,7 +111,6 @@ public class Main extends Application {
 		sQuit.setOnAction(event -> {
 			primaryStage.close();
 		});
-
 
 		pairs_2.setOnAction(event -> {
 			row_column = 2;
@@ -150,12 +145,12 @@ public class Main extends Application {
 	}
 
 	private void flipImage() {
-		index = 0;
-		for (ImageView i : imageView){
-			i.setOnMouseClicked(event -> {
-				i.setImage(gameEngine.getFrontImage(index));
+
+		for (int i = 0; i < imageView.length; i++){
+			index = i;
+			imageView[i].setOnMouseClicked(event -> {
+				imageView[index].setImage(gameEngine.getFrontImage(index));
 			});
-			index++;
 		}
 
 	}
