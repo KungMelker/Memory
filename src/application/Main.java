@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -26,7 +27,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
-		Scene scene = new Scene(root, 400, 400);
+		root.setPadding(new Insets(20));
+		Scene scene = new Scene(root, 1000, 600);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
@@ -34,9 +36,14 @@ public class Main extends Application {
 		HBox topBox = new HBox(5);
 		topBox.setAlignment(Pos.CENTER);
 		Label titel = new Label("Memory");
+		titel.setId("game-title");
 		titel.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 25));
 		topBox.getChildren().add(titel);
 
+		Reflection refl = new Reflection();
+		refl.setFraction(0.8);
+		titel.setEffect(refl);
+		
 		// rightBox
 		VBox rightBox = new VBox(15);
 
@@ -54,7 +61,7 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
-
+		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -72,25 +79,26 @@ public class Main extends Application {
 		// centerBox
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
+		int row_column = 2;
+		Image cardImage[][] = new Image[row_column][row_column];
 
 		ImageView[][] imageView = gameEngine.imageView;
 		gameEngine.newCard(2, 2);
 		gameEngine.addView();
-		/*
-		 * Image cardImage[][] = new Image[2][2];
-		 * 
-		 * for (int i = 0; i < 2; i++) for (int j = 0; j < 2; j++)
-		 * cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
-		 * 
-		 * ImageView imageView[][] = new ImageView[2][2]; // imageView =
-		 * gameEngine.getCardImages(antal par); for (int i = 0; i < 2; i++) for
-		 * (int j = 0; j < 2; j++) // kalla på funktion för get image
-		 * imageView[i][j] = new ImageView(cardImage[i][j]);
-		 * 
-		 */
+		
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
+				cardImage[i][j] = new Image("/images/0.jpg", 100, 100, true, true);
 
-		for (int i = 0; i < 2; i++)
-			for (int j = 0; j < 2; j++)
+		ImageView imageView[][] = new ImageView[row_column][row_column];
+		// imageView = gameEngine.getCardImages(antal par);
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
+				// kalla på funktion för get image
+				imageView[i][j] = new ImageView(cardImage[i][j]);
+
+		for (int i = 0; i < row_column; i++)
+			for (int j = 0; j < row_column; j++)
 				centerBox.addRow(i, imageView[i][j]);
 
 		// bottomBox
@@ -104,6 +112,7 @@ public class Main extends Application {
 		sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
 		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		newGame.setId("NewGame");
 		newGame.setRotate(5.0);
 		bottomBox.getChildren().addAll(sQuit, newGame);
 
