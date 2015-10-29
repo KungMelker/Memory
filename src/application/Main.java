@@ -1,7 +1,6 @@
 package application;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -12,8 +11,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -26,7 +23,7 @@ public class Main extends Application {
 	GameEngine gameEngine = new GameEngine();
 	int row_column = 2;
 	ImageView imageView[];
-	public int index;
+	int index;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -41,7 +38,7 @@ public class Main extends Application {
 		topBox.setAlignment(Pos.CENTER);
 		Label titel = new Label("Memory");
 		titel.setId("game-title");
-		
+
 		topBox.getChildren().add(titel);
 
 		Reflection refl = new Reflection();
@@ -51,15 +48,15 @@ public class Main extends Application {
 		// rightBox
 		VBox rightBox = new VBox(15);
 		Label player = new Label("Player");
-	
+
 		rightBox.getChildren().add(0, player);
 		rightBox.setAlignment(Pos.CENTER);
 		Label points = new Label("Points");
-	
+
 		rightBox.getChildren().add(1, points);
 
 		Label pointresult = new Label("0");
-	
+
 		rightBox.getChildren().add(2, pointresult);
 
 		// leftBox
@@ -71,24 +68,18 @@ public class Main extends Application {
 		RadioButton pairs_6 = new RadioButton("6 x 6");
 		RadioButton pairs_8 = new RadioButton("8 x 8");
 		RadioButton pairs_10 = new RadioButton("10 x 10");
-		
+
 		pairs_2.setToggleGroup(pairsGroup);
 		pairs_4.setToggleGroup(pairsGroup);
 		pairs_6.setToggleGroup(pairsGroup);
 		pairs_8.setToggleGroup(pairsGroup);
 		pairs_10.setToggleGroup(pairsGroup);
-		pairs_2.setSelected(true);
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// centerBox
 		GridPane centerBox = new GridPane();
 		centerBox.setAlignment(Pos.CENTER);
-
-		displayBoard(centerBox);
-		flipImage();
-
-
 
 		// bottomBox
 
@@ -119,7 +110,6 @@ public class Main extends Application {
 			primaryStage.close();
 		});
 
-
 		pairs_2.setOnAction(event -> {
 			row_column = 2;
 			displayBoard(centerBox);
@@ -149,28 +139,18 @@ public class Main extends Application {
 			displayBoard(centerBox);
 			flipImage();
 		});
-		
-		EventHandler handler = new EventHandler<InputEvent>() {
-		      public void handle(InputEvent event) {
-		        System.out.println("Handling event " + event.getEventType());
-				
-				gameEngine.getFrontImage(index);
-		      }
-		    };
-		    
-		  //  .addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
 
 	}
 
 	private void flipImage() {
-		index = 0;
-		for (ImageView i : imageView){		
-			i.setOnMouseClicked(event -> {
-				i.setImage(gameEngine.getFrontImage(index));
-			});
-			
+
+		for (int i = 0; i < imageView.length; i++){
+			index = i;
+			imageView[i].setOnMouseClicked(event -> {
+				imageView[index].setImage(gameEngine.getFrontImage(index));
+			});	
 		}
-		index++;
+
 	}
 
 	private void displayBoard(GridPane centerBox) {
@@ -184,9 +164,6 @@ public class Main extends Application {
 				index++;
 			}
 	}
-	
-
-
 
 	public static void main(String[] args) {
 		launch(args);

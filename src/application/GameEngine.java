@@ -2,13 +2,8 @@ package application;
 
 import java.util.Random;
 
-import javax.jws.Oneway;
-
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
 
 public class GameEngine {
 
@@ -17,28 +12,29 @@ public class GameEngine {
 	int numCards;
 	Random rand = new Random();
 
-	int index = 0;
-	
 	ImageView[] initBoard(int row_column) {
 
 		numCards = (int) Math.pow(row_column, 2);
 
 		ImageView tempIV[] = new ImageView[numCards];
-		cards = new Card[numCards / 2];
+		cards = new Card[numCards];
+
+		Card cardsTemp[] = new Card[numCards / 2];
 		takenCard = new int[numCards / 2];
 
-		for (int i = 0; i < cards.length; i++) {
-			cards[i] = new Card(i, 500 / row_column);
+		for (int i = 0; i < cardsTemp.length; i++) {
+			cardsTemp[i] = new Card(i, 500 / row_column);
 			takenCard[i] = 0;
 		}
-		
+		int index;
 		for (int i = 0; i < tempIV.length; i++) {
-			tempIV[i] = new ImageView(cards[randomCard(cards.length)].getFront());
-			}
+			index = randomCard(cardsTemp.length);
+			tempIV[i] = new ImageView(cardsTemp[index].getFront());
+			cards[i] = cardsTemp[index];
+		}
+		
 		return tempIV;
 	}
-
-
 
 	int randomCard(int max) {
 		int index = 0;
@@ -53,6 +49,13 @@ public class GameEngine {
 		}
 
 		return index;
+	}
+	
+	boolean compareCards(int card1, int card2){
+		
+		if(card1==card2){return true;}
+		else{return false;}
+		
 	}
 
 	Image getFrontImage(int index) {
