@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -11,6 +12,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -23,7 +26,7 @@ public class Main extends Application {
 	GameEngine gameEngine = new GameEngine();
 	int row_column = 2;
 	ImageView imageView[];
-	int index;
+	public int index;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -146,18 +149,28 @@ public class Main extends Application {
 			displayBoard(centerBox);
 			flipImage();
 		});
+		
+		EventHandler handler = new EventHandler<InputEvent>() {
+		      public void handle(InputEvent event) {
+		        System.out.println("Handling event " + event.getEventType());
+				
+				gameEngine.getFrontImage(index);
+		      }
+		    };
+		    
+		  //  .addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
 
 	}
 
 	private void flipImage() {
 		index = 0;
-		for (ImageView i : imageView){
+		for (ImageView i : imageView){		
 			i.setOnMouseClicked(event -> {
 				i.setImage(gameEngine.getFrontImage(index));
 			});
-			index++;
+			
 		}
-
+		index++;
 	}
 
 	private void displayBoard(GridPane centerBox) {
@@ -170,8 +183,10 @@ public class Main extends Application {
 				centerBox.add(imageView[index], j, i);
 				index++;
 			}
-
 	}
+	
+
+
 
 	public static void main(String[] args) {
 		launch(args);
