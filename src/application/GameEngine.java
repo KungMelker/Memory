@@ -3,17 +3,18 @@ package application;
 import java.util.Random;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class GameEngine {
 
 	Card cards[];
 	int takenCard[];
-	int numCards;
+	int pairToCompare[] = { -1, -1 };
 	Random rand = new Random();
 
 	void initBoard(int row_column) {
 
-		numCards = (int) Math.pow(row_column, 2);
+		int numCards = (int) Math.pow(row_column, 2);
 		cards = new Card[numCards];
 		Card cardsTemp[] = new Card[numCards / 2];
 		takenCard = new int[numCards / 2];
@@ -44,13 +45,31 @@ public class GameEngine {
 		return index;
 	}
 
-	boolean compareCards(int card1, int card2) {
+	boolean compareCards() {
 
-		return (cards[card1].getValue() == cards[card2].getValue() ? true : false);
+		return (cards[pairToCompare[0]].getValue() == cards[pairToCompare[1]].getValue() ? true : false);
 	}
 
-	Image getFrontImage(int index) {
+	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
-		return cards[index].getFront();
+		if (pairToCompare[0] == -1) {
+			pairToCompare[0] = index;
+			ivArr[index].setImage(cards[index].getFront());
+		} else {
+			pairToCompare[1] = index;
+			ivArr[index].setImage(cards[index].getFront());
+			
+			if (compareCards()) {
+				ivArr[pairToCompare[0]].setDisable(true);
+				ivArr[pairToCompare[1]].setDisable(true);
+			} else {
+				
+				ivArr[0].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+				ivArr[1].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+			}
+
+			pairToCompare[0] = -1;
+			pairToCompare[1] = -1;
+		}
 	}
 }

@@ -78,8 +78,6 @@ public class Main extends Application {
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
-		// centerBox
-
 		// bottomBox
 
 		HBox bottomBox = new HBox(50);
@@ -165,10 +163,10 @@ public class Main extends Application {
 				index++;
 			}
 
-		imageView[0].setOnMouseClicked(event -> {imageView[0].setImage(gameEngine.getFrontImage(0));});
-		imageView[1].setOnMouseClicked(event -> {imageView[1].setImage(gameEngine.getFrontImage(1));});
-		imageView[2].setOnMouseClicked(event -> {imageView[2].setImage(gameEngine.getFrontImage(2));});
-		imageView[3].setOnMouseClicked(event -> {imageView[3].setImage(gameEngine.getFrontImage(3));});
+		imageView[0].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,0,row_column);});
+		imageView[1].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,1,row_column);});
+		imageView[2].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,2,row_column);});
+		imageView[3].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,3,row_column);});
 
 		return tempCenter;
 	}
@@ -190,22 +188,22 @@ public class Main extends Application {
 				index++;
 			}
 
-		imageView[0].setOnMouseClicked(event -> {imageView[0].setImage(gameEngine.getFrontImage(0));});
-		imageView[1].setOnMouseClicked(event -> {imageView[1].setImage(gameEngine.getFrontImage(1));});
-		imageView[2].setOnMouseClicked(event -> {imageView[2].setImage(gameEngine.getFrontImage(2));});
-		imageView[3].setOnMouseClicked(event -> {imageView[3].setImage(gameEngine.getFrontImage(3));});
-		imageView[4].setOnMouseClicked(event -> {imageView[4].setImage(gameEngine.getFrontImage(4));});
-		imageView[5].setOnMouseClicked(event -> {imageView[5].setImage(gameEngine.getFrontImage(5));});
-		imageView[6].setOnMouseClicked(event -> {imageView[6].setImage(gameEngine.getFrontImage(6));});
-		imageView[7].setOnMouseClicked(event -> {imageView[7].setImage(gameEngine.getFrontImage(7));});
-		imageView[8].setOnMouseClicked(event -> {imageView[8].setImage(gameEngine.getFrontImage(8));});
-		imageView[9].setOnMouseClicked(event -> {imageView[9].setImage(gameEngine.getFrontImage(9));});
-		imageView[10].setOnMouseClicked(event -> {imageView[10].setImage(gameEngine.getFrontImage(10));});
-		imageView[11].setOnMouseClicked(event -> {imageView[11].setImage(gameEngine.getFrontImage(11));});
-		imageView[12].setOnMouseClicked(event -> {imageView[12].setImage(gameEngine.getFrontImage(12));});
-		imageView[13].setOnMouseClicked(event -> {imageView[13].setImage(gameEngine.getFrontImage(13));});
-		imageView[14].setOnMouseClicked(event -> {imageView[14].setImage(gameEngine.getFrontImage(14));});
-		imageView[15].setOnMouseClicked(event -> {imageView[15].setImage(gameEngine.getFrontImage(15));});
+		imageView[0].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,0,row_column);});
+		imageView[1].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,1,row_column);});
+		imageView[2].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,2,row_column);});
+		imageView[3].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,3,row_column);});
+		imageView[4].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,4,row_column);});
+		imageView[5].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,5,row_column);});
+		imageView[6].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,6,row_column);});
+		imageView[7].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,7,row_column);});
+		imageView[8].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,8,row_column);});
+		imageView[9].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,9,row_column);});
+		imageView[10].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,10,row_column);});
+		imageView[11].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,11,row_column);});
+		imageView[12].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,12,row_column);});
+		imageView[13].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,13,row_column);});
+		imageView[14].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,14,row_column);});
+		imageView[15].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,15,row_column);});
 		
 		return tempCenter;
 	}
@@ -227,42 +225,42 @@ public class Main extends Application {
 				index++;
 			}
 
-		imageView[0].setOnMouseClicked(event -> {imageView[0].setImage(gameEngine.getFrontImage(0));});
-		imageView[1].setOnMouseClicked(event -> {imageView[1].setImage(gameEngine.getFrontImage(1));});
-		imageView[2].setOnMouseClicked(event -> {imageView[2].setImage(gameEngine.getFrontImage(2));});
-		imageView[3].setOnMouseClicked(event -> {imageView[3].setImage(gameEngine.getFrontImage(3));});
-		imageView[4].setOnMouseClicked(event -> {imageView[4].setImage(gameEngine.getFrontImage(4));});
-		imageView[5].setOnMouseClicked(event -> {imageView[5].setImage(gameEngine.getFrontImage(5));});
-		imageView[6].setOnMouseClicked(event -> {imageView[6].setImage(gameEngine.getFrontImage(6));});
-		imageView[7].setOnMouseClicked(event -> {imageView[7].setImage(gameEngine.getFrontImage(7));});
-		imageView[8].setOnMouseClicked(event -> {imageView[8].setImage(gameEngine.getFrontImage(8));});
-		imageView[9].setOnMouseClicked(event -> {imageView[9].setImage(gameEngine.getFrontImage(9));});
-		imageView[10].setOnMouseClicked(event -> {imageView[10].setImage(gameEngine.getFrontImage(10));});
-		imageView[11].setOnMouseClicked(event -> {imageView[11].setImage(gameEngine.getFrontImage(11));});
-		imageView[12].setOnMouseClicked(event -> {imageView[12].setImage(gameEngine.getFrontImage(12));});
-		imageView[13].setOnMouseClicked(event -> {imageView[13].setImage(gameEngine.getFrontImage(13));});
-		imageView[14].setOnMouseClicked(event -> {imageView[14].setImage(gameEngine.getFrontImage(14));});
-		imageView[15].setOnMouseClicked(event -> {imageView[15].setImage(gameEngine.getFrontImage(15));});
-		imageView[16].setOnMouseClicked(event -> {imageView[16].setImage(gameEngine.getFrontImage(16));});
-		imageView[17].setOnMouseClicked(event -> {imageView[17].setImage(gameEngine.getFrontImage(17));});
-		imageView[18].setOnMouseClicked(event -> {imageView[18].setImage(gameEngine.getFrontImage(18));});
-		imageView[19].setOnMouseClicked(event -> {imageView[19].setImage(gameEngine.getFrontImage(19));});
-		imageView[20].setOnMouseClicked(event -> {imageView[20].setImage(gameEngine.getFrontImage(20));});
-		imageView[21].setOnMouseClicked(event -> {imageView[21].setImage(gameEngine.getFrontImage(21));});
-		imageView[22].setOnMouseClicked(event -> {imageView[22].setImage(gameEngine.getFrontImage(22));});
-		imageView[23].setOnMouseClicked(event -> {imageView[23].setImage(gameEngine.getFrontImage(23));});
-		imageView[24].setOnMouseClicked(event -> {imageView[24].setImage(gameEngine.getFrontImage(24));});
-		imageView[25].setOnMouseClicked(event -> {imageView[25].setImage(gameEngine.getFrontImage(25));});
-		imageView[26].setOnMouseClicked(event -> {imageView[26].setImage(gameEngine.getFrontImage(26));});
-		imageView[27].setOnMouseClicked(event -> {imageView[27].setImage(gameEngine.getFrontImage(27));});
-		imageView[28].setOnMouseClicked(event -> {imageView[28].setImage(gameEngine.getFrontImage(28));});
-		imageView[29].setOnMouseClicked(event -> {imageView[29].setImage(gameEngine.getFrontImage(29));});
-		imageView[30].setOnMouseClicked(event -> {imageView[30].setImage(gameEngine.getFrontImage(30));});
-		imageView[31].setOnMouseClicked(event -> {imageView[31].setImage(gameEngine.getFrontImage(31));});
-		imageView[32].setOnMouseClicked(event -> {imageView[32].setImage(gameEngine.getFrontImage(32));});
-		imageView[33].setOnMouseClicked(event -> {imageView[33].setImage(gameEngine.getFrontImage(33));});
-		imageView[34].setOnMouseClicked(event -> {imageView[34].setImage(gameEngine.getFrontImage(34));});
-		imageView[35].setOnMouseClicked(event -> {imageView[35].setImage(gameEngine.getFrontImage(35));});
+		imageView[0].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,0,row_column);});
+		imageView[1].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,1,row_column);});
+		imageView[2].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,2,row_column);});
+		imageView[3].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,3,row_column);});
+		imageView[4].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,4,row_column);});
+		imageView[5].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,5,row_column);});
+		imageView[6].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,6,row_column);});
+		imageView[7].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,7,row_column);});
+		imageView[8].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,8,row_column);});
+		imageView[9].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,9,row_column);});
+		imageView[10].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,10,row_column);});
+		imageView[11].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,11,row_column);});
+		imageView[12].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,12,row_column);});
+		imageView[13].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,13,row_column);});
+		imageView[14].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,14,row_column);});
+		imageView[15].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,15,row_column);});
+		imageView[16].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,16,row_column);});
+		imageView[17].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,17,row_column);});
+		imageView[18].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,18,row_column);});
+		imageView[19].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,19,row_column);});
+		imageView[20].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,20,row_column);});
+		imageView[21].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,21,row_column);});
+		imageView[22].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,22,row_column);});
+		imageView[23].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,23,row_column);});
+		imageView[24].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,24,row_column);});
+		imageView[25].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,25,row_column);});
+		imageView[26].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,26,row_column);});
+		imageView[27].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,27,row_column);});
+		imageView[28].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,28,row_column);});
+		imageView[29].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,29,row_column);});
+		imageView[30].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,30,row_column);});
+		imageView[31].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,31,row_column);});
+		imageView[32].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,32,row_column);});
+		imageView[33].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,33,row_column);});
+		imageView[34].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,34,row_column);});
+		imageView[35].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView,35,row_column);});
 		
 		return tempCenter;
 	}
