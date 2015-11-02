@@ -9,16 +9,13 @@ public class GameEngine {
 
 	Card cards[];
 	int takenCard[];
-	int numCards;
+	int pairToCompare[] = { -1, -1 };
 	Random rand = new Random();
 
-	ImageView[] initBoard(int row_column) {
+	void initBoard(int row_column) {
 
-		numCards = (int) Math.pow(row_column, 2);
-
-		ImageView tempIV[] = new ImageView[numCards];
+		int numCards = (int) Math.pow(row_column, 2);
 		cards = new Card[numCards];
-
 		Card cardsTemp[] = new Card[numCards / 2];
 		takenCard = new int[numCards / 2];
 
@@ -26,14 +23,11 @@ public class GameEngine {
 			cardsTemp[i] = new Card(i, 500 / row_column);
 			takenCard[i] = 0;
 		}
-		int index;
-		for (int i = 0; i < tempIV.length; i++) {
-			index = randomCard(cardsTemp.length);
-			tempIV[i] = new ImageView(cardsTemp[index].getFront());
-			cards[i] = cardsTemp[index];
+
+		for (int i = 0; i < cards.length; i++) {
+
+			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
-		
-		return tempIV;
 	}
 
 	int randomCard(int max) {
@@ -50,16 +44,32 @@ public class GameEngine {
 
 		return index;
 	}
-	
-	boolean compareCards(int card1, int card2){
-		
-		if(card1==card2){return true;}
-		else{return false;}
-		
+
+	boolean compareCards() {
+
+		return (cards[pairToCompare[0]].getValue() == cards[pairToCompare[1]].getValue() ? true : false);
 	}
 
-	Image getFrontImage(int index) {
+	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
-		return cards[index].getFront();
+		if (pairToCompare[0] == -1) {
+			pairToCompare[0] = index;
+			ivArr[index].setImage(cards[index].getFront());
+		} else {
+			pairToCompare[1] = index;
+			ivArr[index].setImage(cards[index].getFront());
+			
+			if (compareCards()) {
+				ivArr[pairToCompare[0]].setDisable(true);
+				ivArr[pairToCompare[1]].setDisable(true);
+			} else {
+				
+				ivArr[0].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+				ivArr[1].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+			}
+
+			pairToCompare[0] = -1;
+			pairToCompare[1] = -1;
+		}
 	}
 }
