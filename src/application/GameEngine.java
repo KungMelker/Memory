@@ -61,9 +61,9 @@ public class GameEngine {
 			} else {
 
 				ivArr[pairToCompare[0]]
-						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
 				ivArr[pairToCompare[1]]
-						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
 			}
 
 			pairToCompare[0] = -1;
@@ -75,8 +75,8 @@ public class GameEngine {
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
 
-		} else {
-
+		} else {		
+			
 			pairToCompare[1] = index;
 			ivArr[index].setImage(cards[index].getFront());
 
