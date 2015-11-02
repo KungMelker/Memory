@@ -61,10 +61,10 @@ public class Main extends Application {
 		rightBox.getChildren().add(2, pointresult);
 
 		
-		Label tryes = new Label("Tryes");
-		rightBox.getChildren().add(6,tryes);
-		Label presentTryes = new Label("0");
-		rightBox.getChildren().add(7,presentTryes);
+		Label tries = new Label("Tries");
+		rightBox.getChildren().add(6,tries);
+		Label presentTries = new Label("0");
+		rightBox.getChildren().add(7,presentTries);
 		
 		// leftBox
 		VBox leftBox = new VBox(5);
@@ -152,7 +152,7 @@ public class Main extends Application {
 		});
 
 		root.setOnMouseClicked(event -> {
-			presentTryes.setText(Integer.toString(gameEngine.getTryes()));
+			presentTries.setText(Integer.toString(gameEngine.getTries()));
 			
 		});
 		
