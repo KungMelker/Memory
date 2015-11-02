@@ -2,10 +2,7 @@ package application;
 
 import java.util.Random;
 import java.util.Timer;
-
-import com.sun.glass.ui.Timer;
-
-import javafx.animation.FadeTransition;
+//import com.sun.glass.ui.Timer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -16,6 +13,7 @@ public class GameEngine {
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
 	int tries;
+	int foundPairs;
 	Random rand = new Random();
 
 	
