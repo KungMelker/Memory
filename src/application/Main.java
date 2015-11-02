@@ -173,11 +173,12 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-
-			if (gameEngine.getFoundPairs() == 0) {
-				/* TODO Call Gustavs timer - start */ } else
-				if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
-				/* TODO Call Gustavs timer stop and display result */
+			if(gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0)
+			{gameEngine.startTime();}
+			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
+			{
+				gameEngine.stopTime();
+				time.setText(Long.toString(gameEngine.elapsedTime));
 			}
 
 		});

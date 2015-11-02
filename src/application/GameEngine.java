@@ -13,17 +13,35 @@ public class GameEngine {
 	Card cards[];
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
-
-	long start, stop;
-	int tries = 0;
-	int foundPairs = 0;
+	
+	long start, stop, elapsedTime;
+	int tries=0;
+	int foundPairs=0;
 	Random rand = new Random();
 
-	long elapsedTime(long elapsedTime) {
+	public long getStart() {
+		return start;
+	}
+
+	public void setStart(long start) {
+		this.start = start;
+	}
+
+	long startTime(){
 		start = System.currentTimeMillis();
+		return start;
+	}
+	
+	long stopTime(){
 		stop = System.currentTimeMillis();
+		return stop;
+	}
+	long elapsedTime(){
+		//start = System.currentTimeMillis();
+		//stop = System.currentTimeMillis();
 		elapsedTime = stop - start;
-		return elapsedTime / 1000;
+		
+		return elapsedTime/1000;
 	}
 
 	public Card[] getCards() {
