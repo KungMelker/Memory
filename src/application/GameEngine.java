@@ -43,12 +43,11 @@ public class GameEngine {
 		
 		return elapsedTime/1000;
 	}
-	
+
 	public Card[] getCards() {
 		return cards;
 	}
 
-	
 	public int getFoundPairs() {
 		return foundPairs;
 	}
@@ -82,7 +81,6 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
-	
 
 	int randomCard(int max) {
 		int index = 0;
@@ -106,7 +104,6 @@ public class GameEngine {
 
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
-
 		if (pairToCompare[1] != -1) {
 
 			if (compareCards()) {
@@ -118,16 +115,17 @@ public class GameEngine {
 			} else {
 
 				ivArr[pairToCompare[0]]
-						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
 				ivArr[pairToCompare[1]]
-						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+
 				tries++;
 			}
 
 			pairToCompare[0] = -1;
 			pairToCompare[1] = -1;
 		}
-		
+
 		if (pairToCompare[0] == -1) {
 
 			pairToCompare[0] = index;
@@ -139,6 +137,6 @@ public class GameEngine {
 			ivArr[index].setImage(cards[index].getFront());
 
 		}
-		
+
 	}
 }
