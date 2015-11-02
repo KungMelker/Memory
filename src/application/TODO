@@ -35,6 +35,9 @@ Center utgörs av centrerad GridPane
 Knappisar, new game,exit game
 labels: poäng och namn
 
+- hämta/spara high score
+- räkna antal försök/poäng
+- JUnit
 
 
 EFFEKTER:

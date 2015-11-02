@@ -1,3 +1,4 @@
+
 package application;
 
 import java.util.Random;
@@ -12,9 +13,10 @@ public class GameEngine {
 	Card cards[];
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
-	int tries;
-	int foundPairs;
+	
 	long start, stop;
+	int tries=0;
+	int foundPairs=0;
 	Random rand = new Random();
 
 	
@@ -25,6 +27,19 @@ public class GameEngine {
 		return elapsedTime/1000;
 	}
 	
+	public Card[] getCards() {
+		return cards;
+	}
+
+	
+	public int getFoundPairs() {
+		return foundPairs;
+	}
+
+	public void setFoundPairs(int foundPairs) {
+		this.foundPairs = foundPairs;
+	}
+
 	public int getTries() {
 		return tries;
 	}
@@ -82,6 +97,7 @@ public class GameEngine {
 				ivArr[pairToCompare[0]].setDisable(true);
 				ivArr[pairToCompare[1]].setDisable(true);
 				tries++;
+				foundPairs++;
 			} else {
 
 				ivArr[pairToCompare[0]]

@@ -1,3 +1,4 @@
+
 package application;
 
 import javafx.application.Application;
@@ -162,6 +163,12 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
+			if(gameEngine.getFoundPairs() == 0)
+			{/* TODO Call Gustavs timer - start */ }
+			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
+			{
+			 /* TODO Call Gustavs timer stop and display result  */	
+			}
 			
 		});
 		
