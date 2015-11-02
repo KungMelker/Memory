@@ -97,9 +97,9 @@ public class GameEngine {
 			} else {
 
 				ivArr[pairToCompare[0]]
-						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 				ivArr[pairToCompare[1]]
-						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 
 				tries++;
 			}

@@ -37,48 +37,40 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 
 		// topBox
-		HBox topBox = new HBox(5);
+		HBox topBox = new HBox();
 		topBox.setAlignment(Pos.CENTER);
-		Label titel = new Label("Memory");
+		topBox.setId("topbox");
+		Label titel = new Label("Memories Lost");
 		titel.setId("game-title");
 
 		topBox.getChildren().add(titel);
 
-		Reflection refl = new Reflection();
-		refl.setFraction(0.8);
-		titel.setEffect(refl);
+		// Reflection refl = new Reflection();
+		// refl.setFraction(0.8);
+		// titel.setEffect(refl);
 
 		// rightBox
-		VBox rightBox = new VBox(15);
+		VBox rightBox = new VBox();
+		rightBox.setId("leftbox");
+		rightBox.setPadding(new Insets(20.0));
 		rightBox.setAlignment(Pos.CENTER_LEFT);
-		
+
 		Label highscore = new Label("Highscore");
-        rightBox.getChildren().add(0, highscore);
-		
 		Label highpoint = new Label("0");
-		rightBox.getChildren().add(1, highpoint);
-		
 		Label points = new Label("Points");
-		rightBox.getChildren().add(2, points);
-
 		Label pointresult = new Label("0");
-
-		rightBox.getChildren().add(3, pointresult);
-		
 		Label timeLabel = new Label("Time");
 		Text time = new Text();
-		rightBox.getChildren().add(4, timeLabel);
-		rightBox.getChildren().add(5, time);
 
-		
 		Label tries = new Label("Tries");
-		rightBox.getChildren().add(6,tries);
 		Label presentTries = new Label("0");
-		rightBox.getChildren().add(7,presentTries);
-		
+
+		rightBox.getChildren().addAll(highscore, highpoint, points, pointresult, timeLabel, time, tries, presentTries);
+
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setAlignment(Pos.CENTER_RIGHT);
+		leftBox.setPadding(new Insets(20.0));
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -96,19 +88,19 @@ public class Main extends Application {
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// bottomBox
-
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
-		Button sQuit = new Button("Save & Quit");
+		bottomBox.setId("bottombox");
+		Button sQuit = new Button("Quit");
 		sQuit.setId("QuitSave");
-		sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		sQuit.setRotate(10.0);
+		// sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		//sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
-		newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
+		// newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		newGame.setId("NewGame");
-		newGame.setRotate(5.0);
-		bottomBox.getChildren().addAll(sQuit, newGame);
+		//newGame.setRotate(5.0);
+		bottomBox.getChildren().addAll(newGame,sQuit);
 
 		root.setTop(topBox);
 		root.setRight(rightBox);
@@ -124,7 +116,7 @@ public class Main extends Application {
 		});
 
 		pairs_2.setOnAction(event -> {
-			
+
 			row_column = 2;
 			centerBox.getChildren().clear();
 			centerBox = center_2();
@@ -166,8 +158,7 @@ public class Main extends Application {
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
 			gameEngine.setFoundPairs(0);
-			});
-		
+		});
 
 		pairs_10.setOnAction(event -> {
 			row_column = 10;
@@ -177,32 +168,32 @@ public class Main extends Application {
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
-			gameEngine.setFoundPairs(0);	
+			gameEngine.setFoundPairs(0);
 		});
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-			
-			if(gameEngine.getFoundPairs() == 0)
-			{/* TODO Call Gustavs timer - start */ }
-			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
-			{
-			 /* TODO Call Gustavs timer stop and display result  */	
+
+			if (gameEngine.getFoundPairs() == 0) {
+				/* TODO Call Gustavs timer - start */ } else
+				if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
+				/* TODO Call Gustavs timer stop and display result */
 			}
-			
+
 		});
-		
-		
-		
+
 	}
 
 	public GridPane center_2() {
 
 		GridPane tempCenter = new GridPane();
+		tempCenter.setPadding(new Insets(2));
+		tempCenter.setHgap(2);
+		tempCenter.setVgap(2);
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
-			imageView[i] = new ImageView(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 		}
 
 		int index = 0;
@@ -225,8 +216,6 @@ public class Main extends Application {
 		imageView[3].setOnMouseClicked(event -> {
 			gameEngine.getFrontImage(imageView, 3, row_column);
 		});
-		
-		
 
 		return tempCenter;
 	}
@@ -234,10 +223,13 @@ public class Main extends Application {
 	public GridPane center_4() {
 
 		GridPane tempCenter = new GridPane();
+		tempCenter.setPadding(new Insets(2));
+		tempCenter.setHgap(2);
+		tempCenter.setVgap(2);
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
-			imageView[i] = new ImageView(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 		}
 
 		int index = 0;
@@ -306,7 +298,7 @@ public class Main extends Application {
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
-			imageView[i] = new ImageView(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 		}
 
 		int index = 0;
@@ -317,15 +309,9 @@ public class Main extends Application {
 				index++;
 			}
 
-		imageView[0].setOnMouseClicked(event -> {
-			gameEngine.getFrontImage(imageView, 0, row_column);
-		});
-		imageView[1].setOnMouseClicked(event -> {
-			gameEngine.getFrontImage(imageView, 1, row_column);
-		});
-		imageView[2].setOnMouseClicked(event -> {
-			gameEngine.getFrontImage(imageView, 2, row_column);
-		});
+		imageView[0].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView, 0, row_column);});
+		imageView[1].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView, 1, row_column);});
+		imageView[2].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView, 2, row_column);});
 		imageView[3].setOnMouseClicked(event -> {
 			gameEngine.getFrontImage(imageView, 3, row_column);
 		});
@@ -428,10 +414,11 @@ public class Main extends Application {
 
 		return tempCenter;
 	}
-	private GridPane board(){
-		
+
+	private GridPane board() {
+
 		return new GridPane();
-	} 
+	}
 
 	public GridPane center_8() {
 
@@ -439,7 +426,7 @@ public class Main extends Application {
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
-			imageView[i] = new ImageView(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 		}
 
 		int index = 0;
@@ -652,7 +639,7 @@ public class Main extends Application {
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
-			imageView[i] = new ImageView(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 		}
 
 		int index = 0;

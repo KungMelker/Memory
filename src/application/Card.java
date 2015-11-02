@@ -11,7 +11,7 @@ public class Card {
 	public Card(int value, int size) {
 	
 		this.size = size;
-		this.front = new Image("/images/" + Integer.toString(value) + ".jpg",size,size, true, true);
+		this.front = new Image("/abstract/" + Integer.toString(value) + ".png",size,size, true, true);
 		this.value = value;		
 	}
 	

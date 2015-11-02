@@ -1,9 +1,9 @@
 
 .root
 	{ 
-     -fx-background-color: rgb(000, 150, 150);
+     -fx-background-color: f0f0f0;
      -fx-font-size: 16pt;
-     -fx-font-family: "Courier New";
+     -fx-font-family: "Helvetica","System Fet", "Courier New";
      -fx-font-weight: bold;
     }
     
@@ -47,21 +47,29 @@
     
 #game-title
 	{
-	-fx-font-size: 100px;
-    -fx-font-family:  "Ar Destine", "Courier New";	
-	-fx-text-fill: #123456;
-	}   
+	-fx-font-size: 80px;
+    -fx-font-family:  "System", "Ar Destine", "Courier New";	
+	-fx-text-fill: #f0f0f0;
+	
+	}  
+#topbox	{
+	-fx-background-color: #4d4d4d;
+}
+#bottombox{}
+
+	
 #NewGame
 	{
 	-fx-font-size: 16pt;
-    -fx-font-family: "Courier New";
-    -fx-base: rgb(132, 145, 47);
-    -fx-background: rgb(225, 228, 203);
+    -fx-font-family: "Helvetica","Courier New";
+    -fx-base: #a6dc7f;
+    -fx-background: #a6dc7f;
+    	-fx-text-transform: uppercase;
     }    
 #QuitSave
 	{
 	-fx-font-size: 16pt;
-    -fx-font-family: "Courier New";
-    -fx-base: rgb(225, 0, 0);
-    -fx-background: rgb(225, 228, 203);
+    -fx-font-family: "Helvetica","Courier New";
+    -fx-base: #d0524e;
+ 
     }

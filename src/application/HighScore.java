@@ -22,6 +22,8 @@ public class HighScore {
 	String[] playerList = new String[10];
 	String[] timeList = new String[10];
 
+	
+	// method tester
 	public void score() {
 
 		sortHighscores(openFile(pathname));
