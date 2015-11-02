@@ -14,10 +14,16 @@ public class GameEngine {
 	int pairToCompare[] = { -1, -1 };
 	int tries;
 	int foundPairs;
+	long start, stop;
 	Random rand = new Random();
 
 	
-	
+	long elapsedTime(long elapsedTime){
+		start = System.currentTimeMillis();
+		stop = System.currentTimeMillis();
+		elapsedTime = stop - start;
+		return elapsedTime/1000;
+	}
 	
 	public int getTries() {
 		return tries;
