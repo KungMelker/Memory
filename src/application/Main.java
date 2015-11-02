@@ -49,13 +49,16 @@ public class Main extends Application {
 
 		// rightBox
 		VBox rightBox = new VBox(15);
-		Label player = new Label("Player");
-
-		rightBox.getChildren().add(0, player);
 		rightBox.setAlignment(Pos.CENTER);
+		
+		Label highscore = new Label("Highscore");
+        rightBox.getChildren().add(0, highscore);
+		
+		Label highpoint = new Label("0");
+		rightBox.getChildren().add(1, highpoint);
+		
 		Label points = new Label("Points");
-
-		rightBox.getChildren().add(1, points);
+		rightBox.getChildren().add(2, points);
 
 		Label pointresult = new Label("0");
 
@@ -63,8 +66,10 @@ public class Main extends Application {
 		
 		Label timeLabel = new Label("Time");
 		Text time = new Text();
-		rightBox.getChildren().add(3, timeLabel);
-		rightBox.getChildren().add(4, time);
+		rightBox.getChildren().add(3, pointresult);
+		rightBox.getChildren().add(4, timeLabel);
+		rightBox.getChildren().add(5, time);
+
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setAlignment(Pos.CENTER_LEFT);
