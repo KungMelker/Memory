@@ -1,3 +1,4 @@
+
 package application;
 
 import javafx.application.Application;
@@ -18,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class Main extends Application {
 
@@ -48,18 +50,32 @@ public class Main extends Application {
 
 		// rightBox
 		VBox rightBox = new VBox(15);
-		Label player = new Label("Player");
-
-		rightBox.getChildren().add(0, player);
 		rightBox.setAlignment(Pos.CENTER);
+		
+		Label highscore = new Label("Highscore");
+        rightBox.getChildren().add(0, highscore);
+		
+		Label highpoint = new Label("0");
+		rightBox.getChildren().add(1, highpoint);
+		
 		Label points = new Label("Points");
-
-		rightBox.getChildren().add(1, points);
+		rightBox.getChildren().add(2, points);
 
 		Label pointresult = new Label("0");
 
-		rightBox.getChildren().add(2, pointresult);
+		rightBox.getChildren().add(3, pointresult);
+		
+		Label timeLabel = new Label("Time");
+		Text time = new Text();
+		rightBox.getChildren().add(4, timeLabel);
+		rightBox.getChildren().add(5, time);
 
+		
+		Label tries = new Label("Tries");
+		rightBox.getChildren().add(6,tries);
+		Label presentTries = new Label("0");
+		rightBox.getChildren().add(7,presentTries);
+		
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setAlignment(Pos.CENTER_LEFT);
@@ -75,6 +91,7 @@ public class Main extends Application {
 		pairs_6.setToggleGroup(pairsGroup);
 		pairs_8.setToggleGroup(pairsGroup);
 		pairs_10.setToggleGroup(pairsGroup);
+		pairs_2.setSelected(true);
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
@@ -154,6 +171,19 @@ public class Main extends Application {
 
 		});
 
+		root.setOnMouseClicked(event -> {
+			presentTries.setText(Integer.toString(gameEngine.getTries()));
+			if(gameEngine.getFoundPairs() == 0)
+			{/* TODO Call Gustavs timer - start */ }
+			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
+			{
+			 /* TODO Call Gustavs timer stop and display result  */	
+			}
+			
+		});
+		
+		
+		
 	}
 
 	public GridPane center_2() {
@@ -185,6 +215,8 @@ public class Main extends Application {
 		imageView[3].setOnMouseClicked(event -> {
 			gameEngine.getFrontImage(imageView, 3, row_column);
 		});
+		
+		
 
 		return tempCenter;
 	}
@@ -386,6 +418,10 @@ public class Main extends Application {
 
 		return tempCenter;
 	}
+	private GridPane board(){
+		
+		return new GridPane();
+	} 
 
 	public GridPane center_8() {
 
