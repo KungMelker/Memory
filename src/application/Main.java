@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class Main extends Application {
 
@@ -59,7 +60,11 @@ public class Main extends Application {
 		Label pointresult = new Label("0");
 
 		rightBox.getChildren().add(2, pointresult);
-
+		
+		Label timeLabel = new Label("Time");
+		Text time = new Text();
+		rightBox.getChildren().add(3, timeLabel);
+		rightBox.getChildren().add(4, time);
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setAlignment(Pos.CENTER_LEFT);
