@@ -132,6 +132,7 @@ public class Main extends Application {
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
+			gameEngine.setFoundPairs(0);
 		});
 
 		pairs_4.setOnAction(event -> {
@@ -142,6 +143,7 @@ public class Main extends Application {
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
+			gameEngine.setFoundPairs(0);
 		});
 
 		pairs_6.setOnAction(event -> {
@@ -152,7 +154,7 @@ public class Main extends Application {
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
-
+			gameEngine.setFoundPairs(0);
 		});
 
 		pairs_8.setOnAction(event -> {
@@ -162,8 +164,10 @@ public class Main extends Application {
 			centerBox.setAlignment(Pos.CENTER);
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
-
-		});
+			gameEngine.setTryes(0);
+			gameEngine.setFoundPairs(0);
+			});
+		
 
 		pairs_10.setOnAction(event -> {
 			row_column = 10;
@@ -172,7 +176,8 @@ public class Main extends Application {
 			centerBox.setAlignment(Pos.CENTER);
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
-
+			gameEngine.setTryes(0);
+			gameEngine.setFoundPairs(0);	
 		});
 
 		root.setOnMouseClicked(event -> {
