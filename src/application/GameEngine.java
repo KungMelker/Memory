@@ -1,6 +1,7 @@
 package application;
 
 import java.util.Random;
+import java.util.Timer;
 
 import com.sun.glass.ui.Timer;
 
@@ -45,6 +46,7 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
+	
 
 	int randomCard(int max) {
 		int index = 0;

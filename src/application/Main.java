@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class Main extends Application {
 
@@ -48,17 +49,25 @@ public class Main extends Application {
 
 		// rightBox
 		VBox rightBox = new VBox(15);
-		Label player = new Label("Player");
-
-		rightBox.getChildren().add(0, player);
 		rightBox.setAlignment(Pos.CENTER);
+		
+		Label highscore = new Label("Highscore");
+        rightBox.getChildren().add(0, highscore);
+		
+		Label highpoint = new Label("0");
+		rightBox.getChildren().add(1, highpoint);
+		
 		Label points = new Label("Points");
-
-		rightBox.getChildren().add(1, points);
+		rightBox.getChildren().add(2, points);
 
 		Label pointresult = new Label("0");
 
-		rightBox.getChildren().add(2, pointresult);
+		rightBox.getChildren().add(3, pointresult);
+		
+		Label timeLabel = new Label("Time");
+		Text time = new Text();
+		rightBox.getChildren().add(4, timeLabel);
+		rightBox.getChildren().add(5, time);
 
 		
 		Label tries = new Label("Tries");
