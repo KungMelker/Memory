@@ -1,6 +1,7 @@
 package application;
 
 import java.util.Random;
+import java.util.Timer;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,6 +30,7 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
+	
 
 	int randomCard(int max) {
 		int index = 0;
