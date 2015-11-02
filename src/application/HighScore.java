@@ -9,23 +9,31 @@ import java.io.IOException;
 
 public class HighScore {
 
-	String pathname = "/highscore.txt";
+	GameEngine ge = new GameEngine();
+	final String pathname = "/highscore.txt";
 	String playerName = "Anonymous";
 	int highscore = 0;
-	double time = 0;
+	long time = 0;
 	String addScore = "Name: " + playerName + " Score: " + highscore + " Time: " + time;
 
 	// crap
 	String[] scoreList = new String[10];
-	//needed?
+	// needed?
 	String[] playerList = new String[10];
 	String[] timeList = new String[10];
 
+	public void score() {
+
+		sortHighscores(openFile(pathname));
+		time = ge.elapsedTime();
+		writeFile();
+	}
+
 	// creates a BufferedReader, reads highscore file
-	public BufferedReader openFile() {
+	public BufferedReader openFile(String path) {
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader(pathname));
+			br = new BufferedReader(new FileReader(path));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -47,7 +55,6 @@ public class HighScore {
 			e.printStackTrace();
 		}
 
-		
 	}
 
 	// writes highscore to file
@@ -55,8 +62,10 @@ public class HighScore {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(pathname));
 			bw.write(addScore);
+			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 }
