@@ -10,14 +10,16 @@ import java.io.IOException;
 public class HighScore {
 
 	String pathname = "/highscore.txt";
-	String playerName;
-	int highscore;
-	double time;
+	String playerName = "Anonymous";
+	int highscore = 0;
+	double time = 0;
 	String addScore = "Name: " + playerName + " Score: " + highscore + " Time: " + time;
-	int numberOfhighscores;
 
 	// crap
 	String[] scoreList = new String[10];
+	//needed?
+	String[] playerList = new String[10];
+	String[] timeList = new String[10];
 
 	// creates a BufferedReader, reads highscore file
 	public BufferedReader openFile() {
@@ -33,7 +35,7 @@ public class HighScore {
 	public void sortHighscores(BufferedReader instream) {
 
 		// currently void, return score[] instead
-		
+
 		String scoreEntry = null;
 		try {
 			for (int j = 0; j < scoreList.length; j++) {
@@ -45,6 +47,7 @@ public class HighScore {
 			e.printStackTrace();
 		}
 
+		
 	}
 
 	// writes highscore to file
