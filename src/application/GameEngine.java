@@ -37,8 +37,8 @@ public class GameEngine {
 		return stop;
 	}
 	long elapsedTime(){
-		start = System.currentTimeMillis();
-		stop = System.currentTimeMillis();
+		//start = System.currentTimeMillis();
+		//stop = System.currentTimeMillis();
 		elapsedTime = stop - start;
 		
 		return elapsedTime/1000;
