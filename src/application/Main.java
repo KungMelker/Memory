@@ -62,11 +62,10 @@ public class Main extends Application {
 
 		Label pointresult = new Label("0");
 
-		rightBox.getChildren().add(2, pointresult);
+		rightBox.getChildren().add(3, pointresult);
 		
 		Label timeLabel = new Label("Time");
 		Text time = new Text();
-		rightBox.getChildren().add(3, pointresult);
 		rightBox.getChildren().add(4, timeLabel);
 		rightBox.getChildren().add(5, time);
 
