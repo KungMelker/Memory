@@ -50,7 +50,7 @@ public class Main extends Application {
 
 		// rightBox
 		VBox rightBox = new VBox(15);
-		rightBox.setAlignment(Pos.CENTER);
+		rightBox.setAlignment(Pos.CENTER_LEFT);
 		
 		Label highscore = new Label("Highscore");
         rightBox.getChildren().add(0, highscore);
@@ -78,7 +78,7 @@ public class Main extends Application {
 		
 		// leftBox
 		VBox leftBox = new VBox(5);
-		leftBox.setAlignment(Pos.CENTER_LEFT);
+		leftBox.setAlignment(Pos.CENTER_RIGHT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
