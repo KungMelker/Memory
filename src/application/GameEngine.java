@@ -2,8 +2,12 @@ package application;
 
 import java.util.Random;
 
+import com.sun.glass.ui.Timer;
+
+import javafx.animation.FadeTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 public class GameEngine {
 
@@ -51,11 +55,13 @@ public class GameEngine {
 	}
 
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
-
+		
+		
 		if (pairToCompare[0] == -1) {
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
 		} else {
+			
 			pairToCompare[1] = index;
 			ivArr[index].setImage(cards[index].getFront());
 			
@@ -63,9 +69,12 @@ public class GameEngine {
 				ivArr[pairToCompare[0]].setDisable(true);
 				ivArr[pairToCompare[1]].setDisable(true);
 			} else {
+			
 				
-				ivArr[0].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
-				ivArr[1].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+				
+				ivArr[pairToCompare[0]].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+				ivArr[pairToCompare[1]].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+			
 			}
 
 			pairToCompare[0] = -1;
