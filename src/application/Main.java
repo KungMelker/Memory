@@ -124,12 +124,14 @@ public class Main extends Application {
 		});
 
 		pairs_2.setOnAction(event -> {
+			
 			row_column = 2;
 			centerBox.getChildren().clear();
 			centerBox = center_2();
 			centerBox.setAlignment(Pos.CENTER);
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
+			gameEngine.setTryes(0);
 		});
 
 		pairs_4.setOnAction(event -> {
@@ -139,6 +141,7 @@ public class Main extends Application {
 			centerBox.setAlignment(Pos.CENTER);
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
+			gameEngine.setTryes(0);
 		});
 
 		pairs_6.setOnAction(event -> {
@@ -148,6 +151,7 @@ public class Main extends Application {
 			centerBox.setAlignment(Pos.CENTER);
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
+			gameEngine.setTryes(0);
 
 		});
 
@@ -163,6 +167,7 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
+			
 			if(gameEngine.getFoundPairs() == 0)
 			{/* TODO Call Gustavs timer - start */ }
 			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
