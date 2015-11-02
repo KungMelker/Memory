@@ -14,7 +14,19 @@ public class GameEngine {
 	Card cards[];
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
+	int tryes;
 	Random rand = new Random();
+
+	
+	
+	
+	public int getTryes() {
+		return tryes;
+	}
+
+	public void setTryes(int tryes) {
+		this.tryes = tryes;
+	}
 
 	void initBoard(int row_column) {
 
@@ -63,20 +75,20 @@ public class GameEngine {
 
 				ivArr[pairToCompare[0]].setDisable(true);
 				ivArr[pairToCompare[1]].setDisable(true);
-
+				tryes++;
 			} else {
 
 				ivArr[pairToCompare[0]]
 						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
 				ivArr[pairToCompare[1]]
 						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
-
+				tryes++;
 			}
 
 			pairToCompare[0] = -1;
 			pairToCompare[1] = -1;
 		}
-
+		
 		if (pairToCompare[0] == -1) {
 
 			pairToCompare[0] = index;
@@ -88,5 +100,6 @@ public class GameEngine {
 			ivArr[index].setImage(cards[index].getFront());
 
 		}
+		
 	}
 }
