@@ -20,7 +20,7 @@ public class GameEngine {
 		takenCard = new int[numCards / 2];
 
 		for (int i = 0; i < cardsTemp.length; i++) {
-			cardsTemp[i] = new Card(i, 500 / row_column);
+			cardsTemp[i] = new Card(i, 400 / row_column);
 			takenCard[i] = 0;
 		}
 
@@ -52,24 +52,34 @@ public class GameEngine {
 
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
-		if (pairToCompare[0] == -1) {
-			pairToCompare[0] = index;
-			ivArr[index].setImage(cards[index].getFront());
-		} else {
-			pairToCompare[1] = index;
-			ivArr[index].setImage(cards[index].getFront());
-			
+		if (pairToCompare[1] != -1) {
 			if (compareCards()) {
+
 				ivArr[pairToCompare[0]].setDisable(true);
 				ivArr[pairToCompare[1]].setDisable(true);
+
 			} else {
-				
-				ivArr[0].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
-				ivArr[1].setImage(new Image("/images/49.jpg", 500 / row_column, 500 / row_column, true, true));
+
+				ivArr[pairToCompare[0]]
+						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
+				ivArr[pairToCompare[1]]
+						.setImage(new Image("/images/49.jpg", 400 / row_column, 400 / row_column, true, true));
 			}
 
 			pairToCompare[0] = -1;
 			pairToCompare[1] = -1;
+		}
+
+		if (pairToCompare[0] == -1) {
+
+			pairToCompare[0] = index;
+			ivArr[index].setImage(cards[index].getFront());
+
+		} else {
+
+			pairToCompare[1] = index;
+			ivArr[index].setImage(cards[index].getFront());
+
 		}
 	}
 }
