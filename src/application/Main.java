@@ -191,6 +191,13 @@ public class Main extends Application {
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
 			}
+			else
+			{
+				gameEngine.stopTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+			}
+			
+			
 
 		});
 
