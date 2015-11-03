@@ -2,11 +2,9 @@
 package application;
 
 import java.util.Random;
-import java.util.Timer;
-//import com.sun.glass.ui.Timer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+
 
 public class GameEngine {
 
