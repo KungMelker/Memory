@@ -108,7 +108,7 @@ public class Main extends Application {
 		root.setBottom(bottomBox);
 
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.2");
+		primaryStage.setTitle("Memory v0.2 for Dummies");
 
 		
 		newGame.setOnAction(event -> {
@@ -117,22 +117,27 @@ public class Main extends Application {
 			switch (row_column) {
 			case 2:
 				centerBox = center_2();
+				highpoint.setText(hs.getScore(0));
 				break;
 
 			case 4:
 				centerBox = center_4();
+				highpoint.setText(hs.getScore(1));
 				break;
 
 			case 6:
 				centerBox = center_6();
+				highpoint.setText(hs.getScore(2));
 				break;
 
 			case 8:
 				centerBox = center_8();
+				highpoint.setText(hs.getScore(3));
 				break;
 
 			default:
 				centerBox = center_10();
+				highpoint.setText(hs.getScore(4));
 				break;
 			}
 			centerBox.setAlignment(Pos.CENTER);
@@ -146,7 +151,7 @@ public class Main extends Application {
 		
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
-			hs.score();
+			hs.writeFile();
 			primaryStage.close();
 		});
 
@@ -189,8 +194,15 @@ public class Main extends Application {
 				gameEngine.stopTime();
 
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.timePlayed())));
+				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
 			}
+			else
+			{
+				gameEngine.stopTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+			}
+			
+			
 
 		});
 

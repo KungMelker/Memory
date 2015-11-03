@@ -75,18 +75,17 @@ public class GameEngine {
 		this.tries = tries;
 	}
 
-	// -----------------------< end of getters and setters
-	// >------------------------------------
+	// ---< end of getters and setters >---
 
 	/*
 	 * Calculate score from time and tries takes in value from row column to
 	 * calculate handicap and score.
 	 */
 
-	double calculateScore(int row_column, long timePlayed) {
+	double calculateScore(int row_column, long eTime) {
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
-		double temp_score = ((20000 / ((timePlayed) + tries + evener)));
+		double temp_score = ((20000 / ((eTime/1000) + tries + evener)));
 
 		BigDecimal score = new BigDecimal(temp_score);
 
@@ -189,7 +188,7 @@ public class GameEngine {
 	}
 
 	SequentialTransition createTransition(ImageView iv, Image img) {
-		FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(500), iv);
+		FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(300), iv);
 		fadeOutTransition.setFromValue(1.0);
 		fadeOutTransition.setToValue(0.0);
 		fadeOutTransition.setOnFinished(event -> {
@@ -198,7 +197,7 @@ public class GameEngine {
 
 		PauseTransition pt = new PauseTransition(Duration.millis(1000));
 
-		FadeTransition fadeInTransition = new FadeTransition(Duration.millis(500), iv);
+		FadeTransition fadeInTransition = new FadeTransition(Duration.millis(300), iv);
 		fadeInTransition.setFromValue(0.0);
 		fadeInTransition.setToValue(1.0);
 		SequentialTransition sequentialTransition = new SequentialTransition(pt, fadeOutTransition, fadeInTransition);
