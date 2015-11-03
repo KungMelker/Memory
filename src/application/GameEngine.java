@@ -75,8 +75,7 @@ public class GameEngine {
 		this.tries = tries;
 	}
 
-	// -----------------------< end of getters and setters
-	// >------------------------------------
+	// ---< end of getters and setters >---
 
 	/*
 	 * Calculate score from time and tries takes in value from row column to
