@@ -180,6 +180,7 @@ public class GameEngine {
 			}
 
 			tries++;
+			
 			pairToCompare[0] = -1;
 			pairToCompare[1] = -1;
 
