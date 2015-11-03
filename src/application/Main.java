@@ -23,6 +23,7 @@ public class Main extends Application {
 	GameEngine gameEngine = new GameEngine();
 	GridPane centerBox = new GridPane();
 	HighScore hs = new HighScore();
+	int selectedCase;
 	int row_column;
 	ImageView imageView[];
 	boolean win = false;
@@ -119,26 +120,31 @@ public class Main extends Application {
 			switch (row_column) {
 			case 2:
 				centerBox = center_2();
+				selectedCase = 0;
 				highpoint.setText(hs.getScore(0));
 				break;
 
 			case 4:
 				centerBox = center_4();
+				selectedCase = 1;
 				highpoint.setText(hs.getScore(1));
 				break;
 
 			case 6:
 				centerBox = center_6();
+				selectedCase = 2;
 				highpoint.setText(hs.getScore(2));
 				break;
 
 			case 8:
 				centerBox = center_8();
+				selectedCase = 3;
 				highpoint.setText(hs.getScore(3));
 				break;
 
 			default:
 				centerBox = center_10();
+				selectedCase = 4;
 				highpoint.setText(hs.getScore(4));
 				break;
 			}
@@ -202,7 +208,7 @@ public class Main extends Application {
 			
 				//check score with hi-score
 				double currScore = gameEngine.getCurrentScore();
-				double hiScore = Double.parseDouble(hs.getScore(row_column));
+				double hiScore = Double.parseDouble(hs.getScore(selectedCase));
 				if(gameEngine.compareScore(currScore, hiScore)){
 				hs.updateScore(gameEngine.getCurrentScore(), row_column);
 				highpoint.setText(hs.getScore(row_column));
