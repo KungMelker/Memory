@@ -110,7 +110,7 @@ public class Main extends Application {
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2");
 
-		// TODO - add a save function to sQuit - setOnAction
+		
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
@@ -143,7 +143,8 @@ public class Main extends Application {
 			gameEngine.setStart(0);
 
 		});
-
+		
+		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.score();
 			primaryStage.close();

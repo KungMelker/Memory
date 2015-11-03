@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
-public class HighScore {
+public class HighScore extends GameEngine {
 
 	GameEngine ge = new GameEngine();
 	// Main appli = new Main();
@@ -17,19 +17,20 @@ public class HighScore {
 	
 	
 	final String pathname = url.getPath();
-	int highscore = 0;
+	double highscore = 0;
 	long time = 0;
 	int attempts = 0;
 	int board = 0;
 	String addScore;
-
+	
 	String[] scoreList = new String[10];
 
 	// method tester
 	public void score() {
 
-		time = ge.timePlayed();
-		attempts = ge.getTries();
+		time = this.timePlayed();
+		attempts = this.getTries();
+		highscore = this.getCurrentScore();
 		// board = appli.row_column;
 		addScore = "Score: " + highscore + " Difficulty: " + " Time: " + time;
 
