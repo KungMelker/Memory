@@ -183,7 +183,6 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-			time.setText(Long.toString(gameEngine.stopTime()-gameEngine.startTime()));
 					
 			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 				gameEngine.startTime();
