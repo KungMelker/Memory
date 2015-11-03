@@ -1,6 +1,8 @@
 
 package application;
 
+import java.awt.Color;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -58,8 +60,10 @@ public class Main extends Application {
 
 		Label highscore = new Label("Highscore");
 		Label highpoint = new Label("0");
+		
 		Label points = new Label("Points");
 		Label pointresult = new Label("0");
+		
 		Label timeLabel = new Label("Time");
 		Text time = new Text("0");
 
