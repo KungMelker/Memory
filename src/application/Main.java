@@ -91,8 +91,10 @@ public class Main extends Application {
 		bottomBox.setPadding(new Insets(20));
 		bottomBox.setId("bottombox");
 		Button sQuit = new Button("Quit");
+		sQuit.setPrefWidth(150);
 		sQuit.setId("QuitSave");
 		Button newGame = new Button("New Game");
+		newGame.setPrefWidth(150);
 		newGame.setId("NewGame");
 
 
