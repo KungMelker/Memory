@@ -1,6 +1,8 @@
 
 package application;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 import javafx.animation.FadeTransition;
@@ -28,11 +30,12 @@ public class GameEngine {
 	public void setStop(long stop) {
 		this.stop = stop;
 	}
-
+	
+	
 	public long getElapsedTime() {
 		return elapsedTime;
 	}
-
+	
 	public void setElapsedTime(long elapsedTime) {
 		this.elapsedTime = elapsedTime;
 	}
@@ -43,21 +46,6 @@ public class GameEngine {
 
 	public void setStart(long start) {
 		this.start = start;
-	}
-
-	long startTime() {
-		start = System.currentTimeMillis();
-		return start;
-	}
-
-	long stopTime() {
-		stop = System.currentTimeMillis();
-		return stop;
-	}
-
-	long timePlayed() {
-		elapsedTime = stop - start;
-		return (long) elapsedTime / 1000;
 	}
 
 	public Card[] getCards() {
@@ -76,8 +64,45 @@ public class GameEngine {
 		return tries;
 	}
 
-	public void setTryes(int tryes) {
-		this.tries = tryes;
+	public void setTries(int tries) {
+		this.tries = tries;
+	}
+	
+//-----------------------< end of getters and setters >------------------------------------	
+	
+	/*
+	 * Calculate score from time and tries
+	 * takes in value from row column to
+	 * calculate handicap and score.
+	 */
+	
+	double calculateScore(int row_column, long timePlayed )
+	{
+		int decimals = 2;
+		double evener = 100 - row_column*row_column;
+		double temp_score = ((20000/((timePlayed)+tries + evener)));
+		
+		BigDecimal score = new BigDecimal(temp_score);
+	    score = score.setScale(decimals, RoundingMode.HALF_UP);
+	    
+	    return score.doubleValue();
+		
+	}
+	
+	
+	
+	long startTime(){
+		start = System.currentTimeMillis();
+		return start;
+	}
+	
+	long stopTime(){
+		stop = System.currentTimeMillis();
+		return stop;
+	}
+	long timePlayed(){		
+		elapsedTime = stop - start;
+		return (long)elapsedTime/1000;
 	}
 
 	void initBoard(int row_column) {
