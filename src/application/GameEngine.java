@@ -95,6 +95,16 @@ public class GameEngine {
 		return currentScore;
 
 	}
+	
+	boolean compareScore(double currScore, double hiScore)
+	{
+		if (currScore > hiScore){
+		return true;
+		}else{
+		return false;	
+		}
+		
+	}
 
 	long startTime() {
 		start = System.currentTimeMillis();

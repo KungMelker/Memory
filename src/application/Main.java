@@ -148,7 +148,7 @@ public class Main extends Application {
 			gameEngine.setTries(0);
 			gameEngine.setFoundPairs(0);
 			gameEngine.setStart(0);
-
+			gameEngine.setCurrentScore(0);
 		});
 		
 		// TODO - add a save function to sQuit - setOnAction
@@ -198,7 +198,18 @@ public class Main extends Application {
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
 				// Win message
 				this.winText();
+				win = true;
+			
+				//check score with hi-score
+				double currScore = gameEngine.getCurrentScore();
+				double hiScore = Double.parseDouble(hs.getScore(row_column));
+				if(gameEngine.compareScore(currScore, hiScore)){
 				hs.updateScore(gameEngine.getCurrentScore(), row_column);
+				highpoint.setText(hs.getScore(row_column));
+				hs.writeFile();
+				}
+				
+				
 			}
 			else
 			{ if(!win){
