@@ -2,7 +2,6 @@
 package application;
 
 import java.util.Random;
-//import com.sun.glass.ui.Timer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
