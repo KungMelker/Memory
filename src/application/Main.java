@@ -41,11 +41,12 @@ public class Main extends Application {
 		topBox.setAlignment(Pos.CENTER);
 		topBox.setId("topbox");
 		Label title = new Label("Memories Lost");
-		Label subtitle = new Label("Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
+		Label subtitle = new Label(
+				"Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
 		title.setId("game-title");
 		subtitle.setId("game-subtitle");
 
-		topBox.getChildren().addAll(title,subtitle);
+		topBox.getChildren().addAll(title, subtitle);
 
 		// Reflection refl = new Reflection();
 		// refl.setFraction(0.8);
@@ -99,8 +100,8 @@ public class Main extends Application {
 		sQuit.setId("QuitSave");
 		Button newGame = new Button("New Game");
 		newGame.setId("NewGame");
-		
-		bottomBox.getChildren().addAll(newGame,sQuit);
+
+		bottomBox.getChildren().addAll(newGame, sQuit);
 
 		root.setTop(topBox);
 		root.setRight(rightBox);
@@ -111,26 +112,26 @@ public class Main extends Application {
 		primaryStage.setTitle("Memory v0.1");
 
 		// TODO - add a save function to sQuit - setOnAction
-		newGame.setOnAction(event ->{ 
-			
-			centerBox.getChildren().clear();	
+		newGame.setOnAction(event -> {
+
+			centerBox.getChildren().clear();
 			switch (row_column) {
 			case 2:
 				centerBox = center_2();
 				break;
-				
+
 			case 4:
 				centerBox = center_4();
 				break;
-	
+
 			case 6:
 				centerBox = center_6();
 				break;
-			
+
 			case 8:
 				centerBox = center_8();
-				break;	
-				
+				break;
+
 			default:
 				centerBox = center_10();
 				break;
@@ -140,10 +141,9 @@ public class Main extends Application {
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
 			gameEngine.setFoundPairs(0);
-			
+
 		});
-		
-		
+
 		sQuit.setOnAction(event -> {
 			primaryStage.close();
 		});
@@ -151,35 +151,34 @@ public class Main extends Application {
 		pairs_2.setOnAction(event -> {
 
 			row_column = 2;
-	    	
+
 		});
 
 		pairs_4.setOnAction(event -> {
 			row_column = 4;
-			
+
 		});
 
 		pairs_6.setOnAction(event -> {
 			row_column = 6;
-			
+
 		});
 
 		pairs_8.setOnAction(event -> {
 			row_column = 8;
-			
+
 		});
 
 		pairs_10.setOnAction(event -> {
 			row_column = 10;
-            
+
 		});
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-			if(gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0)
-			{gameEngine.startTime();}
-			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
-			{
+			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
+				gameEngine.startTime();
+			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				gameEngine.stopTime();
 				time.setText(Long.toString(gameEngine.elapsedTime));
 			}
@@ -313,9 +312,15 @@ public class Main extends Application {
 				index++;
 			}
 
-		imageView[0].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView, 0, row_column);});
-		imageView[1].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView, 1, row_column);});
-		imageView[2].setOnMouseClicked(event -> {gameEngine.getFrontImage(imageView, 2, row_column);});
+		imageView[0].setOnMouseClicked(event -> {
+			gameEngine.getFrontImage(imageView, 0, row_column);
+		});
+		imageView[1].setOnMouseClicked(event -> {
+			gameEngine.getFrontImage(imageView, 1, row_column);
+		});
+		imageView[2].setOnMouseClicked(event -> {
+			gameEngine.getFrontImage(imageView, 2, row_column);
+		});
 		imageView[3].setOnMouseClicked(event -> {
 			gameEngine.getFrontImage(imageView, 3, row_column);
 		});
