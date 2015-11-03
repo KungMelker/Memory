@@ -39,7 +39,6 @@ public class GameEngine {
 	long elapsedTime(){
 		
 		elapsedTime = stop - start;
-		
 		return (long)elapsedTime/1000;
 	}
 
