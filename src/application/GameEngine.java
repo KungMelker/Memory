@@ -28,7 +28,7 @@ public class GameEngine {
 	public long getElapsedTime() {
 		return elapsedTime;
 	}
-
+	
 	public void setElapsedTime(long elapsedTime) {
 		this.elapsedTime = elapsedTime;
 	}
@@ -39,20 +39,6 @@ public class GameEngine {
 
 	public void setStart(long start) {
 		this.start = start;
-	}
-
-	long startTime(){
-		start = System.currentTimeMillis();
-		return start;
-	}
-	
-	long stopTime(){
-		stop = System.currentTimeMillis();
-		return stop;
-	}
-	long timePlayed(){		
-		elapsedTime = stop - start;
-		return (long)elapsedTime/1000;
 	}
 
 	public Card[] getCards() {
@@ -71,8 +57,37 @@ public class GameEngine {
 		return tries;
 	}
 
-	public void setTryes(int tryes) {
-		this.tries = tryes;
+	public void setTries(int tries) {
+		this.tries = tries;
+	}
+	
+//-----------------------< end of getters and setters >------------------------------------	
+	
+	/*
+	 * Calculate score from time and tries
+	 */
+	long calculateScore()
+	{
+		long score = (long)((long)(2000/elapsedTime)/tries)*1000;
+		System.out.println("Score " + score + " elapsedTime " + elapsedTime + " tries " + tries );
+		return score;
+	
+	}
+	
+	
+	
+	long startTime(){
+		start = System.currentTimeMillis();
+		return start;
+	}
+	
+	long stopTime(){
+		stop = System.currentTimeMillis();
+		return stop;
+	}
+	long timePlayed(){		
+		elapsedTime = stop - start;
+		return (long)elapsedTime/1000;
 	}
 
 	void initBoard(int row_column) {

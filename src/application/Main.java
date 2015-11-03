@@ -134,7 +134,7 @@ public class Main extends Application {
 			centerBox.setAlignment(Pos.CENTER);
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
-			gameEngine.setTryes(0);
+			gameEngine.setTries(0);
 			gameEngine.setFoundPairs(0);
 
 		});
@@ -175,7 +175,8 @@ public class Main extends Application {
 				gameEngine.startTime();
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" secs");
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+				pointresult.setText(Long.toString(gameEngine.calculateScore()));
 			}
 
 		});
