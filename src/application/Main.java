@@ -48,9 +48,8 @@ public class Main extends Application {
 		// rightBox
 		VBox rightBox = new VBox();
 		rightBox.setId("rightbox");
-		rightBox.setAlignment(Pos.CENTER_LEFT);
 
-		Label stats = new Label("Player Stats:\n\n\n\n\n\n\n\n\n");
+		Label stats = new Label("Player Stats:\n\n\n");
 		stats.setAlignment(Pos.TOP_CENTER);
 		Label highscore = new Label("Highscore");
 		Label highpoint = new Label("0");
