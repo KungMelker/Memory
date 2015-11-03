@@ -1,8 +1,6 @@
 
 package application;
 
-import java.awt.Color;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,15 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.effect.Light;
-import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class Main extends Application {
 
@@ -37,7 +32,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root, 1000, 700);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
-
+		
 		// topBox
 		VBox topBox = new VBox();
 		topBox.setAlignment(Pos.CENTER);
@@ -70,7 +65,7 @@ public class Main extends Application {
 
 		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
 				presentTries);
-
+		
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
