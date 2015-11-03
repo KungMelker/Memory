@@ -67,7 +67,7 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
-		leftBox.setAlignment(Pos.CENTER_RIGHT);
+		leftBox.setAlignment(Pos.CENTER_LEFT);
 		leftBox.setPadding(new Insets(20.0));
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
