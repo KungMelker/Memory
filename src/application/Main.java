@@ -24,7 +24,8 @@ public class Main extends Application {
 	HighScore hs = new HighScore();
 	int row_column;
 	ImageView imageView[];
-
+	boolean win = false;
+	
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -184,17 +185,18 @@ public class Main extends Application {
 				gameEngine.startTime();
 				pointresult.setText("0");
 				time.setText("0");
-			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
+			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2) && !win) {
 				
 				gameEngine.stopTime();
-
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
+				win = true;
 			}
 			else
-			{
+			{ if(!win){
 				gameEngine.stopTime();
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+			    }
 			}
 			
 			
