@@ -2,6 +2,7 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,7 +12,8 @@ public class HighScore {
 
 	GameEngine ge = new GameEngine();
 	// Main appli = new Main();
-	final String pathname = "C:/Users/Anton/workspace/git/Memory/bin/application/highscore.txt";
+	String pathname = "/highscore.txt";
+	File file= new File(pathname);
 	int highscore = 0;
 	long time = 0;
 	int attempts = 0;
