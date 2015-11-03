@@ -198,7 +198,7 @@ public class Main extends Application {
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
 				// Win message
 				this.winText();
-				
+				hs.updateScore(gameEngine.getCurrentScore(), row_column);
 			}
 			else
 			{ if(!win){
