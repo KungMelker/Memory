@@ -10,28 +10,26 @@ import java.io.IOException;
 public class HighScore {
 
 	GameEngine ge = new GameEngine();
-	Main appli = new Main();
-	final String pathname = "/highscore.txt";
+	// Main appli = new Main();
+	final String pathname = "C:/Users/Anton/workspace/git/Memory/bin/application/highscore.txt";
 	int highscore = 0;
 	long time = 0;
-	int attempts;
-	int board = appli.row_column;
-	String addScore = "Score: " + highscore + " Time: " + time;
+	int attempts = 0;
+	int board = 0;
+	String addScore;
 
-	// crap
 	String[] scoreList = new String[10];
-	// needed?
-	String[] playerList = new String[10];
-	String[] timeList = new String[10];
 
-	
 	// method tester
 	public void score() {
 
-		sortHighscores(openFile(pathname));
 		time = ge.timePlayed();
 		attempts = ge.getTries();
-		
+		// board = appli.row_column;
+		addScore = "Score: " + highscore + " Difficulty: " + " Time: " + time;
+
+		BufferedReader test = openFile(pathname);
+		sortHighscores(test);
 		writeFile();
 	}
 
@@ -40,19 +38,20 @@ public class HighScore {
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(path));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		return br;
 	}
 
-	public void sortHighscores(BufferedReader instream) {
 
+
+	public String[] sortHighscores(BufferedReader instream) {
 		// currently void, return score[] instead
-
 		String scoreEntry = null;
 		try {
-			for (int j = 0; j < scoreList.length; j++) {
+			for (int j = 0; j < 10; j++) {
 				scoreEntry = instream.readLine();
 				scoreList[j] = scoreEntry;
 			}
@@ -60,14 +59,19 @@ public class HighScore {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		return scoreList;
 	}
 
 	// writes highscore to file
 	public void writeFile() {
+
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(pathname));
-			bw.write(addScore);
+			for (int i = 0; i < scoreList.length; i++) {
+				bw.write(scoreList[i]);
+				bw.write(System.lineSeparator());
+			}
+
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();

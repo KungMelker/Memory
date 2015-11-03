@@ -24,6 +24,7 @@ public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
 	GridPane centerBox = new GridPane();
+	HighScore hs = new HighScore();
 	int row_column;
 	ImageView imageView[];
 
@@ -145,6 +146,7 @@ public class Main extends Application {
 		});
 
 		sQuit.setOnAction(event -> {
+			hs.score();
 			primaryStage.close();
 		});
 
@@ -176,15 +178,18 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
+			
+					
 			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 				gameEngine.startTime();
+				pointresult.setText("0");
 				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
+				
 				gameEngine.stopTime();
 
-				time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column)));
-
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.timePlayed())));
 			}
 
 		});
