@@ -419,10 +419,6 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
-	private GridPane board() {
-
-		return new GridPane();
-	}
 
 	public GridPane center_8() {
 
