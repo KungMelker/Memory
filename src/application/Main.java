@@ -27,10 +27,6 @@ public class Main extends Application {
 	int row_column;
 	ImageView imageView[];
 
-	
-	
-	
-	
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -49,15 +45,14 @@ public class Main extends Application {
 		title.setId("game-title");
 		subtitle.setId("game-subtitle");
 
-
-		topBox.getChildren().addAll(title,subtitle);
-
+		topBox.getChildren().addAll(title, subtitle);
 
 		// rightBox
 		VBox rightBox = new VBox();
 		rightBox.setId("rightbox");
-		rightBox.setAlignment(Pos.CENTER_LEFT);
 
+		Label stats = new Label("Player Stats:\n\n\n");
+		stats.setAlignment(Pos.TOP_CENTER);
 		Label highscore = new Label("Highscore");
 		Label highpoint = new Label("0");
 		
@@ -70,12 +65,14 @@ public class Main extends Application {
 		Label tries = new Label("Tries");
 		Label presentTries = new Label("0");
 
-		rightBox.getChildren().addAll(highscore, highpoint, points, pointresult, timeLabel, time, tries, presentTries);
+		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
+				presentTries);
 
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
-		leftBox.setAlignment(Pos.CENTER_LEFT);
+		Label memorySize = new Label("Memory Size:\n\n\n\n");
+		memorySize.setAlignment(Pos.TOP_CENTER);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -91,7 +88,7 @@ public class Main extends Application {
 		pairs_2.setSelected(true);
 		row_column = 2;
 
-		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
+		leftBox.getChildren().addAll(memorySize, pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// bottomBox
 		HBox bottomBox = new HBox(50);
@@ -99,10 +96,11 @@ public class Main extends Application {
 		bottomBox.setPadding(new Insets(20));
 		bottomBox.setId("bottombox");
 		Button sQuit = new Button("Quit");
+		sQuit.setPrefWidth(150);
 		sQuit.setId("QuitSave");
 		Button newGame = new Button("New Game");
+		newGame.setPrefWidth(150);
 		newGame.setId("NewGame");
-
 
 		bottomBox.getChildren().addAll(newGame, sQuit);
 
@@ -185,8 +183,10 @@ public class Main extends Application {
 				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+
+				time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column)));
+
 			}
 
 		});
@@ -429,7 +429,6 @@ public class Main extends Application {
 
 		return tempCenter;
 	}
-
 
 	public GridPane center_8() {
 
