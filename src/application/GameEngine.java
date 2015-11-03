@@ -188,7 +188,7 @@ public class GameEngine {
 	}
 
 	SequentialTransition createTransition(ImageView iv, Image img) {
-		FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(500), iv);
+		FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(300), iv);
 		fadeOutTransition.setFromValue(1.0);
 		fadeOutTransition.setToValue(0.0);
 		fadeOutTransition.setOnFinished(event -> {
@@ -197,7 +197,7 @@ public class GameEngine {
 
 		PauseTransition pt = new PauseTransition(Duration.millis(1000));
 
-		FadeTransition fadeInTransition = new FadeTransition(Duration.millis(500), iv);
+		FadeTransition fadeInTransition = new FadeTransition(Duration.millis(300), iv);
 		fadeInTransition.setFromValue(0.0);
 		fadeInTransition.setToValue(1.0);
 		SequentialTransition sequentialTransition = new SequentialTransition(pt, fadeOutTransition, fadeInTransition);
