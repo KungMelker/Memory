@@ -153,14 +153,13 @@ public class GameEngine {
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
 		SequentialTransition transitionCard;
-		// SequentialTransition transitionSecondCard;
 
 		if (pairToCompare[0] == -1) {
 
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
 
-		} else {
+		} else if(index != pairToCompare[0]){
 
 			pairToCompare[1] = index;
 			ivArr[index].setImage(cards[index].getFront());
