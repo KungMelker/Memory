@@ -1,6 +1,8 @@
 
 package application;
 
+import java.awt.Color;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -56,10 +58,12 @@ public class Main extends Application {
 		stats.setAlignment(Pos.TOP_CENTER);
 		Label highscore = new Label("Highscore");
 		Label highpoint = new Label("0");
+		
 		Label points = new Label("Points");
 		Label pointresult = new Label("0");
+		
 		Label timeLabel = new Label("Time");
-		Text time = new Text("0");
+		Label time = new Label("0");
 
 		Label tries = new Label("Tries");
 		Label presentTries = new Label("0");
