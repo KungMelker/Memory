@@ -16,7 +16,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
 
 public class Main extends Application {
 
@@ -54,10 +54,12 @@ public class Main extends Application {
 		stats.setAlignment(Pos.TOP_CENTER);
 		Label highscore = new Label("Highscore");
 		Label highpoint = new Label("0");
+		
 		Label points = new Label("Points");
 		Label pointresult = new Label("0");
+		
 		Label timeLabel = new Label("Time");
-		Text time = new Text("0");
+		Label time = new Label("0");
 
 		Label tries = new Label("Tries");
 		Label presentTries = new Label("0");

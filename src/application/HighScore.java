@@ -2,18 +2,20 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 
 public class HighScore {
 
 	GameEngine ge = new GameEngine();
 	// Main appli = new Main();
-	String pathname = "/highscore.txt";
-	File file= new File(pathname);
+
+	URL url = getClass().getResource("highscore.txt");	
+	final String pathname = url.getPath();
+
 	int highscore = 0;
 	long time = 0;
 	int attempts = 0;
