@@ -1,6 +1,8 @@
 
 package application;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -65,13 +67,20 @@ public class GameEngine {
 	
 	/*
 	 * Calculate score from time and tries
+	 * takes in value from row column to
+	 * calculate handicap and score.
 	 */
-	double calculateScore()
-	{
-		double score = (double)((double)(2000/elapsedTime)/tries)*1000;
-		
-		return score;
 	
+	double calculateScore(int row_column)
+	{
+		int decimals = 2;
+		double evener = 100 - row_column*row_column;
+		double temp_score = ((20000/((elapsedTime/1000)+tries + evener)));
+		
+		BigDecimal score = new BigDecimal(temp_score);
+	    score = score.setScale(decimals, RoundingMode.HALF_UP);
+	    return score.doubleValue();
+		
 	}
 	
 	
