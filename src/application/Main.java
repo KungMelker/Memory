@@ -93,7 +93,7 @@ public class Main extends Application {
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
 		bottomBox.setId("bottombox");
-		Button sQuit = new Button("Quit");
+		Button sQuit = new Button("Rage Quit");
 		sQuit.setPrefWidth(150);
 		sQuit.setId("QuitSave");
 		Button newGame = new Button("New Game");
