@@ -1,7 +1,6 @@
 
 package application;
 
-import java.awt.Color;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -18,7 +17,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class Main extends Application {
 
