@@ -136,6 +136,7 @@ public class Main extends Application {
 			gameEngine.initBoard(row_column);
 			gameEngine.setTryes(0);
 			gameEngine.setFoundPairs(0);
+			gameEngine.setStart(0);
 
 		});
 
