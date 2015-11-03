@@ -1,7 +1,6 @@
 
 package application;
 
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,7 +32,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root, 1000, 700);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
-
+		
 		// topBox
 		VBox topBox = new VBox();
 		topBox.setAlignment(Pos.CENTER);
@@ -66,7 +65,7 @@ public class Main extends Application {
 
 		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
 				presentTries);
-
+		
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
@@ -94,7 +93,7 @@ public class Main extends Application {
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
 		bottomBox.setId("bottombox");
-		Button sQuit = new Button("Quit");
+		Button sQuit = new Button("Rage Quit");
 		sQuit.setPrefWidth(150);
 		sQuit.setId("QuitSave");
 		Button newGame = new Button("New Game");
@@ -111,7 +110,7 @@ public class Main extends Application {
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2");
 
-		// TODO - add a save function to sQuit - setOnAction
+		
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
@@ -144,7 +143,8 @@ public class Main extends Application {
 			gameEngine.setStart(0);
 
 		});
-
+		
+		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.score();
 			primaryStage.close();

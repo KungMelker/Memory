@@ -17,11 +17,19 @@ public class GameEngine {
 	Card cards[];
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
-
+	double currentScore;
 	long start, stop, elapsedTime;
 	int tries = 0;
 	int foundPairs = 0;
 	Random rand = new Random();
+
+	public double getCurrentScore() {
+		return currentScore;
+	}
+
+	public void setCurrentScore(double currentScore) {
+		this.currentScore = currentScore;
+	}
 
 	public long getStop() {
 		return stop;
@@ -81,9 +89,11 @@ public class GameEngine {
 		double temp_score = ((20000 / ((timePlayed) + tries + evener)));
 
 		BigDecimal score = new BigDecimal(temp_score);
-		score = score.setScale(decimals, RoundingMode.HALF_UP);
 
-		return score.doubleValue();
+		score = score.setScale(decimals, RoundingMode.HALF_UP);
+		currentScore = score.doubleValue();
+
+		return currentScore;
 
 	}
 
