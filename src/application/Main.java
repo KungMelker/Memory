@@ -108,7 +108,7 @@ public class Main extends Application {
 		root.setBottom(bottomBox);
 
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.2");
+		primaryStage.setTitle("Memory v0.2 for Dummies");
 
 		
 		newGame.setOnAction(event -> {
@@ -194,8 +194,15 @@ public class Main extends Application {
 				gameEngine.stopTime();
 
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.timePlayed())));
+				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
 			}
+			else
+			{
+				gameEngine.stopTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+			}
+			
+			
 
 		});
 
