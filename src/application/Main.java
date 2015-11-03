@@ -49,8 +49,7 @@ public class Main extends Application {
 
 		// rightBox
 		VBox rightBox = new VBox();
-		rightBox.setId("leftbox");
-		rightBox.setPadding(new Insets(20.0));
+		rightBox.setId("rightbox");
 		rightBox.setAlignment(Pos.CENTER_LEFT);
 
 		Label highscore = new Label("Highscore");
@@ -58,7 +57,7 @@ public class Main extends Application {
 		Label points = new Label("Points");
 		Label pointresult = new Label("0");
 		Label timeLabel = new Label("Time");
-		Text time = new Text();
+		Text time = new Text("0");
 
 		Label tries = new Label("Tries");
 		Label presentTries = new Label("0");
@@ -67,8 +66,8 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
+		leftBox.setId("leftbox");
 		leftBox.setAlignment(Pos.CENTER_LEFT);
-		leftBox.setPadding(new Insets(20.0));
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -96,6 +95,7 @@ public class Main extends Application {
 		Button newGame = new Button("New Game");
 		newGame.setId("NewGame");
 
+
 		bottomBox.getChildren().addAll(newGame, sQuit);
 
 		root.setTop(topBox);
@@ -104,7 +104,7 @@ public class Main extends Application {
 		root.setBottom(bottomBox);
 
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.1");
+		primaryStage.setTitle("Memory v0.2");
 
 		// TODO - add a save function to sQuit - setOnAction
 		newGame.setOnAction(event -> {
@@ -136,6 +136,7 @@ public class Main extends Application {
 			gameEngine.initBoard(row_column);
 			gameEngine.setTries(0);
 			gameEngine.setFoundPairs(0);
+			gameEngine.setStart(0);
 
 		});
 
@@ -173,6 +174,7 @@ public class Main extends Application {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
 			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 				gameEngine.startTime();
+				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				gameEngine.stopTime();
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
