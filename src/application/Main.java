@@ -32,7 +32,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
-		Scene scene = new Scene(root, 1000, 600);
+		Scene scene = new Scene(root, 1000, 700);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
@@ -47,14 +47,9 @@ public class Main extends Application {
 
 		topBox.getChildren().addAll(title,subtitle);
 
-		// Reflection refl = new Reflection();
-		// refl.setFraction(0.8);
-		// titel.setEffect(refl);
-
 		// rightBox
 		VBox rightBox = new VBox();
-		rightBox.setId("leftbox");
-		rightBox.setPadding(new Insets(20.0));
+		rightBox.setId("rightbox");
 		rightBox.setAlignment(Pos.CENTER_LEFT);
 
 		Label highscore = new Label("Highscore");
@@ -71,8 +66,8 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
-		leftBox.setAlignment(Pos.CENTER_RIGHT);
-		leftBox.setPadding(new Insets(20.0));
+		leftBox.setId("leftbox");
+		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -96,12 +91,8 @@ public class Main extends Application {
 		bottomBox.setId("bottombox");
 		Button sQuit = new Button("Quit");
 		sQuit.setId("QuitSave");
-		// sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		//sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
-		// newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		newGame.setId("NewGame");
-		//newGame.setRotate(5.0);
 		bottomBox.getChildren().addAll(newGame,sQuit);
 
 		root.setTop(topBox);
@@ -110,7 +101,7 @@ public class Main extends Application {
 		root.setBottom(bottomBox);
 
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.1");
+		primaryStage.setTitle("Memory v0.2");
 
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {

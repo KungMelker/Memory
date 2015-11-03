@@ -9,11 +9,11 @@
 	-fx-font-size: 70px;
 	-fx-font-family: "Helvetica", "Ar Destine", "Courier New";
 	-fx-text-fill: #bdde71;
-	-fx-font-smoothing-type:lcd;
+	-fx-font-smoothing-type: lcd;
 }
-#game-subtitle{
-		-fx-text-fill: #d0524e;
-			-fx-font-size: 12pt;
+#game-subtitle {
+	-fx-text-fill: #d0524e;
+	-fx-font-size: 12pt;
 }
 
 #topbox {
@@ -21,8 +21,24 @@
 	-fx-text-fill: #4d4d4d;
 }
 #bottombox {
-		-fx-background-color: #4d4d4d;
+	-fx-background-color: #4d4d4d;
 	-fx-text-fill: #4d4d4d;
+	-fx-border-insets: 30 0 0 0;
+}
+#leftbox {
+	-fx-border-style: solid;
+	-fx-border-width: 20px;
+	-fx-border-color: #4d4d4d;
+	-fx-padding: 20px;
+	-fx-background-color:#87d9da;
+}
+#rightbox {
+	-fx-border-style: solid;
+	-fx-border-width: 20px;
+	-fx-border-color: #4d4d4d;
+	-fx-padding: 20px;
+	-fx-background-color: #a6dc7f
+
 }
 .label {
 	-fx-text-fill: #4d4d4d;
@@ -34,8 +50,6 @@
 	-fx-base: #a6dc7f;
 	-fx-text-fill: #4d4d4d;
 	-fx-background-insets: 0;
-	
-
 }
 #NewGame:hover {
 	-fx-base: #bdde71;
