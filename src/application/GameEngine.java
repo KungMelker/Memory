@@ -17,6 +17,22 @@ public class GameEngine {
 	int foundPairs=0;
 	Random rand = new Random();
 
+	public long getStop() {
+		return stop;
+	}
+
+	public void setStop(long stop) {
+		this.stop = stop;
+	}
+
+	public long getElapsedTime() {
+		return elapsedTime;
+	}
+
+	public void setElapsedTime(long elapsedTime) {
+		this.elapsedTime = elapsedTime;
+	}
+
 	public long getStart() {
 		return start;
 	}
@@ -34,8 +50,7 @@ public class GameEngine {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-	long elapsedTime(){
-		
+	long timePlayed(){		
 		elapsedTime = stop - start;
 		return (long)elapsedTime/1000;
 	}
