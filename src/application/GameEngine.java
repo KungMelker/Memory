@@ -5,16 +5,15 @@ import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
 public class GameEngine {
 
 	Card cards[];
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
-	
+
 	long start, stop, elapsedTime;
-	int tries=0;
-	int foundPairs=0;
+	int tries = 0;
+	int foundPairs = 0;
 	Random rand = new Random();
 
 	public long getStop() {
@@ -41,18 +40,19 @@ public class GameEngine {
 		this.start = start;
 	}
 
-	long startTime(){
+	long startTime() {
 		start = System.currentTimeMillis();
 		return start;
 	}
-	
-	long stopTime(){
+
+	long stopTime() {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-	long timePlayed(){		
+
+	long timePlayed() {
 		elapsedTime = stop - start;
-		return (long)elapsedTime/1000;
+		return (long) elapsedTime / 1000;
 	}
 
 	public Card[] getCards() {
