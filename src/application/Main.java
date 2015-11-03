@@ -22,6 +22,7 @@ public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
 	GridPane centerBox = new GridPane();
+	HighScore hs = new HighScore();
 	int row_column;
 	ImageView imageView[];
 
@@ -140,6 +141,7 @@ public class Main extends Application {
 		});
 
 		sQuit.setOnAction(event -> {
+			hs.score();
 			primaryStage.close();
 		});
 
@@ -418,7 +420,6 @@ public class Main extends Application {
 
 		return tempCenter;
 	}
-
 
 	public GridPane center_8() {
 
