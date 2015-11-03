@@ -15,7 +15,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 
 public class Main extends Application {
@@ -190,6 +192,11 @@ public class Main extends Application {
 
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.timePlayed())));
+				Text won = new Text("Win!");
+				won.setId("win");
+				won.setRotate(30);
+				GridPane.setConstraints(won, 0, 0, 10, 10);
+				centerBox.getChildren().add(won);
 			}
 
 		});
