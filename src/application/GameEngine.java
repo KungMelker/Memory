@@ -27,9 +27,7 @@ public class GameEngine {
 		this.stop = stop;
 	}
 	
-	public
 	
-
 	public long getElapsedTime() {
 		return elapsedTime;
 	}
