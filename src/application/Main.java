@@ -37,13 +37,15 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 
 		// topBox
-		HBox topBox = new HBox();
+		VBox topBox = new VBox();
 		topBox.setAlignment(Pos.CENTER);
 		topBox.setId("topbox");
-		Label titel = new Label("Memories Lost");
-		titel.setId("game-title");
+		Label title = new Label("Memories Lost");
+		Label subtitle = new Label("Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
+		title.setId("game-title");
+		subtitle.setId("game-subtitle");
 
-		topBox.getChildren().add(titel);
+		topBox.getChildren().addAll(title,subtitle);
 
 		// Reflection refl = new Reflection();
 		// refl.setFraction(0.8);

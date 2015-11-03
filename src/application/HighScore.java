@@ -14,6 +14,7 @@ public class HighScore {
 	String playerName = "Anonymous";
 	int highscore = 0;
 	long time = 0;
+	int attempts;
 	String addScore = "Name: " + playerName + " Score: " + highscore + " Time: " + time;
 
 	// crap
@@ -28,6 +29,8 @@ public class HighScore {
 
 		sortHighscores(openFile(pathname));
 		time = ge.elapsedTime();
+		attempts = ge.getTries();
+		
 		writeFile();
 	}
 
