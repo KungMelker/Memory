@@ -196,16 +196,18 @@ public class Main extends Application {
 
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
-			}
-			else
-			{
-				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+
+				// Win!
 				Text won = new Text("Mission\nAccomplished!");
 				won.setId("win");
 				won.setRotate(30);
 				GridPane.setConstraints(won, 0, 0, 10, 10);
 				centerBox.getChildren().add(won);
+			}
+			else
+			{
+				gameEngine.stopTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 			}
 
 		});
