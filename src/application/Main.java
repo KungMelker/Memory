@@ -187,7 +187,7 @@ public class Main extends Application {
 			else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length/2))
 			{
 				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.elapsedTime));
+				time.setText(Long.toString(gameEngine.timePlayed())+" secs");
 			}
 			
 		});
