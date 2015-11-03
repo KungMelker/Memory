@@ -66,10 +66,10 @@ public class GameEngine {
 	/*
 	 * Calculate score from time and tries
 	 */
-	long calculateScore()
+	double calculateScore()
 	{
-		long score = (long)((long)(2000/elapsedTime)/tries)*1000;
-		System.out.println("Score " + score + " elapsedTime " + elapsedTime + " tries " + tries );
+		double score = (double)((double)(2000/elapsedTime)/tries)*1000;
+		
 		return score;
 	
 	}
