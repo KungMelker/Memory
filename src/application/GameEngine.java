@@ -26,6 +26,9 @@ public class GameEngine {
 	public void setStop(long stop) {
 		this.stop = stop;
 	}
+	
+	public
+	
 
 	public long getElapsedTime() {
 		return elapsedTime;
@@ -71,14 +74,15 @@ public class GameEngine {
 	 * calculate handicap and score.
 	 */
 	
-	double calculateScore(int row_column)
+	double calculateScore(int row_column, long timePlayed )
 	{
 		int decimals = 2;
 		double evener = 100 - row_column*row_column;
-		double temp_score = ((20000/((elapsedTime/1000)+tries + evener)));
+		double temp_score = ((20000/((timePlayed)+tries + evener)));
 		
 		BigDecimal score = new BigDecimal(temp_score);
 	    score = score.setScale(decimals, RoundingMode.HALF_UP);
+	    
 	    return score.doubleValue();
 		
 	}
