@@ -58,7 +58,7 @@ public class Main extends Application {
 		Label points = new Label("Points");
 		Label pointresult = new Label("0");
 		Label timeLabel = new Label("Time");
-		Text time = new Text();
+		Text time = new Text("0");
 
 		Label tries = new Label("Tries");
 		Label presentTries = new Label("0");
@@ -174,6 +174,7 @@ public class Main extends Application {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
 			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 				gameEngine.startTime();
+				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				gameEngine.stopTime();
 				time.setText(Long.toString(gameEngine.timePlayed())+" secs");
