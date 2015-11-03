@@ -49,8 +49,7 @@ public class Main extends Application {
 
 		// rightBox
 		VBox rightBox = new VBox();
-		rightBox.setId("leftbox");
-		rightBox.setPadding(new Insets(20.0));
+		rightBox.setId("rightbox");
 		rightBox.setAlignment(Pos.CENTER_LEFT);
 
 		Label highscore = new Label("Highscore");
@@ -67,8 +66,8 @@ public class Main extends Application {
 
 		// leftBox
 		VBox leftBox = new VBox(5);
-		leftBox.setAlignment(Pos.CENTER_RIGHT);
-		leftBox.setPadding(new Insets(20.0));
+		leftBox.setId("leftbox");
+		leftBox.setAlignment(Pos.CENTER_LEFT);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
 		RadioButton pairs_4 = new RadioButton("4 x 4");
@@ -96,6 +95,7 @@ public class Main extends Application {
 		Button newGame = new Button("New Game");
 		newGame.setId("NewGame");
 
+
 		bottomBox.getChildren().addAll(newGame, sQuit);
 
 		root.setTop(topBox);
@@ -104,7 +104,7 @@ public class Main extends Application {
 		root.setBottom(bottomBox);
 
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.1");
+		primaryStage.setTitle("Memory v0.2");
 
 		// TODO - add a save function to sQuit - setOnAction
 		newGame.setOnAction(event -> {

@@ -10,12 +10,13 @@ import java.io.IOException;
 public class HighScore {
 
 	GameEngine ge = new GameEngine();
+	Main appli = new Main();
 	final String pathname = "/highscore.txt";
-	String playerName = "Anonymous";
 	int highscore = 0;
 	long time = 0;
 	int attempts;
-	String addScore = "Name: " + playerName + " Score: " + highscore + " Time: " + time;
+	int board = appli.row_column;
+	String addScore = "Score: " + highscore + " Time: " + time;
 
 	// crap
 	String[] scoreList = new String[10];
