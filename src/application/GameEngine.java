@@ -4,19 +4,23 @@ package application;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Random;
+
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.util.Duration;
 
 public class GameEngine {
 
 	Card cards[];
 	int takenCard[];
 	int pairToCompare[] = { -1, -1 };
-	
+
 	long start, stop, elapsedTime;
-	int tries=0;
-	int foundPairs=0;
+	int tries = 0;
+	int foundPairs = 0;
 	Random rand = new Random();
 
 	public long getStop() {
@@ -141,39 +145,60 @@ public class GameEngine {
 
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
-		if (pairToCompare[1] != -1) {
-
-			if (compareCards()) {
-
-				ivArr[pairToCompare[0]].setDisable(true);
-				ivArr[pairToCompare[1]].setDisable(true);
-				tries++;
-				foundPairs++;
-			} else {
-
-				ivArr[pairToCompare[0]]
-						.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
-				ivArr[pairToCompare[1]]
-						.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
-
-				tries++;
-			}
-
-			pairToCompare[0] = -1;
-			pairToCompare[1] = -1;
-		}
+		SequentialTransition transitionFirstCard;
+		SequentialTransition transitionSecondCard;
 
 		if (pairToCompare[0] == -1) {
 
 			pairToCompare[0] = index;
-			ivArr[index].setImage(cards[index].getFront());
+			transitionFirstCard = createTransition(ivArr[index], cards[index].getFront());
+			transitionFirstCard.play();
 
 		} else {
 
 			pairToCompare[1] = index;
-			ivArr[index].setImage(cards[index].getFront());
+			transitionSecondCard = createTransition(ivArr[index], cards[index].getFront());
+			transitionSecondCard.play();
+			transitionSecondCard.setOnFinished(event -> {
+
+				if (compareCards()) {
+
+					ivArr[pairToCompare[0]].setDisable(true);
+					ivArr[pairToCompare[1]].setDisable(true);
+					foundPairs++;
+				} else {
+					
+					ivArr[pairToCompare[0]]
+							.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+					ivArr[pairToCompare[1]]
+							.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+
+				}
+
+				tries++;
+				pairToCompare[0] = -1;
+				pairToCompare[1] = -1;
+			});
 
 		}
 
+	}
+
+	SequentialTransition createTransition(ImageView iv, Image img) {
+		FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(500), iv);
+		fadeOutTransition.setFromValue(1.0);
+		fadeOutTransition.setToValue(0.0);
+		fadeOutTransition.setOnFinished(event -> {
+			iv.setImage(img);
+		});
+
+		PauseTransition pausetransition = new PauseTransition(Duration.seconds(1));
+		
+		FadeTransition fadeInTransition = new FadeTransition(Duration.millis(500), iv);
+		fadeInTransition.setFromValue(0.0);
+		fadeInTransition.setToValue(1.0);
+		SequentialTransition sequentialTransition = new SequentialTransition(fadeOutTransition, fadeInTransition, pausetransition);
+
+		return sequentialTransition;
 	}
 }
