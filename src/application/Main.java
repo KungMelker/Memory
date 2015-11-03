@@ -1,6 +1,7 @@
 
 package application;
 
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,7 +18,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 
 public class Main extends Application {
@@ -35,7 +35,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root, 1000, 700);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
-
+		
 		// topBox
 		VBox topBox = new VBox();
 		topBox.setAlignment(Pos.CENTER);
@@ -68,7 +68,7 @@ public class Main extends Application {
 
 		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
 				presentTries);
-
+		
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
@@ -146,7 +146,8 @@ public class Main extends Application {
 			gameEngine.setStart(0);
 
 		});
-
+		
+		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.score();
 			primaryStage.close();
