@@ -37,11 +37,9 @@ public class GameEngine {
 		return stop;
 	}
 	long elapsedTime(){
-		//start = System.currentTimeMillis();
-		//stop = System.currentTimeMillis();
-		elapsedTime = stop - start;
 		
-		return elapsedTime/1000;
+		elapsedTime = stop - start;
+		return (long)elapsedTime/1000;
 	}
 
 	public Card[] getCards() {
