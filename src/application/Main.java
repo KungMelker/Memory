@@ -194,7 +194,7 @@ public class Main extends Application {
 
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.timePlayed())));
-				Text won = new Text("Win!");
+				Text won = new Text("Mission\nAccomplished!");
 				won.setId("win");
 				won.setRotate(30);
 				GridPane.setConstraints(won, 0, 0, 10, 10);
