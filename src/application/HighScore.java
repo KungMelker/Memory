@@ -50,8 +50,6 @@ public class HighScore extends GameEngine {
 		return br;
 	}
 
-
-
 	public String[] sortHighscores(BufferedReader instream) {
 		// currently void, return score[] instead
 		String scoreEntry = null;
