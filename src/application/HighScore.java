@@ -28,7 +28,7 @@ public class HighScore {
 	public void score() {
 
 		sortHighscores(openFile(pathname));
-		time = ge.elapsedTime();
+		time = ge.timePlayed();
 		attempts = ge.getTries();
 		
 		writeFile();
