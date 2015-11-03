@@ -60,7 +60,7 @@ public class Main extends Application {
 		Label pointresult = new Label("0");
 		
 		Label timeLabel = new Label("Time");
-		Text time = new Text("0");
+		Label time = new Label("0");
 
 		Label tries = new Label("Tries");
 		Label presentTries = new Label("0");
