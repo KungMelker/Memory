@@ -86,6 +86,7 @@ public class Main extends Application {
 		pairs_8.setToggleGroup(pairsGroup);
 		pairs_10.setToggleGroup(pairsGroup);
 		pairs_2.setSelected(true);
+		row_column = 2;
 
 		leftBox.getChildren().addAll(pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
@@ -96,12 +97,9 @@ public class Main extends Application {
 		bottomBox.setId("bottombox");
 		Button sQuit = new Button("Quit");
 		sQuit.setId("QuitSave");
-		// sQuit.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
-		//sQuit.setRotate(10.0);
 		Button newGame = new Button("New Game");
-		// newGame.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 15));
 		newGame.setId("NewGame");
-		//newGame.setRotate(5.0);
+		
 		bottomBox.getChildren().addAll(newGame,sQuit);
 
 		root.setTop(topBox);
@@ -113,6 +111,39 @@ public class Main extends Application {
 		primaryStage.setTitle("Memory v0.1");
 
 		// TODO - add a save function to sQuit - setOnAction
+		newGame.setOnAction(event ->{ 
+			
+			centerBox.getChildren().clear();	
+			switch (row_column) {
+			case 2:
+				centerBox = center_2();
+				break;
+				
+			case 4:
+				centerBox = center_4();
+				break;
+	
+			case 6:
+				centerBox = center_6();
+				break;
+			
+			case 8:
+				centerBox = center_8();
+				break;	
+				
+			default:
+				centerBox = center_10();
+				break;
+			}
+			centerBox.setAlignment(Pos.CENTER);
+			root.setCenter(centerBox);
+			gameEngine.initBoard(row_column);
+			gameEngine.setTryes(0);
+			gameEngine.setFoundPairs(0);
+			
+		});
+		
+		
 		sQuit.setOnAction(event -> {
 			primaryStage.close();
 		});
@@ -120,57 +151,27 @@ public class Main extends Application {
 		pairs_2.setOnAction(event -> {
 
 			row_column = 2;
-			centerBox.getChildren().clear();
-			centerBox = center_2();
-			centerBox.setAlignment(Pos.CENTER);
-			root.setCenter(centerBox);
-			gameEngine.initBoard(row_column);
-			gameEngine.setTryes(0);
-			gameEngine.setFoundPairs(0);
+	    	
 		});
 
 		pairs_4.setOnAction(event -> {
 			row_column = 4;
-			centerBox.getChildren().clear();
-			centerBox = center_4();
-			centerBox.setAlignment(Pos.CENTER);
-			root.setCenter(centerBox);
-			gameEngine.initBoard(row_column);
-			gameEngine.setTryes(0);
-			gameEngine.setFoundPairs(0);
+			
 		});
 
 		pairs_6.setOnAction(event -> {
 			row_column = 6;
-			centerBox.getChildren().clear();
-			centerBox = center_6();
-			centerBox.setAlignment(Pos.CENTER);
-			root.setCenter(centerBox);
-			gameEngine.initBoard(row_column);
-			gameEngine.setTryes(0);
-			gameEngine.setFoundPairs(0);
+			
 		});
 
 		pairs_8.setOnAction(event -> {
 			row_column = 8;
-			centerBox.getChildren().clear();
-			centerBox = center_8();
-			centerBox.setAlignment(Pos.CENTER);
-			root.setCenter(centerBox);
-			gameEngine.initBoard(row_column);
-			gameEngine.setTryes(0);
-			gameEngine.setFoundPairs(0);
+			
 		});
 
 		pairs_10.setOnAction(event -> {
 			row_column = 10;
-			centerBox.getChildren().clear();
-			centerBox = center_10();
-			centerBox.setAlignment(Pos.CENTER);
-			root.setCenter(centerBox);
-			gameEngine.initBoard(row_column);
-			gameEngine.setTryes(0);
-			gameEngine.setFoundPairs(0);
+            
 		});
 
 		root.setOnMouseClicked(event -> {
