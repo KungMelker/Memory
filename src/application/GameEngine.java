@@ -82,10 +82,10 @@ public class GameEngine {
 	 * calculate handicap and score.
 	 */
 
-	double calculateScore(int row_column, long timePlayed) {
+	double calculateScore(int row_column, long eTime) {
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
-		double temp_score = ((20000 / ((timePlayed) + tries + evener)));
+		double temp_score = ((20000 / ((eTime/1000) + tries + evener)));
 
 		BigDecimal score = new BigDecimal(temp_score);
 

@@ -1,7 +1,6 @@
 
 package application;
 
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,10 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
 
 public class Main extends Application {
 
@@ -97,7 +94,7 @@ public class Main extends Application {
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
 		bottomBox.setId("bottombox");
-		Button sQuit = new Button("Quit");
+		Button sQuit = new Button("Rage Quit");
 		sQuit.setPrefWidth(150);
 		sQuit.setId("QuitSave");
 		Button newGame = new Button("New Game");
@@ -112,31 +109,36 @@ public class Main extends Application {
 		root.setBottom(bottomBox);
 
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.2");
+		primaryStage.setTitle("Memory v0.2 for Dummies");
 
-		// TODO - add a save function to sQuit - setOnAction
+
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
 			switch (row_column) {
 			case 2:
 				centerBox = center_2();
+				highpoint.setText(hs.getScore(0));
 				break;
 
 			case 4:
 				centerBox = center_4();
+				highpoint.setText(hs.getScore(1));
 				break;
 
 			case 6:
 				centerBox = center_6();
+				highpoint.setText(hs.getScore(2));
 				break;
 
 			case 8:
 				centerBox = center_8();
+				highpoint.setText(hs.getScore(3));
 				break;
 
 			default:
 				centerBox = center_10();
+				highpoint.setText(hs.getScore(4));
 				break;
 			}
 			centerBox.setAlignment(Pos.CENTER);
@@ -150,7 +152,7 @@ public class Main extends Application {
 		
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
-			hs.score(gameEngine.timePlayed(), gameEngine.getTries(), gameEngine.calculateScore(row_column,gameEngine.timePlayed()));
+			hs.writeFile();
 			primaryStage.close();
 		});
 
@@ -193,7 +195,12 @@ public class Main extends Application {
 				gameEngine.stopTime();
 
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.timePlayed())));
+				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
+			}
+			else
+			{
+				gameEngine.stopTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				Text won = new Text("Mission\nAccomplished!");
 				won.setId("win");
 				won.setRotate(30);
