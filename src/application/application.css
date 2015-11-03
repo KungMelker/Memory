@@ -1,67 +1,89 @@
+.root {
+	-fx-background-color: f0f0f0;
+	-fx-font-size: 16pt;
+	-fx-font-family: "Helvetica", "System Fet", "Courier New";
+	-fx-font-weight: bold;
+}
 
-.root
-	{ 
-     -fx-background-color: rgb(000, 150, 150);
-     -fx-font-size: 16pt;
-     -fx-font-family: "Courier New";
-     -fx-font-weight: bold;
-    }
-    
-   .radio-button .radio {
-    -fx-border-width: 2px;
-    -fx-border-color: #000;
-    -fx-background-color: rgb(000, 150, 150);
-    -fx-background-image: null;
-    -fx-border-radius: 15px;
-    -fx-padding: 4px;
+#game-title {
+	-fx-font-size: 70px;
+	-fx-font-family: "Helvetica", "Ar Destine", "Courier New";
+	-fx-text-fill: #bdde71;
+	-fx-font-smoothing-type:lcd;
+}
+#game-subtitle{
+		-fx-text-fill: #d0524e;
+			-fx-font-size: 12pt;
+}
+
+#topbox {
+	-fx-background-color: #4d4d4d;
+	-fx-text-fill: #4d4d4d;
+}
+#bottombox {
+		-fx-background-color: #4d4d4d;
+	-fx-text-fill: #4d4d4d;
+}
+.label {
+	-fx-text-fill: #4d4d4d;
+	-fx-text-alignment: center;
+}
+#NewGame {
+	-fx-font-size: 16pt;
+	-fx-font-family: "Helvetica", "Courier New";
+	-fx-base: #a6dc7f;
+	-fx-text-fill: #4d4d4d;
+	-fx-background-insets: 0;
+	
+
+}
+#NewGame:hover {
+	-fx-base: #bdde71;
+}
+#QuitSave {
+	-fx-font-size: 16pt;
+	-fx-font-family: "Helvetica", "Courier New";
+	-fx-base: #c6646a;
+	-fx-text-fill: #4d4d4d;
+	-fx-background-insets: 0;
+}
+#QuitSave:hover {
+	-fx-base: #d0524e;
+}
+.radio-button .radio {
+	-fx-border-width: 4px;
+	-fx-border-color: #4d4d4d;
+	-fx-background-color: #c5a95a;
+	-fx-background-image: null;
+	-fx-border-radius: 10px;
+	-fx-padding: 0px;
 }
 
 .radio-button .radio:hover {
-    -fx-background-color: rgb(333, 000, 000);
-    -fx-background-image: null;
+	-fx-background-color: #bdde71;
+	-fx-background-image: null;
 }
 
 .radio-button .radio:selected {
-    -fx-background-color: rgb(000, 150, 150);
-    -fx-background-image: null;
+	-fx-background-color: #bdde71;
+	-fx-background-image: null;
 }
 .radio-button -radio:armed {
-    -fx-background-color: rgb(000, 150, 150);
-    -fx-background-image: null;
+	-fx-background-color: rgb(000, 150, 150);
+	-fx-background-image: null;
 }
 .radio-button -radio:determinate {
-    -fx-background-color: rgb(000, 150, 150);
-    -fx-background-image: null;
+	-fx-background-color: rgb(000, 150, 150);
+	-fx-background-image: null;
 }
 .radio-button -radio:indeterminate {
-    -fx-background-color: rgb(000, 150, 150);
-    -fx-background-image: null;
+	-fx-background-color: rgb(000, 150, 150);
+	-fx-background-image: null;
 }
 .radio-button .dot {
-    -fx-background-radius: 15px;
-    -fx-padding: 8px;
-    -fx-mark-highlight-color: grey ;
-    -fx-mark-color: black ;
+	-fx-background-radius: 15px;
+	-fx-padding: 8px;
+	-fx-mark-highlight-color: grey;
+	-fx-mark-color: black;
 }
-	
-    
-#game-title
-	{
-	-fx-font-size: 100px;
-    -fx-font-family:  "Ar Destine", "Times New Roman";	
-	-fx-text-fill: #123456;
-	}   
-#NewGame
-	{
-	-fx-font-size: 16pt;
-    -fx-font-family: "Courier New";
-    -fx-base: rgb(132, 145, 47);
-    -fx-background: rgb(225, 228, 203);
-    }    
-#QuitSave
-	{
-	-fx-font-size: 16pt;
-    -fx-font-family: "Courier New";
-    -fx-base: rgb(225, 0, 0);
-    -fx-background: rgb(225, 228, 203);
-    }
+

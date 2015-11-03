@@ -2,11 +2,9 @@
 package application;
 
 import java.util.Random;
-import java.util.Timer;
-//import com.sun.glass.ui.Timer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+
 
 public class GameEngine {
 
@@ -52,12 +50,9 @@ public class GameEngine {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-	long timePlayed(){
-		//start = System.currentTimeMillis();
-		//stop = System.currentTimeMillis();
+	long timePlayed(){		
 		elapsedTime = stop - start;
-		
-		return elapsedTime/1000;
+		return (long)elapsedTime/1000;
 	}
 
 	public Card[] getCards() {
@@ -131,9 +126,9 @@ public class GameEngine {
 			} else {
 
 				ivArr[pairToCompare[0]]
-						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 				ivArr[pairToCompare[1]]
-						.setImage(new Image("/images/50.jpg", 400 / row_column, 400 / row_column, true, true));
+						.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
 
 				tries++;
 			}
