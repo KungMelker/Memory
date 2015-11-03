@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class HighScore extends GameEngine {
 
-	GameEngine ge = new GameEngine();
+	
 	// Main appli = new Main();
 
 	URL url = getClass().getResource("highscore.txt");	
@@ -25,11 +25,14 @@ public class HighScore extends GameEngine {
 	String[] scoreList = new String[10];
 
 	// method tester
-	public void score() {
+	
+	
+	
+	 public void score(long timePlayed, int tries, double calculateScore) {
 
-		time = this.timePlayed();
-		attempts = this.getTries();
-		highscore = this.getCurrentScore();
+		this.time = timePlayed;
+		this.attempts = tries;
+		this.highscore = calculateScore;
 		// board = appli.row_column;
 		addScore = "Score: " + highscore + " Difficulty: " + " Time: " + time;
 
@@ -37,6 +40,7 @@ public class HighScore extends GameEngine {
 		sortHighscores(test);
 		writeFile();
 	}
+	
 
 	// creates a BufferedReader, reads highscore file
 	public BufferedReader openFile(String path) {
@@ -81,4 +85,8 @@ public class HighScore extends GameEngine {
 		}
 
 	}
+
+
+			
+	
 }

@@ -150,7 +150,7 @@ public class Main extends Application {
 		
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
-			hs.score();
+			hs.score(gameEngine.timePlayed(), gameEngine.getTries(), gameEngine.calculateScore(row_column,gameEngine.timePlayed()));
 			primaryStage.close();
 		});
 
