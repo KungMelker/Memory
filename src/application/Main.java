@@ -180,8 +180,10 @@ public class Main extends Application {
 				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				gameEngine.stopTime();
+
 				time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
-				pointresult.setText(Long.toString(gameEngine.calculateScore()));
+				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column)));
+
 			}
 
 		});
