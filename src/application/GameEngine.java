@@ -2,11 +2,9 @@
 package application;
 
 import java.util.Random;
-import java.util.Timer;
-//import com.sun.glass.ui.Timer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+
 
 public class GameEngine {
 
@@ -18,6 +16,22 @@ public class GameEngine {
 	int tries=0;
 	int foundPairs=0;
 	Random rand = new Random();
+
+	public long getStop() {
+		return stop;
+	}
+
+	public void setStop(long stop) {
+		this.stop = stop;
+	}
+
+	public long getElapsedTime() {
+		return elapsedTime;
+	}
+
+	public void setElapsedTime(long elapsedTime) {
+		this.elapsedTime = elapsedTime;
+	}
 
 	public long getStart() {
 		return start;
@@ -36,8 +50,7 @@ public class GameEngine {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-	long elapsedTime(){
-		
+	long timePlayed(){		
 		elapsedTime = stop - start;
 		return (long)elapsedTime/1000;
 	}
