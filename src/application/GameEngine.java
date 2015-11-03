@@ -30,12 +30,11 @@ public class GameEngine {
 	public void setStop(long stop) {
 		this.stop = stop;
 	}
-	
-	
+
 	public long getElapsedTime() {
 		return elapsedTime;
 	}
-	
+
 	public void setElapsedTime(long elapsedTime) {
 		this.elapsedTime = elapsedTime;
 	}
@@ -67,42 +66,40 @@ public class GameEngine {
 	public void setTries(int tries) {
 		this.tries = tries;
 	}
-	
-//-----------------------< end of getters and setters >------------------------------------	
-	
+
+	// -----------------------< end of getters and setters
+	// >------------------------------------
+
 	/*
-	 * Calculate score from time and tries
-	 * takes in value from row column to
+	 * Calculate score from time and tries takes in value from row column to
 	 * calculate handicap and score.
 	 */
-	
-	double calculateScore(int row_column, long timePlayed )
-	{
+
+	double calculateScore(int row_column, long timePlayed) {
 		int decimals = 2;
-		double evener = 100 - row_column*row_column;
-		double temp_score = ((20000/((timePlayed)+tries + evener)));
-		
+		double evener = 100 - row_column * row_column;
+		double temp_score = ((20000 / ((timePlayed) + tries + evener)));
+
 		BigDecimal score = new BigDecimal(temp_score);
-	    score = score.setScale(decimals, RoundingMode.HALF_UP);
-	    
-	    return score.doubleValue();
-		
+		score = score.setScale(decimals, RoundingMode.HALF_UP);
+
+		return score.doubleValue();
+
 	}
-	
-	
-	
-	long startTime(){
+
+	long startTime() {
 		start = System.currentTimeMillis();
 		return start;
 	}
-	
-	long stopTime(){
+
+	long stopTime() {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-	long timePlayed(){		
+
+	long timePlayed() {
 		elapsedTime = stop - start;
-		return (long)elapsedTime/1000;
+		return (long) elapsedTime / 1000;
 	}
 
 	void initBoard(int row_column) {
@@ -145,40 +142,37 @@ public class GameEngine {
 
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
-		SequentialTransition transitionFirstCard;
-		SequentialTransition transitionSecondCard;
+		SequentialTransition transitionCard;
+		// SequentialTransition transitionSecondCard;
 
 		if (pairToCompare[0] == -1) {
 
 			pairToCompare[0] = index;
-			transitionFirstCard = createTransition(ivArr[index], cards[index].getFront());
-			transitionFirstCard.play();
+			ivArr[index].setImage(cards[index].getFront());
 
 		} else {
 
 			pairToCompare[1] = index;
-			transitionSecondCard = createTransition(ivArr[index], cards[index].getFront());
-			transitionSecondCard.play();
-			transitionSecondCard.setOnFinished(event -> {
+			ivArr[index].setImage(cards[index].getFront());
 
-				if (compareCards()) {
+			if (compareCards()) {
 
-					ivArr[pairToCompare[0]].setDisable(true);
-					ivArr[pairToCompare[1]].setDisable(true);
-					foundPairs++;
-				} else {
-					
-					ivArr[pairToCompare[0]]
-							.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
-					ivArr[pairToCompare[1]]
-							.setImage(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+				ivArr[pairToCompare[0]].setDisable(true);
+				ivArr[pairToCompare[1]].setDisable(true);
+				foundPairs++;
+			} else {
 
-				}
+				transitionCard = createTransition(ivArr[pairToCompare[0]],
+						new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+				transitionCard.play();
+				transitionCard = createTransition(ivArr[pairToCompare[1]],
+						new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+				transitionCard.play();
+			}
 
-				tries++;
-				pairToCompare[0] = -1;
-				pairToCompare[1] = -1;
-			});
+			tries++;
+			pairToCompare[0] = -1;
+			pairToCompare[1] = -1;
 
 		}
 
@@ -192,12 +186,12 @@ public class GameEngine {
 			iv.setImage(img);
 		});
 
-		PauseTransition pausetransition = new PauseTransition(Duration.seconds(1));
-		
+		PauseTransition pt = new PauseTransition(Duration.millis(1000));
+
 		FadeTransition fadeInTransition = new FadeTransition(Duration.millis(500), iv);
 		fadeInTransition.setFromValue(0.0);
 		fadeInTransition.setToValue(1.0);
-		SequentialTransition sequentialTransition = new SequentialTransition(fadeOutTransition, fadeInTransition, pausetransition);
+		SequentialTransition sequentialTransition = new SequentialTransition(pt, fadeOutTransition, fadeInTransition);
 
 		return sequentialTransition;
 	}
