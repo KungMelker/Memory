@@ -10,7 +10,7 @@ public class MainTester {
 
 	Main mainClass = new Main();
 	
-	@Test(timeout = 10)
+	@Test(timeout = 200)
 	public void test() {
 		mainClass.center_2();
 	}
