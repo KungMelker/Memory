@@ -196,15 +196,9 @@ public class Main extends Application {
 				gameEngine.stopTime();
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
-
-				win = true;
+				// Win message
+				this.winText();
 				
-				// Win!
-				Text won = new Text("Mission\nAccomplished!");
-				won.setId("win");
-				won.setRotate(30);
-				GridPane.setConstraints(won, 0, 0, 10, 10);
-				centerBox.getChildren().add(won);
 			}
 			else
 			{ if(!win){
@@ -217,6 +211,17 @@ public class Main extends Application {
 
 	}
 
+	private void winText()
+	{
+
+		Text won = new Text("Fatality!");
+		won.setId("win");
+		won.setRotate(30);
+		GridPane.setConstraints(won, 0, 0, 10, 10);
+		centerBox.getChildren().add(won);
+		
+	}
+	
 	public GridPane center_2() {
 
 		GridPane tempCenter = new GridPane();
