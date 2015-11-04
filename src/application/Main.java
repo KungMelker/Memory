@@ -157,8 +157,6 @@ public class Main extends Application {
 			win = false;
 		});
 
-
-
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.writeFile();
@@ -193,45 +191,45 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-			
-		if(!win){			
-			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
-				gameEngine.startTime();
-				pointresult.setText("0");
-				time.setText("0");
-			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
-				
-				gameEngine.checkTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
-				// Win message
-				this.winText();
-				win = true;
-			
-				//check score with hi-score
-				double currScore = gameEngine.getCurrentScore();
-				double hiScore = Double.parseDouble(hs.getScore(selectedCase));
-				if(gameEngine.compareScore(currScore, hiScore)){
-				hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
-				highpoint.setText(hs.getScore(selectedCase));
-				hs.writeFile();
+
+			if (!win) {
+				if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
+					gameEngine.startTime();
+					pointresult.setText("0");
+					time.setText("0");
+				} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
+
+					gameEngine.checkTime();
+					time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
+					pointresult.setText(
+							Double.toString(gameEngine.calculateScore(row_column, gameEngine.getElapsedTime())));
+					// Win message
+					this.winText();
+					win = true;
+
+					// check score with hi-score
+					double currScore = gameEngine.getCurrentScore();
+					double hiScore = Double.parseDouble(hs.getScore(selectedCase));
+					if (gameEngine.compareScore(currScore, hiScore)) {
+						hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
+						highpoint.setText(hs.getScore(selectedCase));
+						hs.writeFile();
+					}
+				}
+
+				else {
+					gameEngine.checkTime();
+					time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
+
 				}
 			}
-
-			else
-			{ 
-				gameEngine.checkTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-			    
-			}
-		}
 		});
 
 	}
 
 	private void winText() {
 
-	Text won = new Text("Fatality!");
+		Text won = new Text("Fatality!");
 		won.setId("win");
 		won.setRotate(30);
 
