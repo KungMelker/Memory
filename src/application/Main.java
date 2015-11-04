@@ -215,24 +215,6 @@ public class Main extends Application {
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
 					
-			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
-				gameEngine.startTime();
-				pointresult.setText("0");
-				time.setText("0");
-			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2) && !win) {
-				
-				gameEngine.checkTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
-				win = true;
-			}
-			else
-			{ if(!win){
-				gameEngine.checkTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-			    }
-			}
-			
 			if (!win) {
 				if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 					gameEngine.startTime();
