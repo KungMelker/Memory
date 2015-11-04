@@ -101,16 +101,16 @@ public class GameEngine {
 		return currentScore;
 
 	}
+
 	/**
-	 * Takes in currScore and hiScore and test
-	 * if currScore is bigger than hiScore. 
-	 * returns true or false 
+	 * Takes in currScore and hiScore and test if currScore is bigger than
+	 * hiScore. returns true or false
 	 * 
 	 * @param currScore
 	 * @param hiScore
 	 * @return boolean
 	 */
-	
+
 	boolean compareScore(double currScore, double hiScore) {
 		if (currScore > hiScore) {
 			return true;
@@ -219,6 +219,7 @@ public class GameEngine {
 				transitionCard = createTransition(ivArr[pairToCompare[1]],
 						new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 				transitionCard.play();
+
 			}
 
 			tries++;

@@ -20,9 +20,9 @@ import javafx.scene.text.Text;
 
 /**
  * 
- * @author Sam, Anton, Johan, Melker, Gustav
+ * @author Sam, Anton, Johan, Melker, Gustav, Simon
  * Creates the design of the application.
- * Adds objects, texts, labels and radiobuttons. 
+ * Adds objects, texts, labels and radio buttons. 
  */
 
 public class Main extends Application {
