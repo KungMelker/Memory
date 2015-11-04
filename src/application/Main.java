@@ -13,7 +13,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,6 +23,7 @@ public class Main extends Application {
 	GameEngine gameEngine = new GameEngine();
 	GridPane centerBox = new GridPane();
 	HighScore hs = new HighScore();
+	int selectedCase;
 	int row_column;
 	ImageView imageView[];
 	boolean win = false;
@@ -119,26 +119,31 @@ public class Main extends Application {
 			switch (row_column) {
 			case 2:
 				centerBox = center_2();
+				selectedCase = 0;
 				highpoint.setText(hs.getScore(0));
 				break;
 
 			case 4:
 				centerBox = center_4();
+				selectedCase = 1;
 				highpoint.setText(hs.getScore(1));
 				break;
 
 			case 6:
 				centerBox = center_6();
+				selectedCase = 2;
 				highpoint.setText(hs.getScore(2));
 				break;
 
 			case 8:
 				centerBox = center_8();
+				selectedCase = 3;
 				highpoint.setText(hs.getScore(3));
 				break;
 
 			default:
 				centerBox = center_10();
+				selectedCase = 4;
 				highpoint.setText(hs.getScore(4));
 				break;
 			}
@@ -148,8 +153,11 @@ public class Main extends Application {
 			gameEngine.setTries(0);
 			gameEngine.setFoundPairs(0);
 			gameEngine.setStart(0);
-
+			gameEngine.setCurrentScore(0);
+			win = false;
 		});
+
+
 
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
@@ -186,37 +194,41 @@ public class Main extends Application {
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
 
-			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
-				gameEngine.startTime();
-				pointresult.setText("0");
-				time.setText("0");
-			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2) && !win) {
-
-				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
-				pointresult
-						.setText(Double.toString(gameEngine.calculateScore(row_column, gameEngine.getElapsedTime())));
-				// Win message
-				this.winText();
-
-			} else {
-				if (!win) {
+			if (!win) {
+				if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
+					gameEngine.startTime();
+					pointresult.setText("0");
+					time.setText("0");
+				} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 					gameEngine.stopTime();
 					time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
+					pointresult.setText(
+							Double.toString(gameEngine.calculateScore(row_column, gameEngine.getElapsedTime())));
+					// Win message
+					this.winText();
+					win = true;
+
+					// check score with hi-score
+					double currScore = gameEngine.getCurrentScore();
+					double hiScore = Double.parseDouble(hs.getScore(selectedCase));
+					if (gameEngine.compareScore(currScore, hiScore)) {
+						hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
+						highpoint.setText(hs.getScore(selectedCase));
+						hs.writeFile();
+					}
+				} else {
+					gameEngine.stopTime();
+					time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
+
 				}
 			}
-
 		});
 
 	}
 
 	private void winText() {
 
-		Label won = new Label("Fatality!");
-		won.setMaxWidth(380);
-		won.setMaxHeight(380);
-		won.setAlignment(Pos.BASELINE_CENTER);
-
+	Text won = new Text("Fatality!");
 		won.setId("win");
 		won.setRotate(30);
 
