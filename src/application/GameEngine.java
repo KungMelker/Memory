@@ -179,6 +179,14 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
+	
+	/**
+	 * takes max value that is length of array cards.
+	 * and returns index of the random taken card.
+	 * @param max
+	 * @return index.
+	 * 
+	 */
 
 	int randomCard(int max) {
 		int index = 0;
