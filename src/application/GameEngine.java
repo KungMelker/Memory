@@ -153,6 +153,14 @@ public class GameEngine {
 		elapsedTime = stop - start;
 		return (long) elapsedTime / 1000;
 	}
+	
+	/**
+	 * Sets size of bord takes param row_column 
+	 * to set the bord to right size.
+	 * 
+	 * @param row_column
+	 */
+	
 
 	void initBoard(int row_column) {
 
@@ -186,6 +194,11 @@ public class GameEngine {
 
 		return index;
 	}
+	/**
+	 * compare cards to see if they are a matching pair.
+	 * 
+	 * @return true if match / false if not. 
+	 */
 
 	boolean compareCards() {
 
