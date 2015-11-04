@@ -88,7 +88,7 @@ public class GameEngine {
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
 		
-		double temp_score = ((20000 / ((eTime/1000) + tries + evener)));
+		double temp_score = ((20000 / ((eTime/1000)) + tries + evener));
 		
 		BigDecimal score = new BigDecimal(temp_score);
 
