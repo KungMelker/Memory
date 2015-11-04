@@ -199,7 +199,7 @@ public class Main extends Application {
 				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2)) {
 				
-				gameEngine.stopTime();
+				gameEngine.checkTime();
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
 				// Win message
@@ -219,7 +219,7 @@ public class Main extends Application {
 			}
 			else
 			{ 
-				gameEngine.stopTime();
+				gameEngine.checkTime();
 				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
 			    
 			}
