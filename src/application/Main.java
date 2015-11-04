@@ -20,7 +20,7 @@ import javafx.scene.text.Text;
 
 /**
  * 
- * @author Sam, Anton, Johan, Melker, Gustav
+ * @author Sam, Anton, Johan, Melker, Gustav, Simon.
  * Creates the design of the application.
  * Adds objects, texts, labels and radiobuttons. 
  */
@@ -96,7 +96,6 @@ public class Main extends Application {
 		 * Adds a VBox to the left side of the application.
 		 * Adds radiobuttons and labels.
 		 */ 
-		 
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
 		Label memorySize = new Label("Memory Size:\n\n\n\n");
@@ -144,7 +143,6 @@ public class Main extends Application {
 		/**
 		 * Adds the name of the application window.
 		 */
-		
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
 		
@@ -183,6 +181,7 @@ public class Main extends Application {
 				break;
 			}
 			centerBox.setAlignment(Pos.CENTER);
+			centerBox.setId("centerBox");
 			root.setCenter(centerBox);
 			gameEngine.initBoard(row_column);
 			gameEngine.setTries(0);
@@ -234,8 +233,6 @@ public class Main extends Application {
 			    }
 			}
 			
-			
-
 			if (!win) {
 				if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 					gameEngine.startTime();
@@ -309,7 +306,6 @@ public class Main extends Application {
 		 * @param row_column
 		 * @see ImageView
 		 */
-
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 
 		for (int i = 0; i < imageView.length; i++) {

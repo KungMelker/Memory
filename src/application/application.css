@@ -1,5 +1,5 @@
 .root {
-	-fx-background-color: f0f0f0;
+	-fx-background-color: #4d4d4d;
 	-fx-font-size: 16pt;
 	-fx-font-family: "Helvetica", "System Fet", "Courier New";
 	-fx-font-weight: bold;
@@ -22,6 +22,9 @@
 }
 #logo{
 		-fx-background-color: #4d4d4d;
+}
+#centerBox{
+	-fx-background-color: #f0f0f0;
 }
 #bottombox {
 	-fx-background-color: #4d4d4d;
