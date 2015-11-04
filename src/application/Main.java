@@ -27,7 +27,7 @@ public class Main extends Application {
 	int row_column;
 	ImageView imageView[];
 	boolean win = false;
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -35,7 +35,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root, 1000, 700);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
-		
+
 		// topBox
 		VBox topBox = new VBox();
 		topBox.setAlignment(Pos.CENTER);
@@ -56,10 +56,10 @@ public class Main extends Application {
 		stats.setAlignment(Pos.TOP_CENTER);
 		Label highscore = new Label("Highscore");
 		Label highpoint = new Label("0");
-		
+
 		Label points = new Label("Points");
 		Label pointresult = new Label("0");
-		
+
 		Label timeLabel = new Label("Time");
 		Label time = new Label("0");
 
@@ -68,7 +68,7 @@ public class Main extends Application {
 
 		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
 				presentTries);
-		
+
 		// leftBox
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
@@ -113,7 +113,6 @@ public class Main extends Application {
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
 
-
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
@@ -155,8 +154,9 @@ public class Main extends Application {
 			gameEngine.setFoundPairs(0);
 			gameEngine.setStart(0);
 			gameEngine.setCurrentScore(0);
+			win = false;
 		});
-		
+
 		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.writeFile();
@@ -191,54 +191,51 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-			
-					
+
 			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 				gameEngine.startTime();
 				pointresult.setText("0");
 				time.setText("0");
 			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2) && !win) {
-				
+
 				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
+				time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
+				pointresult
+						.setText(Double.toString(gameEngine.calculateScore(row_column, gameEngine.getElapsedTime())));
 				// Win message
 				this.winText();
 				win = true;
-			
-				//check score with hi-score
+
+				// check score with hi-score
 				double currScore = gameEngine.getCurrentScore();
 				double hiScore = Double.parseDouble(hs.getScore(selectedCase));
-				if(gameEngine.compareScore(currScore, hiScore)){
-				hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
-				highpoint.setText(hs.getScore(selectedCase));
-				hs.writeFile();
+				if (gameEngine.compareScore(currScore, hiScore)) {
+					hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
+					highpoint.setText(hs.getScore(selectedCase));
+					hs.writeFile();
 				}
-				
-				
-			}
-			else
-			{ if(!win){
-				gameEngine.stopTime();
-				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
-			    }
+
+			} else {
+				if (!win) {
+					gameEngine.stopTime();
+					time.setText(Long.toString(gameEngine.timePlayed()) + " sec");
+				}
 			}
 
 		});
 
 	}
 
-	private void winText()
-	{
+	private void winText() {
 
 		Text won = new Text("Fatality!");
 		won.setId("win");
 		won.setRotate(30);
 		GridPane.setConstraints(won, 0, 0, 10, 10);
 		centerBox.getChildren().add(won);
-		
+
 	}
-	
+
 	public GridPane center_2() {
 
 		GridPane tempCenter = new GridPane();
