@@ -112,6 +112,10 @@ public class Main extends Application {
 
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
+		
+		/**
+		 * 
+		 */
 
 		newGame.setOnAction(event -> {
 
@@ -163,11 +167,21 @@ public class Main extends Application {
 			primaryStage.close();
 		});
 
-		pairs_2.setOnAction(event -> {row_column = 2;});
-		pairs_4.setOnAction(event -> {row_column = 4;});
-		pairs_6.setOnAction(event -> {row_column = 6;});
-		pairs_8.setOnAction(event -> {row_column = 8;});
-		pairs_10.setOnAction(event -> {row_column = 10;});
+		pairs_2.setOnAction(event -> {
+			row_column = 2;
+		});
+		pairs_4.setOnAction(event -> {
+			row_column = 4;
+		});
+		pairs_6.setOnAction(event -> {
+			row_column = 6;
+		});
+		pairs_8.setOnAction(event -> {
+			row_column = 8;
+		});
+		pairs_10.setOnAction(event -> {
+			row_column = 10;
+		});
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
@@ -207,6 +221,12 @@ public class Main extends Application {
 
 	}
 
+	/**
+	 * Adds a Text label indicating "Won" conditition to the BorderPane's
+	 * CenterBox
+	 * 
+	 * @see Text
+	 */
 	private void winText() {
 
 		Text won = new Text("Fatality!");
@@ -218,9 +238,26 @@ public class Main extends Application {
 
 	}
 
+	/**
+	 * Returns a GridPane for the 2x2 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns. The method fills the array with the
+	 * requested number of images, and adds action listeners and event handlers.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_2() {
 
 		GridPane tempCenter = new GridPane();
+
+		/**
+		 * Creates an ImageView array with the size the number of columns raised
+		 * to the power of two.
+		 * 
+		 * @param row_column
+		 * @see ImageView
+		 */
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 
@@ -242,6 +279,14 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the 4x4 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_4() {
 
 		GridPane tempCenter = new GridPane();
@@ -265,6 +310,14 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the 6x6 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_6() {
 
 		GridPane tempCenter = new GridPane();
@@ -288,6 +341,14 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the 8x8 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_8() {
 
 		GridPane tempCenter = new GridPane();
@@ -311,6 +372,14 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the 10x10 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_10() {
 
 		GridPane tempCenter = new GridPane();
