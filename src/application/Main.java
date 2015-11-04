@@ -137,10 +137,6 @@ public class Main extends Application {
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
 		
-		/**
-		 * 
-		 */
-
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
@@ -261,6 +257,8 @@ public class Main extends Application {
 	}
 
 	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
 	 * Returns a GridPane for the 2x2 game board, that is then painted in the
 	 * center of the BorderPane. The GridPane contains an ImageView array with
 	 * the specified number of columns. The method fills the array with the
@@ -302,6 +300,8 @@ public class Main extends Application {
 	}
 
 	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
 	 * Returns a GridPane for the 4x4 game board, that is then painted in the
 	 * center of the BorderPane. The GridPane contains an ImageView array with
 	 * the specified number of columns.
@@ -333,6 +333,8 @@ public class Main extends Application {
 	}
 
 	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
 	 * Returns a GridPane for the 6x6 game board, that is then painted in the
 	 * center of the BorderPane. The GridPane contains an ImageView array with
 	 * the specified number of columns.
@@ -364,7 +366,8 @@ public class Main extends Application {
 	}
 
 	/**
-	 * Returns a GridPane for the 8x8 game board, that is then painted in the
+	 * Returns a GridPane for the game board.
+	 * <p> Returns a GridPane for the 8x8 game board, that is then painted in the
 	 * center of the BorderPane. The GridPane contains an ImageView array with
 	 * the specified number of columns.
 	 * 
@@ -395,6 +398,8 @@ public class Main extends Application {
 	}
 
 	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
 	 * Returns a GridPane for the 10x10 game board, that is then painted in the
 	 * center of the BorderPane. The GridPane contains an ImageView array with
 	 * the specified number of columns.
