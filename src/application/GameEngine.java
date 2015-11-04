@@ -77,11 +77,13 @@ public class GameEngine {
 
 	// ---< end of getters and setters >---
 
-	/*
-	 * Calculate score from time and tries takes in value from row column to
-	 * calculate handicap and score.
+	/**
+	 * Calculates score from time and tries.
+	 * Takes in value from row_column to calculate handicap and score.
+	 * @param row_column
+	 * @param eTime
+	 * @return
 	 */
-
 	double calculateScore(int row_column, long eTime) {
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
@@ -105,17 +107,33 @@ public class GameEngine {
 		}
 		
 	}
-
+	
+	/**
+	 * Starts counting in milliseconds from the System.class
+	 * when mouse is clicked and sets that value to the variable start.
+	 * @return number of milliseconds.
+	 */
 	long startTime() {
 		start = System.currentTimeMillis();
 		return start;
 	}
-
+	
+	/**
+	 * Also starts counting in milliseconds
+	 * and sets that value to the variable stop.
+	 * @return number of milliseconds.
+	 */
 	long checkTime() {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-
+	
+	/**
+	 * The variable elapsedTime gets the difference value
+	 * from subtracting the variables stop and start.
+	 * elapsedTime is then divided by 1000 to return its value in seconds and not milliseconds.
+	 * @return the difference of stop and start in elapsedTime.
+	 */
 	long timePlayed() {
 		elapsedTime = stop - start;
 		return (long) elapsedTime / 1000;
@@ -196,7 +214,13 @@ public class GameEngine {
 		}
 
 	}
-
+	
+	/**
+	 * Shows the cards for one seconds then fade out.
+	 * @param iv
+	 * @param img
+	 * @return
+	 */
 	SequentialTransition createTransition(ImageView iv, Image img) {
 		FadeTransition fadeOutTransition = new FadeTransition(Duration.millis(300), iv);
 		fadeOutTransition.setFromValue(1.0);
