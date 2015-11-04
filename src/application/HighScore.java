@@ -6,22 +6,23 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-/**
- * 
- * @author Johan
- *
- */
-public class HighScore extends GameEngine {
+
+public class HighScore {
 
 	URL url = getClass().getResource("/savegame/highscore.txt");
 	final String pathname = url.getPath();
 	String[] scoreList = new String[5];
 
+	/**
+	 * Constructor for HighScore - runs method readFile
+	 */
 	public HighScore() {
 		readFile();
 	}
 
-	// creates a BufferedReader, reads highscore file
+	/**
+	 * Reads the file highscore.txt and populates the scoreList array
+	 */
 	public void readFile() {
 
 		try (BufferedReader br = new BufferedReader(new FileReader(pathname));) {
@@ -33,7 +34,9 @@ public class HighScore extends GameEngine {
 		}
 	}
 
-	// writes highscore to file
+	/**
+	 * Writes scoreList to highscore.txt
+	 */
 	public void writeFile() {
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathname));) {
@@ -47,11 +50,24 @@ public class HighScore extends GameEngine {
 		}
 
 	}
-
+/**
+ * Updates scoreList
+ * @param score
+ * 				new high score
+ * @param board
+ * 				the board at which the new high score should be set
+ */
 	void updateScore(double score, int board) {
 		scoreList[board] = Double.toString(score);
 	}
 
+/**
+ * Gets high score
+ * @param board
+ * 				the index of the board 
+ * @return
+ * 				the score at index board
+ */
 	String getScore(int board) {
 		return scoreList[board];
 	}
