@@ -185,10 +185,10 @@ public class GameEngine {
 			} else {
 
 				transitionCard = createTransition(ivArr[pairToCompare[0]],
-						new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+						new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 				transitionCard.play();
 				transitionCard = createTransition(ivArr[pairToCompare[1]],
-						new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+						new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 				transitionCard.play();
 			}
 
