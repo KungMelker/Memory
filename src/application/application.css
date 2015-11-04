@@ -46,11 +46,11 @@
 }
 #win
 {
-	-fx-font-size: 120pt;
+	-fx-font-size: 80pt;
 	-fx-text-fill: #c6646a;
 	-fx-fill: #c6646a;
 	-fx-stroke: #4d4d4d;
-	-fx-stroke-width: 2;
+	-fx-stroke-width: 4;
 
 }
 #NewGame {
@@ -109,4 +109,3 @@
 	-fx-mark-highlight-color: grey;
 	-fx-mark-color: black;
 }
-
