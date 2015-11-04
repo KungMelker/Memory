@@ -23,11 +23,17 @@ public class GameEngineTester {
 		GameEngine ge = new GameEngine();
 		ge.calculateScore(8, 200000);
 	}
-	
+
 	@Test (expected = NullPointerException.class)
-	public void testNullcalculateScore() {
+	public void testNullCalculateScore() {
 		GameEngine ge = new GameEngine();
 		ge.calculateScore(8, 0);
-	}	
+	}
+	
+	@Test (expected = Exception.class)
+	public void testDivZeroCalculateScore() {
+		GameEngine ge = new GameEngine();
+		ge.calculateScore(8, 0);
+	}
 	
 }
