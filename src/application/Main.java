@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 /**
  * 
  * @author Sam, Anton, Johan, Melker, Gustav
- * Creates the design of the project.
+ * Creates the design of the application.
  * Adds objects, texts, labels and radiobuttons. 
  */
 
@@ -57,7 +57,7 @@ public class Main extends Application {
 
 		// rightBox
 		/**
-		 * Adds a VBox on the right side of the project.
+		 * Adds a VBox on the right side of the application.
 		 * Adds labels highscore, point, time and tries.
 		 */
 		VBox rightBox = new VBox();
@@ -81,6 +81,11 @@ public class Main extends Application {
 				presentTries);
 
 		// leftBox
+		/**
+		 * Adds a VBox to the left side of the application.
+		 * Adds radiobuttons and labels.
+		 */ 
+		 
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
 		Label memorySize = new Label("Memory Size:\n\n\n\n");
@@ -103,6 +108,10 @@ public class Main extends Application {
 		leftBox.getChildren().addAll(memorySize, pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// bottomBox
+		/**
+		 * Adds a Hbox to the bottom of the application.
+		 * Adds Buttons Rage Quit and New Game.
+		 */
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
@@ -121,6 +130,10 @@ public class Main extends Application {
 		root.setLeft(leftBox);
 		root.setBottom(bottomBox);
 
+		/**
+		 * Adds the name of the application window.
+		 */
+		
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
 
