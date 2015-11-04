@@ -111,7 +111,7 @@ public class GameEngine {
 		return start;
 	}
 
-	long stopTime() {
+	long checkTime() {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
