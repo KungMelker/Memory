@@ -101,7 +101,16 @@ public class GameEngine {
 		return currentScore;
 
 	}
-
+	/**
+	 * Takes in currScore and hiScore and test
+	 * if currScore is bigger than hiScore. 
+	 * returns true or false 
+	 * 
+	 * @param currScore
+	 * @param hiScore
+	 * @return boolean
+	 */
+	
 	boolean compareScore(double currScore, double hiScore) {
 		if (currScore > hiScore) {
 			return true;
