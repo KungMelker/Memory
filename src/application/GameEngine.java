@@ -124,7 +124,7 @@ public class GameEngine {
 		elapsedTime = stop - start;
 		return (long) elapsedTime / 1000;
 	}
-
+	 
 	void initBoard(int row_column) {
 
 		int numCards = (int) Math.pow(row_column, 2);
@@ -142,8 +142,8 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
-
-	int randomCard(int max) {
+	//TODO change to package
+	public int randomCard(int max) {
 		int index = 0;
 		boolean foundFree = false;
 

@@ -30,10 +30,16 @@ public class GameEngineTester {
 		ge.calculateScore(8, 0);
 	}
 	
-	@Test (expected = Exception.class)
+	@Test (expected = ArithmeticException.class)
 	public void testDivZeroCalculateScore() {
 		GameEngine ge = new GameEngine();
 		ge.calculateScore(8, 0);
+	}
+	
+	@Test (expected = NullPointerException.class)
+	public void testTimeRandomCard(){
+		GameEngine ge = new GameEngine();
+		ge.randomCard(2);
 	}
 	
 }
