@@ -210,7 +210,7 @@ public class Main extends Application {
 				double currScore = gameEngine.getCurrentScore();
 				double hiScore = Double.parseDouble(hs.getScore(selectedCase));
 				if(gameEngine.compareScore(currScore, hiScore)){
-				hs.updateScore(gameEngine.getCurrentScore(), row_column);
+				hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
 				highpoint.setText(hs.getScore(selectedCase));
 				hs.writeFile();
 				}
