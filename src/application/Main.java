@@ -213,7 +213,6 @@ public class Main extends Application {
 					if (gameEngine.compareScore(currScore, hiScore)) {
 						hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
 						highpoint.setText(hs.getScore(selectedCase));
-						hs.writeFile();
 					}
 				}
 
