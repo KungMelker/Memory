@@ -6,7 +6,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-
+/**
+ * 
+ * @author Johan
+ *
+ */
 public class HighScore extends GameEngine {
 
 	URL url = getClass().getResource("/savegame/highscore.txt");
@@ -24,9 +28,8 @@ public class HighScore extends GameEngine {
 			for (int i = 0; i < scoreList.length; i++) {
 				scoreList[i] = br.readLine();
 			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
