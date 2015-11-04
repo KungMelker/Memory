@@ -157,7 +157,6 @@ public class Main extends Application {
 			win = false;
 		});
 
-		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.writeFile();
 			primaryStage.close();
@@ -248,7 +247,7 @@ public class Main extends Application {
 
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -274,7 +273,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -297,7 +296,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -320,7 +319,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -343,7 +342,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
