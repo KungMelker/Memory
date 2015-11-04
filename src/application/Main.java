@@ -18,6 +18,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+/**
+ * 
+ * @author Sam, Anton, Johan, Melker, Gustav
+ * Creates the design of the application.
+ * Adds objects, texts, labels and radiobuttons. 
+ */
+
 public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
@@ -49,6 +56,10 @@ public class Main extends Application {
 		topBox.getChildren().addAll(title, subtitle);
 
 		// rightBox
+		/**
+		 * Adds a VBox on the right side of the application.
+		 * Adds labels highscore, point, time and tries.
+		 */
 		VBox rightBox = new VBox();
 		rightBox.setId("rightbox");
 
@@ -70,6 +81,11 @@ public class Main extends Application {
 				presentTries);
 
 		// leftBox
+		/**
+		 * Adds a VBox to the left side of the application.
+		 * Adds radiobuttons and labels.
+		 */ 
+		 
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
 		Label memorySize = new Label("Memory Size:\n\n\n\n");
@@ -92,6 +108,10 @@ public class Main extends Application {
 		leftBox.getChildren().addAll(memorySize, pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// bottomBox
+		/**
+		 * Adds a Hbox to the bottom of the application.
+		 * Adds Buttons Rage Quit and New Game.
+		 */
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
@@ -110,6 +130,10 @@ public class Main extends Application {
 		root.setLeft(leftBox);
 		root.setBottom(bottomBox);
 
+		/**
+		 * Adds the name of the application window.
+		 */
+		
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
 		
@@ -161,7 +185,6 @@ public class Main extends Application {
 			win = false;
 		});
 
-		// TODO - add a save function to sQuit - setOnAction
 		sQuit.setOnAction(event -> {
 			hs.writeFile();
 			primaryStage.close();
@@ -207,7 +230,6 @@ public class Main extends Application {
 					if (gameEngine.compareScore(currScore, hiScore)) {
 						hs.updateScore(gameEngine.getCurrentScore(), selectedCase);
 						highpoint.setText(hs.getScore(selectedCase));
-						hs.writeFile();
 					}
 				}
 
@@ -263,7 +285,7 @@ public class Main extends Application {
 
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -294,7 +316,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -325,7 +347,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -356,7 +378,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
@@ -387,7 +409,7 @@ public class Main extends Application {
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
 			int temp = i;
-			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 			imageView[i].setOnMouseClicked(event -> {
 				gameEngine.getFrontImage(imageView, temp, row_column);
 			});
