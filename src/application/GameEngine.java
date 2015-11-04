@@ -121,7 +121,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * Starts counting in milliseconds from the System.class when mouse is
+	 * Save the current time in milliseconds from the System.class when mouse is
 	 * clicked and sets that value to the variable start.
 	 * 
 	 * @return number of milliseconds.
@@ -132,7 +132,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * Also starts counting in milliseconds and sets that value to the variable
+	 * Save the current time in milliseconds and sets that value to the variable
 	 * stop.
 	 * 
 	 * @return number of milliseconds.
