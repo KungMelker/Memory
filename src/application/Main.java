@@ -43,17 +43,28 @@ public class Main extends Application {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
-		// topBox
-		VBox topBox = new VBox();
-		topBox.setAlignment(Pos.CENTER);
-		topBox.setId("topbox");
+		// topBox and titleBox
+		//titleBox contains name, topBox contains titleBox and logos
+		VBox titleBox = new VBox();
+		titleBox.setAlignment(Pos.CENTER);
+		//titleBox.setId("topbox");
 		Label title = new Label("Memories Lost");
 		Label subtitle = new Label(
 				"Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
 		title.setId("game-title");
 		subtitle.setId("game-subtitle");
+		titleBox.setPadding(new Insets(0,100,0,100));
 
-		topBox.getChildren().addAll(title, subtitle);
+		titleBox.getChildren().addAll(title, subtitle);
+		
+		HBox topBox = new HBox();
+		ImageView logo0 = new ImageView(new Image("/images/sidelogo0.png", 100,100,true,true));
+		ImageView logo1 = new ImageView(new Image("/images/sidelogo1.png",100,100,true,true));
+
+		topBox.getChildren().addAll(logo0,titleBox,logo1);
+		topBox.setAlignment(Pos.CENTER);
+		topBox.setPrefWidth(1000);
+		topBox.setId("topbox");
 
 		// rightBox
 		/**
@@ -204,6 +215,26 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
+					
+			if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
+				gameEngine.startTime();
+				pointresult.setText("0");
+				time.setText("0");
+			} else if (gameEngine.getFoundPairs() == (gameEngine.getCards().length / 2) && !win) {
+				
+				gameEngine.checkTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+				pointresult.setText(Double.toString(gameEngine.calculateScore(row_column,gameEngine.getElapsedTime())));
+				win = true;
+			}
+			else
+			{ if(!win){
+				gameEngine.checkTime();
+				time.setText(Long.toString(gameEngine.timePlayed())+" sec");
+			    }
+			}
+			
+			
 
 			if (!win) {
 				if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
