@@ -36,7 +36,7 @@ public class HighScore extends GameEngine {
 	// writes highscore to file
 	public void writeFile() {
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathname));) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathname,true));) {
 
 			for (int i = 0; i < scoreList.length; i++) {
 				bw.write(scoreList[i]);
