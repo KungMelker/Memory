@@ -84,16 +84,22 @@ public class GameEngine {
 	 * @param eTime
 	 * @return
 	 */
-	double calculateScore(int row_column, long eTime) {
+
+	//TODO - change visibility 
+	public double calculateScore(int row_column, long eTime){
+		
+		
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
+		
 		double temp_score = ((20000 / ((eTime/1000) + tries + evener)));
-
+		
 		BigDecimal score = new BigDecimal(temp_score);
 
 		score = score.setScale(decimals, RoundingMode.HALF_UP);
 		currentScore = score.doubleValue();
 
+				
 		return currentScore;
 
 	}
