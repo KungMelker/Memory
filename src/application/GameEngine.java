@@ -78,73 +78,73 @@ public class GameEngine {
 	// ---< end of getters and setters >---
 
 	/**
-	 * Calculates score from time and tries.
-	 * Takes in value from row_column to calculate handicap and score.
+	 * Calculates score from time and tries. Takes in value from row_column to
+	 * calculate handicap and score.
+	 * 
 	 * @param row_column
 	 * @param eTime
 	 * @return
 	 */
 
-	//TODO - change visibility 
-	public double calculateScore(int row_column, long eTime){
-		
-		
+	double calculateScore(int row_column, long eTime) {
+
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
-		
-		double temp_score = ((20000 / ((eTime/1000)) + tries + evener));
-		
+
+		double temp_score = ((20000 / ((eTime / 1000)) + tries + evener));
+
 		BigDecimal score = new BigDecimal(temp_score);
 
 		score = score.setScale(decimals, RoundingMode.HALF_UP);
 		currentScore = score.doubleValue();
 
-				
 		return currentScore;
 
 	}
-	
-	boolean compareScore(double currScore, double hiScore)
-	{
-		if (currScore > hiScore){
-		return true;
-		}else{
-		return false;	
+
+	boolean compareScore(double currScore, double hiScore) {
+		if (currScore > hiScore) {
+			return true;
+		} else {
+			return false;
 		}
-		
+
 	}
-	
+
 	/**
-	 * Starts counting in milliseconds from the System.class
-	 * when mouse is clicked and sets that value to the variable start.
+	 * Starts counting in milliseconds from the System.class when mouse is
+	 * clicked and sets that value to the variable start.
+	 * 
 	 * @return number of milliseconds.
 	 */
 	long startTime() {
 		start = System.currentTimeMillis();
 		return start;
 	}
-	
+
 	/**
-	 * Also starts counting in milliseconds
-	 * and sets that value to the variable stop.
+	 * Also starts counting in milliseconds and sets that value to the variable
+	 * stop.
+	 * 
 	 * @return number of milliseconds.
 	 */
 	long checkTime() {
 		stop = System.currentTimeMillis();
 		return stop;
 	}
-	
+
 	/**
-	 * The variable elapsedTime gets the difference value
-	 * from subtracting the variables stop and start.
-	 * elapsedTime is then divided by 1000 to return its value in seconds and not milliseconds.
+	 * The variable elapsedTime gets the difference value from subtracting the
+	 * variables stop and start. elapsedTime is then divided by 1000 to return
+	 * its value in seconds and not milliseconds.
+	 * 
 	 * @return the difference of stop and start in elapsedTime.
 	 */
 	long timePlayed() {
 		elapsedTime = stop - start;
 		return (long) elapsedTime / 1000;
 	}
-	 
+
 	void initBoard(int row_column) {
 
 		int numCards = (int) Math.pow(row_column, 2);
@@ -162,8 +162,8 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
-	//TODO change to package
-	public int randomCard(int max) {
+
+	int randomCard(int max) {
 		int index = 0;
 		boolean foundFree = false;
 
@@ -192,7 +192,7 @@ public class GameEngine {
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
 
-		} else if(index != pairToCompare[0]){
+		} else if (index != pairToCompare[0]) {
 
 			pairToCompare[1] = index;
 			ivArr[index].setImage(cards[index].getFront());
@@ -213,16 +213,17 @@ public class GameEngine {
 			}
 
 			tries++;
-			
+
 			pairToCompare[0] = -1;
 			pairToCompare[1] = -1;
 
 		}
 
 	}
-	
+
 	/**
 	 * Shows the cards for one seconds then fade out.
+	 * 
 	 * @param iv
 	 * @param img
 	 * @return
