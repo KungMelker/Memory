@@ -4,6 +4,14 @@ import javafx.scene.image.Image;
 
 public class Card {
 
+	/**
+	 * Creates cards and reads images.
+	 * 
+	 *@param value the value of the image. 
+	 *@param size the size of the image.
+	 *
+	 */
+	
 	Image front;
 	int size;
 	int value;
