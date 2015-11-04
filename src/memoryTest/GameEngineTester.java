@@ -17,11 +17,16 @@ import application.GameEngine;
 public class GameEngineTester {
 
 	
-	
 	@Test(timeout=10)
-	public void testcalculateScore() {
+	public void testTimeCalculateScore() {
 		GameEngine ge = new GameEngine();
 		ge.calculateScore(8, 200000);
+	}
+	
+	@Test
+	public void testMustBeCalculateScore() {
+		GameEngine ge = new GameEngine();
+		assertEquals("Score Must be", 10100f, ge.calculateScore(2, 2000), 50.0f);
 	}
 
 	@Test (expected = NullPointerException.class)
