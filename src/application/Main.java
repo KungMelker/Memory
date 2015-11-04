@@ -18,6 +18,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+/**
+ * 
+ * @author Sam, Anton, Johan, Melker, Gustav
+ * Creates the design of the project.
+ * Adds objects, texts, labels and radiobuttons. 
+ */
+
 public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
@@ -49,6 +56,10 @@ public class Main extends Application {
 		topBox.getChildren().addAll(title, subtitle);
 
 		// rightBox
+		/**
+		 * Adds a VBox on the right side of the project.
+		 * Adds labels highscore, point, time and tries.
+		 */
 		VBox rightBox = new VBox();
 		rightBox.setId("rightbox");
 
