@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 /**
  * 
  * @author Sam, Anton, Johan, Melker, Gustav
- * Creates the design of the project.
+ * Creates the design of the application.
  * Adds objects, texts, labels and radiobuttons. 
  */
 
@@ -57,7 +57,7 @@ public class Main extends Application {
 
 		// rightBox
 		/**
-		 * Adds a VBox on the right side of the project.
+		 * Adds a VBox on the right side of the application.
 		 * Adds labels highscore, point, time and tries.
 		 */
 		VBox rightBox = new VBox();
@@ -81,6 +81,11 @@ public class Main extends Application {
 				presentTries);
 
 		// leftBox
+		/**
+		 * Adds a VBox to the left side of the application.
+		 * Adds radiobuttons and labels.
+		 */ 
+		 
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
 		Label memorySize = new Label("Memory Size:\n\n\n\n");
@@ -103,6 +108,10 @@ public class Main extends Application {
 		leftBox.getChildren().addAll(memorySize, pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
 
 		// bottomBox
+		/**
+		 * Adds a Hbox to the bottom of the application.
+		 * Adds Buttons Rage Quit and New Game.
+		 */
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
 		bottomBox.setPadding(new Insets(20));
@@ -121,9 +130,13 @@ public class Main extends Application {
 		root.setLeft(leftBox);
 		root.setBottom(bottomBox);
 
+		/**
+		 * Adds the name of the application window.
+		 */
+		
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
-
+		
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
@@ -174,29 +187,19 @@ public class Main extends Application {
 		});
 
 		pairs_2.setOnAction(event -> {
-
 			row_column = 2;
-
 		});
-
 		pairs_4.setOnAction(event -> {
 			row_column = 4;
-
 		});
-
 		pairs_6.setOnAction(event -> {
 			row_column = 6;
-
 		});
-
 		pairs_8.setOnAction(event -> {
 			row_column = 8;
-
 		});
-
 		pairs_10.setOnAction(event -> {
 			row_column = 10;
-
 		});
 
 		root.setOnMouseClicked(event -> {
@@ -236,6 +239,12 @@ public class Main extends Application {
 
 	}
 
+	/**
+	 * Adds a Text label indicating "Won" conditition to the BorderPane's
+	 * CenterBox
+	 * 
+	 * @see Text
+	 */
 	private void winText() {
 
 		Text won = new Text("Fatality!");
@@ -247,12 +256,28 @@ public class Main extends Application {
 
 	}
 
+	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
+	 * Returns a GridPane for the 2x2 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns. The method fills the array with the
+	 * requested number of images, and adds action listeners and event handlers.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_2() {
 
 		GridPane tempCenter = new GridPane();
-		tempCenter.setPadding(new Insets(2));
-		tempCenter.setHgap(2);
-		tempCenter.setVgap(2);
+
+		/**
+		 * Creates an ImageView array with the size the number of columns raised
+		 * to the power of two.
+		 * 
+		 * @param row_column
+		 * @see ImageView
+		 */
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 
@@ -274,12 +299,19 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
+	 * Returns a GridPane for the 4x4 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_4() {
 
 		GridPane tempCenter = new GridPane();
-		tempCenter.setPadding(new Insets(2));
-		tempCenter.setHgap(2);
-		tempCenter.setVgap(2);
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
 		for (int i = 0; i < imageView.length; i++) {
@@ -300,6 +332,16 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
+	 * Returns a GridPane for the 6x6 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_6() {
 
 		GridPane tempCenter = new GridPane();
@@ -323,6 +365,15 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the game board.
+	 * <p> Returns a GridPane for the 8x8 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_8() {
 
 		GridPane tempCenter = new GridPane();
@@ -346,6 +397,16 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
+	/**
+	 * Returns a GridPane for the game board.
+	 * <p>
+	 * Returns a GridPane for the 10x10 game board, that is then painted in the
+	 * center of the BorderPane. The GridPane contains an ImageView array with
+	 * the specified number of columns.
+	 * 
+	 * @return GridPane
+	 * @see GridPane
+	 */
 	public GridPane center_10() {
 
 		GridPane tempCenter = new GridPane();
