@@ -13,6 +13,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -101,8 +102,13 @@ public class Main extends Application {
 		Button newGame = new Button("New Game");
 		newGame.setPrefWidth(150);
 		newGame.setId("NewGame");
+		
+		Button testButton=new Button("test");
+		testButton.setOnAction(event ->{
+			root.setCenter(testing());
+		});
 
-		bottomBox.getChildren().addAll(newGame, sQuit);
+		bottomBox.getChildren().addAll(testButton,newGame, sQuit);
 
 		root.setTop(topBox);
 		root.setRight(rightBox);
@@ -213,13 +219,40 @@ public class Main extends Application {
 
 	private void winText()
 	{
+		
+		Label won = new Label("Fatality!");
+		won.setMaxWidth(380);
+		won.setMaxHeight(380);
+		won.setAlignment(Pos.BASELINE_CENTER);
 
-		Text won = new Text("Fatality!");
 		won.setId("win");
 		won.setRotate(30);
+
 		GridPane.setConstraints(won, 0, 0, 10, 10);
 		centerBox.getChildren().add(won);
 		
+	}
+	
+	public GridPane testing(){
+		GridPane fp = new GridPane();
+		fp.setId("fp");
+		ImageView iv[] = new ImageView[50];
+
+		
+		for (int i = 0; i < 50; i++) {
+			iv[i]=new ImageView(new Image("/abstract/" + Integer.toString(i) + ".png"));
+			int temp = i;
+			iv[i].setOnMouseClicked(event ->{gameEngine.getFrontImage(imageView, temp, row_column);});
+			int index = i;
+			for (int k = 0; k < row_column; k++)
+				for (int j = 0; j < row_column; j++) {
+					
+					fp.add(iv[index], j, k);
+					index++;
+				}
+			//fp.getChildren().add(iv[i]);
+		}
+		return fp;
 	}
 	
 	public GridPane center_2() {
@@ -230,8 +263,11 @@ public class Main extends Application {
 		tempCenter.setVgap(2);
 
 		imageView = new ImageView[(int) Math.pow(row_column, 2)];
+		
 		for (int i = 0; i < imageView.length; i++) {
+			int temp = i;
 			imageView[i] = new ImageView(new Image("/abstract/50.png", 400 / row_column, 400 / row_column, true, true));
+			imageView[i].setOnMouseClicked(event ->{gameEngine.getFrontImage(imageView, temp, row_column);});
 		}
 
 		int index = 0;
