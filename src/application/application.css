@@ -12,32 +12,30 @@
 
 .menu {
 	-fx-background-color: #4d4d4d;
-
 }
 .menu:hover {
 	-fx-background-color: #bdde71;
 }
 .menu .label {
-	-fx-text-fill: #c6646a;
 	-fx-font-size: 14pt;
 	-fx-text-fill: #bdde71;
-	-fx-font-weight: bold;
 }
 .menu-bar {
 	-fx-background-color: #4d4d4d;
 }
 .menu-bar .label {
-	-fx-font-size: 14 pt;
+	-fx-font-size: 12pt;
 	-fx-font-family: "Segoe UI Light";
-	-fx-text-fill: #dedede;
+	-fx-text-fill: #f0f0f0;
 }
 .menu-item {
 	-fx-text-fill: #bdde71;
+		-fx-background-color: #4d4d4d;
 }
-
+.menu-item:hover{	-fx-background-color: #bdde71;}
 #game-title {
 	-fx-font-size: 70px;
-	-fx-font-family: "Segoe UI Light","Helvetica", "Ar Destine", "Courier New";
+	-fx-font-family: "Segoe UI Light", "Helvetica", "Ar Destine", "Courier New";
 	-fx-text-fill: #bdde71;
 	-fx-font-weight: bolder;
 	-fx-text-fill: #c6646a;
@@ -104,8 +102,8 @@
 	-fx-control-inner-background: #4d4d4d;
 	-fx-border-color: #4d4d4d;
 }
-.progress-bar >.content {
-    -fx-background-color: #4d4d4d;
+.progress-bar > .content {
+	-fx-background-color: #4d4d4d;
 }
 #win {
 	-fx-font-size: 60pt;
@@ -118,7 +116,7 @@
 }
 #NewGame {
 	-fx-font-size: 16pt;
-	-fx-font-family: "Segoe UI Light","Helvetica", "Courier New";
+	-fx-font-family: "Segoe UI Light", "Helvetica", "Courier New";
 	-fx-base: #a6dc7f;
 	-fx-text-fill: #4d4d4d;
 	-fx-background-insets: 0;
@@ -128,7 +126,7 @@
 }
 #QuitSave {
 	-fx-font-size: 16pt;
-	-fx-font-family: "Segoe UI Light","Helvetica", "Courier New";
+	-fx-font-family: "Segoe UI Light", "Helvetica", "Courier New";
 	-fx-base: #c6646a;
 	-fx-text-fill: #4d4d4d;
 	-fx-background-insets: 0;

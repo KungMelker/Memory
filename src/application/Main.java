@@ -84,7 +84,11 @@ public class Main extends Application {
 		primaryStage.setTitle("Memory v0.3 for Dummies");
 	}
 
-	public void addGameBoardEvents() {
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	private void addGameBoardEvents() {
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
 
@@ -175,10 +179,6 @@ public class Main extends Application {
 		});
 	}
 
-	public static void main(String[] args) {
-		launch(args);
-	}
-
 	/**
 	 * Adds a Text label indicating "Won" condition to the BorderPane's
 	 * CenterBox
@@ -199,15 +199,15 @@ public class Main extends Application {
 	/**
 	 * Returns a GridPane for the game board.
 	 * <p>
-	 * Returns a GridPane for the 2x2 game board, that is then painted in the
-	 * center of the BorderPane. The GridPane contains an ImageView array with
-	 * the specified number of columns. The method fills the array with the
+	 * Returns a GridPane for the game board, that is then painted in the center
+	 * of the BorderPane. The GridPane contains an ImageView array with the
+	 * specified number of columns. The method fills the array with the
 	 * requested number of images, and adds action listeners and event handlers.
 	 * 
 	 * @return GridPane
 	 * @see GridPane
 	 */
-	public GridPane center() {
+	private GridPane center() {
 
 		GridPane tempCenter = new GridPane();
 
@@ -238,31 +238,23 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
-	/**
-	 * Returns a GridPane for the game board.
-	 * <p>
-	 * Returns a GridPane for the 4x4 game board, that is then painted in the
-	 * center of the BorderPane. The GridPane contains an ImageView array with
-	 * the specified number of columns.
-	 * 
-	 * @return GridPane
-	 * @see GridPane
-	 */
+	// still not fully implemented
 
 	private MenuBar addMenuBar() {
 		MenuBar menuBar = new MenuBar();
 		Menu menuGame = new Menu("Game");
+		MenuItem newGa = new MenuItem("New Game");
 		MenuItem exit = new MenuItem("Exit");
 		exit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent t) {
 				System.exit(0);
 			}
 		});
-		menuGame.getItems().addAll(new SeparatorMenuItem(), exit);
+		menuGame.getItems().addAll(newGa, new SeparatorMenuItem(), exit);
 		Menu menuSettings = new Menu("Settings");
-		Menu menuExit = new Menu("Exit");
+		Menu menuHelp = new Menu("Help");
 
-		menuBar.getMenus().addAll(menuGame, menuSettings, menuExit);
+		menuBar.getMenus().addAll(menuGame, menuSettings, menuHelp);
 		return menuBar;
 	}
 
