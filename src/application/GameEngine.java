@@ -21,6 +21,7 @@ public class GameEngine {
 	long start, stop, elapsedTime;
 	int tries = 0;
 	int foundPairs = 0;
+	
 	Random rand = new Random();
 
 	public double getCurrentScore() {
@@ -153,14 +154,12 @@ public class GameEngine {
 		elapsedTime = stop - start;
 		return (long) elapsedTime / 1000;
 	}
-	
+
 	/**
-	 * Sets size of bord takes param row_column 
-	 * to set the bord to right size.
+	 * Sets size of bord takes param row_column to set the bord to right size.
 	 * 
 	 * @param row_column
 	 */
-	
 
 	void initBoard(int row_column) {
 
@@ -179,10 +178,11 @@ public class GameEngine {
 			cards[i] = cardsTemp[randomCard(cardsTemp.length)];
 		}
 	}
-	
+
 	/**
-	 * takes max value that is length of array cards.
-	 * and returns index of the random taken card.
+	 * takes max value that is length of array cards. and returns index of the
+	 * random taken card.
+	 * 
 	 * @param max
 	 * @return index.
 	 * 
@@ -202,10 +202,11 @@ public class GameEngine {
 
 		return index;
 	}
+
 	/**
 	 * compare cards to see if they are a matching pair.
 	 * 
-	 * @return true if match / false if not. 
+	 * @return true if match / false if not.
 	 */
 
 	boolean compareCards() {
@@ -213,16 +214,24 @@ public class GameEngine {
 		return (cards[pairToCompare[0]].getValue() == cards[pairToCompare[1]].getValue() ? true : false);
 	}
 
+	/**
+	 * Schows the right backside of the cards and fade away wrong pairs.
+	 * 
+	 * @param ivArr
+	 * @param index
+	 * @param row_column
+	 */
+
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
 		SequentialTransition transitionCard;
 
-		if (pairToCompare[0] == -1) {
+		if (pairToCompare[0] == -1 ) {
 
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
 
-		} else if (index != pairToCompare[0]) {
+		} else if (index != pairToCompare[0] ) {
 
 			pairToCompare[1] = index;
 			ivArr[index].setImage(cards[index].getFront());
@@ -232,6 +241,8 @@ public class GameEngine {
 				ivArr[pairToCompare[0]].setDisable(true);
 				ivArr[pairToCompare[1]].setDisable(true);
 				foundPairs++;
+			
+			
 			} else {
 
 				transitionCard = createTransition(ivArr[pairToCompare[0]],
