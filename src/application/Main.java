@@ -20,9 +20,8 @@ import javafx.scene.text.Text;
 
 /**
  * 
- * @author Sam, Anton, Johan, Melker, Gustav, Simon.
- * Creates the design of the application.
- * Adds objects, texts, labels and radiobuttons. 
+ * @author Sam, Anton, Johan, Melker, Gustav, Simon. Creates the design of the
+ *         application. Adds objects, texts, labels and radiobuttons.
  */
 
 public class Main extends Application {
@@ -44,48 +43,48 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 
 		// topBox and titleBox
-		//titleBox contains name, topBox contains titleBox and logos
+		// titleBox contains name, topBox contains titleBox and logos
 		VBox titleBox = new VBox();
 		titleBox.setAlignment(Pos.CENTER);
-		//titleBox.setId("topbox");
-		Label title = new Label("Memories Lost");
+		// titleBox.setId("topbox");
+		Text title = new Text("MEMORIES LOST");
 		Label subtitle = new Label(
 				"Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
 		title.setId("game-title");
 		subtitle.setId("game-subtitle");
-		titleBox.setPadding(new Insets(0,100,0,100));
+		titleBox.setPadding(new Insets(0, 100, 0, 100));
 
 		titleBox.getChildren().addAll(title, subtitle);
-		
-		HBox topBox = new HBox();
-		ImageView logo0 = new ImageView(new Image("/images/sidelogo0.png", 100,100,true,true));
-		ImageView logo1 = new ImageView(new Image("/images/sidelogo1.png",100,100,true,true));
 
-		topBox.getChildren().addAll(logo0,titleBox,logo1);
+		HBox topBox = new HBox();
+		ImageView logo0 = new ImageView(new Image("/images/sidelogo0.png", 100, 100, true, true));
+		ImageView logo1 = new ImageView(new Image("/images/sidelogo1.png", 100, 100, true, true));
+
+		topBox.getChildren().addAll(logo0, titleBox, logo1);
 		topBox.setAlignment(Pos.CENTER);
 		topBox.setPrefWidth(1000);
 		topBox.setId("topbox");
 
 		// rightBox
 		/**
-		 * Adds a VBox on the right side of the application.
-		 * Adds labels highscore, point, time and tries.
+		 * Adds a VBox on the right side of the application. Adds labels
+		 * highscore, point, time and tries.
 		 */
 		VBox rightBox = new VBox();
 		rightBox.setId("rightbox");
 
 		Label stats = new Label("Player Stats:\n\n\n");
 		stats.setAlignment(Pos.TOP_CENTER);
-		Label highscore = new Label("Highscore");
+		Label highscore = new Label("HIGHSCORE");
 		Label highpoint = new Label("0");
 
-		Label points = new Label("Points");
+		Label points = new Label("POINTS");
 		Label pointresult = new Label("0");
 
-		Label timeLabel = new Label("Time");
+		Label timeLabel = new Label("TIME");
 		Label time = new Label("0");
 
-		Label tries = new Label("Tries");
+		Label tries = new Label("TRIES");
 		Label presentTries = new Label("0");
 
 		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
@@ -93,12 +92,12 @@ public class Main extends Application {
 
 		// leftBox
 		/**
-		 * Adds a VBox to the left side of the application.
-		 * Adds radiobuttons and labels.
-		 */ 
+		 * Adds a VBox to the left side of the application. Adds radiobuttons
+		 * and labels.
+		 */
 		VBox leftBox = new VBox(5);
 		leftBox.setId("leftbox");
-		Label memorySize = new Label("Memory Size:\n\n\n\n");
+		Label memorySize = new Label("Estimated size\nof your\n memory:\n\n");
 		memorySize.setAlignment(Pos.TOP_CENTER);
 		ToggleGroup pairsGroup = new ToggleGroup();
 		RadioButton pairs_2 = new RadioButton("2 x 2");
@@ -119,8 +118,8 @@ public class Main extends Application {
 
 		// bottomBox
 		/**
-		 * Adds a Hbox to the bottom of the application.
-		 * Adds Buttons Rage Quit and New Game.
+		 * Adds a Hbox to the bottom of the application. Adds Buttons Rage Quit
+		 * and New Game.
 		 */
 		HBox bottomBox = new HBox(50);
 		bottomBox.setAlignment(Pos.TOP_CENTER);
@@ -145,7 +144,7 @@ public class Main extends Application {
 		 */
 		primaryStage.show();
 		primaryStage.setTitle("Memory v0.2 for Dummies");
-		
+
 		newGame.setOnAction(event -> {
 
 			centerBox.getChildren().clear();
@@ -214,7 +213,7 @@ public class Main extends Application {
 
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
-					
+
 			if (!win) {
 				if (gameEngine.getFoundPairs() == 0 && gameEngine.getStart() == 0) {
 					gameEngine.startTime();
@@ -257,7 +256,7 @@ public class Main extends Application {
 	 */
 	private void winText() {
 
-		Text won = new Text("Fatality!");
+		Text won = new Text("FATALITY!");
 		won.setId("win");
 		won.setRotate(30);
 
@@ -376,7 +375,8 @@ public class Main extends Application {
 
 	/**
 	 * Returns a GridPane for the game board.
-	 * <p> Returns a GridPane for the 8x8 game board, that is then painted in the
+	 * <p>
+	 * Returns a GridPane for the 8x8 game board, that is then painted in the
 	 * center of the BorderPane. The GridPane contains an ImageView array with
 	 * the specified number of columns.
 	 * 

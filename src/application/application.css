@@ -9,8 +9,14 @@
 	-fx-font-size: 70px;
 	-fx-font-family: "Helvetica", "Ar Destine", "Courier New";
 	-fx-text-fill: #bdde71;
-	-fx-font-smoothing-type: lcd;
+	-fx-font-weight: bolder;
+	
+	-fx-text-fill: #c6646a;
+	-fx-fill: #bdde71;
+	-fx-stroke: #f0f0f0;
+	-fx-stroke-width: 4;
 }
+
 #game-subtitle {
 	-fx-text-fill: #d0524e;
 	-fx-font-size: 12pt;
@@ -20,11 +26,11 @@
 	-fx-background-color: #4d4d4d;
 	-fx-text-fill: #4d4d4d;
 }
-#logo{
-		-fx-background-color: #4d4d4d;
+#logo {
+	-fx-background-color: #4d4d4d;
 }
-#centerBox{
-	-fx-background-color: #f0f0f0;
+#centerBox {
+
 }
 #bottombox {
 	-fx-background-color: #4d4d4d;
@@ -36,7 +42,7 @@
 	-fx-border-width: 20px;
 	-fx-border-color: #4d4d4d;
 	-fx-padding: 20px;
-	-fx-background-color:#87d9da;
+	-fx-background-color: #87d9da;
 }
 #rightbox {
 	-fx-border-style: solid;
@@ -44,20 +50,18 @@
 	-fx-border-color: #4d4d4d;
 	-fx-padding: 20px;
 	-fx-background-color: #a6dc7f
-
 }
 .label {
 	-fx-text-fill: #4d4d4d;
 	-fx-text-alignment: center;
 }
-#win
-{
-	-fx-font-size: 80pt;
+#win {
+	-fx-font-size: 60pt;
 	-fx-text-fill: #c6646a;
+	-fx-font-weight: bold;
 	-fx-fill: #c6646a;
 	-fx-stroke: #4d4d4d;
 	-fx-stroke-width: 4;
-
 }
 #NewGame {
 	-fx-font-size: 16pt;
