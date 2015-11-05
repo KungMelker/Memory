@@ -84,7 +84,7 @@ public class GameEngine {
 	 * 
 	 * @param row_column
 	 * @param eTime
-	 * @return
+	 * @return double
 	 */
 
 	double calculateScore(int row_column, long eTime) {
@@ -160,7 +160,6 @@ public class GameEngine {
 	 * 
 	 * @param row_column
 	 */
-
 	void initBoard(int row_column) {
 
 		int numCards = (int) Math.pow(row_column, 2);
@@ -187,7 +186,6 @@ public class GameEngine {
 	 * @return index.
 	 * 
 	 */
-
 	int randomCard(int max) {
 		int index = 0;
 		boolean foundFree = false;
@@ -208,7 +206,6 @@ public class GameEngine {
 	 * 
 	 * @return true if match / false if not.
 	 */
-
 	boolean compareCards() {
 
 		return (cards[pairToCompare[0]].getValue() == cards[pairToCompare[1]].getValue() ? true : false);
@@ -221,7 +218,6 @@ public class GameEngine {
 	 * @param index
 	 * @param row_column
 	 */
-
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
 		SequentialTransition transitionCard;

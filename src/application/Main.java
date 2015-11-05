@@ -2,13 +2,20 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,184 +40,51 @@ public class Main extends Application {
 	int row_column;
 	ImageView imageView[];
 	boolean win = false;
+	// VBox addBottomBox = new BottomBox();
+
+	// needs to be global? Should be protected ints/longs etc with
+	// getters/setters
+	private Text presentTries = new Text();
+	private Text pointresult = new Text();
+	private Text time = new Text();
+	private Text highpoint = new Text();
+	private Button sQuit = new Button();
+	private Button newGame = new Button();
+	private BorderPane root = new BorderPane();
 
 	@Override
 	public void start(Stage primaryStage) {
-
-		BorderPane root = new BorderPane();
-		Scene scene = new Scene(root, 1000, 700);
+		MenuBar menuBar = addMenuBar();
+		// BorderPane root = new BorderPane();
+		// Scene scene = new Scene(root, 1000, 700);
+		Scene scene = new Scene(new VBox());
+		((VBox) scene.getRoot()).getChildren().addAll(menuBar, root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
 		// topBox and titleBox
-		// titleBox contains name, topBox contains titleBox and logos
-		VBox titleBox = new VBox();
-		titleBox.setAlignment(Pos.CENTER);
-		// titleBox.setId("topbox");
-		Text title = new Text("MEMORIES LOST");
-		Label subtitle = new Label(
-				"Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
-		title.setId("game-title");
-		subtitle.setId("game-subtitle");
-		titleBox.setPadding(new Insets(0, 100, 0, 100));
-
-		titleBox.getChildren().addAll(title, subtitle);
-
-		HBox topBox = new HBox();
-		ImageView logo0 = new ImageView(new Image("/images/sidelogo0.png", 100, 100, true, true));
-		ImageView logo1 = new ImageView(new Image("/images/sidelogo1.png", 100, 100, true, true));
-
-		topBox.getChildren().addAll(logo0, titleBox, logo1);
-		topBox.setAlignment(Pos.CENTER);
-		topBox.setPrefWidth(1000);
-		topBox.setId("topbox");
-
-		// rightBox
-		/**
-		 * Adds a VBox on the right side of the application. Adds labels
-		 * highscore, point, time and tries.
-		 */
-		VBox rightBox = new VBox();
-		rightBox.setId("rightbox");
-
-		Label stats = new Label("Player Stats:\n\n\n");
-		stats.setAlignment(Pos.TOP_CENTER);
-		Label highscore = new Label("HIGHSCORE");
-		Label highpoint = new Label("0");
-
-		Label points = new Label("POINTS");
-		Label pointresult = new Label("0");
-
-		Label timeLabel = new Label("TIME");
-		Label time = new Label("0");
-
-		Label tries = new Label("TRIES");
-		Label presentTries = new Label("0");
-
-		rightBox.getChildren().addAll(stats, highscore, highpoint, points, pointresult, timeLabel, time, tries,
-				presentTries);
-
-		// leftBox
-		/**
-		 * Adds a VBox to the left side of the application. Adds radiobuttons
-		 * and labels.
-		 */
-		VBox leftBox = new VBox(5);
-		leftBox.setId("leftbox");
-		Label memorySize = new Label("Estimated size\nof your\n memory:\n\n");
-		memorySize.setAlignment(Pos.TOP_CENTER);
-		ToggleGroup pairsGroup = new ToggleGroup();
-		RadioButton pairs_2 = new RadioButton("2 x 2");
-		RadioButton pairs_4 = new RadioButton("4 x 4");
-		RadioButton pairs_6 = new RadioButton("6 x 6");
-		RadioButton pairs_8 = new RadioButton("8 x 8");
-		RadioButton pairs_10 = new RadioButton("10 x 10");
-
-		pairs_2.setToggleGroup(pairsGroup);
-		pairs_4.setToggleGroup(pairsGroup);
-		pairs_6.setToggleGroup(pairsGroup);
-		pairs_8.setToggleGroup(pairsGroup);
-		pairs_10.setToggleGroup(pairsGroup);
-		pairs_2.setSelected(true);
-		row_column = 2;
-
-		leftBox.getChildren().addAll(memorySize, pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
-
-		// bottomBox
-		/**
-		 * Adds a Hbox to the bottom of the application. Adds Buttons Rage Quit
-		 * and New Game.
-		 */
-		HBox bottomBox = new HBox(50);
-		bottomBox.setAlignment(Pos.TOP_CENTER);
-		bottomBox.setPadding(new Insets(20));
-		bottomBox.setId("bottombox");
-		Button sQuit = new Button("Rage Quit");
-		sQuit.setPrefWidth(150);
-		sQuit.setId("QuitSave");
-		Button newGame = new Button("New Game");
-		newGame.setPrefWidth(150);
-		newGame.setId("NewGame");
-
-		bottomBox.getChildren().addAll(newGame, sQuit);
+		HBox topBox = addTitleBox();
+		VBox rightBox = addRight();
+		VBox leftBox = addLeft();
+		VBox progress = addBottomBox();
 
 		root.setTop(topBox);
 		root.setRight(rightBox);
 		root.setLeft(leftBox);
-		root.setBottom(bottomBox);
+		root.setBottom(progress);
+
+		// adds the action listeners
+		addActionListenersToBottomButton();
+		addGameBoardEvents();
 
 		/**
 		 * Adds the name of the application window.
 		 */
 		primaryStage.show();
-		primaryStage.setTitle("Memory v0.2 for Dummies");
+		primaryStage.setTitle("Memory v0.3 for Dummies");
+	}
 
-		newGame.setOnAction(event -> {
-
-			centerBox.getChildren().clear();
-			switch (row_column) {
-			case 2:
-				centerBox = center_2();
-				selectedCase = 0;
-				highpoint.setText(hs.getScore(0));
-				break;
-
-			case 4:
-				centerBox = center_4();
-				selectedCase = 1;
-				highpoint.setText(hs.getScore(1));
-				break;
-
-			case 6:
-				centerBox = center_6();
-				selectedCase = 2;
-				highpoint.setText(hs.getScore(2));
-				break;
-
-			case 8:
-				centerBox = center_8();
-				selectedCase = 3;
-				highpoint.setText(hs.getScore(3));
-				break;
-
-			default:
-				centerBox = center_10();
-				selectedCase = 4;
-				highpoint.setText(hs.getScore(4));
-				break;
-			}
-			centerBox.setAlignment(Pos.CENTER);
-			centerBox.setId("centerBox");
-			root.setCenter(centerBox);
-			gameEngine.initBoard(row_column);
-			gameEngine.setTries(0);
-			gameEngine.setFoundPairs(0);
-			gameEngine.setStart(0);
-			gameEngine.setCurrentScore(0);
-			win = false;
-		});
-
-		sQuit.setOnAction(event -> {
-			hs.writeFile();
-			primaryStage.close();
-		});
-
-		pairs_2.setOnAction(event -> {
-			row_column = 2;
-		});
-		pairs_4.setOnAction(event -> {
-			row_column = 4;
-		});
-		pairs_6.setOnAction(event -> {
-			row_column = 6;
-		});
-		pairs_8.setOnAction(event -> {
-			row_column = 8;
-		});
-		pairs_10.setOnAction(event -> {
-			row_column = 10;
-		});
-
+	public void addGameBoardEvents() {
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
 
@@ -248,15 +122,72 @@ public class Main extends Application {
 
 	}
 
+	private void addActionListenersToBottomButton() {
+		newGame.setOnAction(event -> {
+
+			centerBox.getChildren().clear();
+			switch (row_column) {
+			case 2:
+				centerBox = center();
+				selectedCase = 0;
+				highpoint.setText(hs.getScore(0));
+				break;
+
+			case 4:
+				centerBox = center();
+				selectedCase = 1;
+				highpoint.setText(hs.getScore(1));
+				break;
+
+			case 6:
+				centerBox = center();
+				selectedCase = 2;
+				highpoint.setText(hs.getScore(2));
+				break;
+
+			case 8:
+				centerBox = center();
+				selectedCase = 3;
+				highpoint.setText(hs.getScore(3));
+				break;
+
+			default:
+				centerBox = center();
+				selectedCase = 4;
+				highpoint.setText(hs.getScore(4));
+				break;
+			}
+			centerBox.setAlignment(Pos.CENTER);
+			centerBox.setId("centerBox");
+			root.setCenter(centerBox);
+			gameEngine.initBoard(row_column);
+			gameEngine.setTries(0);
+			gameEngine.setFoundPairs(0);
+			gameEngine.setStart(0);
+			gameEngine.setCurrentScore(0);
+			win = false;
+		});
+
+		sQuit.setOnAction(event -> {
+			hs.writeFile();
+			// primaryStage.close();
+			System.exit(0);
+		});
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 	/**
-	 * Adds a Text label indicating "Won" conditition to the BorderPane's
+	 * Adds a Text label indicating "Won" condition to the BorderPane's
 	 * CenterBox
 	 * 
 	 * @see Text
 	 */
 	private void winText() {
 
-		Text won = new Text("FATALITY!");
+		Text won = new Text("MERGE\nCOMPLETE");
 		won.setId("win");
 		won.setRotate(30);
 
@@ -276,7 +207,7 @@ public class Main extends Application {
 	 * @return GridPane
 	 * @see GridPane
 	 */
-	public GridPane center_2() {
+	public GridPane center() {
 
 		GridPane tempCenter = new GridPane();
 
@@ -317,129 +248,159 @@ public class Main extends Application {
 	 * @return GridPane
 	 * @see GridPane
 	 */
-	public GridPane center_4() {
 
-		GridPane tempCenter = new GridPane();
-
-		imageView = new ImageView[(int) Math.pow(row_column, 2)];
-		for (int i = 0; i < imageView.length; i++) {
-			int temp = i;
-			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
-			imageView[i].setOnMouseClicked(event -> {
-				gameEngine.getFrontImage(imageView, temp, row_column);
-			});
-		}
-
-		int index = 0;
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++) {
-
-				tempCenter.add(imageView[index], j, i);
-				index++;
+	private MenuBar addMenuBar() {
+		MenuBar menuBar = new MenuBar();
+		Menu menuGame = new Menu("Game");
+		MenuItem exit = new MenuItem("Exit");
+		exit.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent t) {
+				System.exit(0);
 			}
-		return tempCenter;
+		});
+		menuGame.getItems().addAll(new SeparatorMenuItem(), exit);
+		Menu menuSettings = new Menu("Settings");
+		Menu menuExit = new Menu("Exit");
+
+		menuBar.getMenus().addAll(menuGame, menuSettings, menuExit);
+		return menuBar;
+	}
+
+	private HBox addTitleBox() {
+		// titleBox contains name, topBox contains titleBox and logos
+		VBox titleBox = new VBox();
+		titleBox.setAlignment(Pos.CENTER);
+		// titleBox.setId("topbox");
+		Text title = new Text("MEMORIES // LOST");
+		Label subtitle = new Label(
+				"Nightmares from Git: Curses by the Oracle - Mission to MERGE\nReturn of the Cannibal Pixel Demons");
+		title.setId("game-title");
+		subtitle.setId("game-subtitle");
+		titleBox.setPadding(new Insets(0, 100, 0, 100));
+
+		titleBox.getChildren().addAll(title, subtitle);
+
+		HBox topBox = new HBox();
+		ImageView logo0 = new ImageView(new Image("/images/sidelogo0.png", 100, 100, true, true));
+		ImageView logo1 = new ImageView(new Image("/images/sidelogo1.png", 100, 100, true, true));
+
+		topBox.getChildren().addAll(logo0, titleBox, logo1);
+		topBox.setAlignment(Pos.CENTER);
+		topBox.setPrefWidth(1000);
+		topBox.setId("topbox");
+
+		return topBox;
 	}
 
 	/**
-	 * Returns a GridPane for the game board.
-	 * <p>
-	 * Returns a GridPane for the 6x6 game board, that is then painted in the
-	 * center of the BorderPane. The GridPane contains an ImageView array with
-	 * the specified number of columns.
-	 * 
-	 * @return GridPane
-	 * @see GridPane
+	 * Adds a VBox to the left side of the application. Adds radiobuttons and
+	 * labels.
 	 */
-	public GridPane center_6() {
+	private VBox addLeft() {
 
-		GridPane tempCenter = new GridPane();
+		// leftBox
 
-		imageView = new ImageView[(int) Math.pow(row_column, 2)];
-		for (int i = 0; i < imageView.length; i++) {
-			int temp = i;
-			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
-			imageView[i].setOnMouseClicked(event -> {
-				gameEngine.getFrontImage(imageView, temp, row_column);
-			});
-		}
+		VBox leftBox = new VBox(5);
+		leftBox.setId("leftbox");
+		Label memorySize = new Label("Estimated size\nof your\n memory:\n");
+		memorySize.setAlignment(Pos.TOP_CENTER);
+		ToggleGroup pairsGroup = new ToggleGroup();
+		RadioButton pairs_2 = new RadioButton("2 x 2");
+		RadioButton pairs_4 = new RadioButton("4 x 4");
+		RadioButton pairs_6 = new RadioButton("6 x 6");
+		RadioButton pairs_8 = new RadioButton("8 x 8");
+		RadioButton pairs_10 = new RadioButton("10 x 10");
 
-		int index = 0;
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++) {
+		pairs_2.setToggleGroup(pairsGroup);
+		pairs_4.setToggleGroup(pairsGroup);
+		pairs_6.setToggleGroup(pairsGroup);
+		pairs_8.setToggleGroup(pairsGroup);
+		pairs_10.setToggleGroup(pairsGroup);
+		pairs_2.setSelected(true);
+		row_column = 2;
 
-				tempCenter.add(imageView[index], j, i);
-				index++;
-			}
-		return tempCenter;
+		pairs_2.setOnAction(event -> {
+			row_column = 2;
+		});
+		pairs_4.setOnAction(event -> {
+			row_column = 4;
+		});
+		pairs_6.setOnAction(event -> {
+			row_column = 6;
+		});
+		pairs_8.setOnAction(event -> {
+			row_column = 8;
+		});
+		pairs_10.setOnAction(event -> {
+			row_column = 10;
+		});
+
+		leftBox.getChildren().addAll(memorySize, pairs_2, pairs_4, pairs_6, pairs_8, pairs_10);
+		return leftBox;
 	}
 
 	/**
-	 * Returns a GridPane for the game board.
-	 * <p>
-	 * Returns a GridPane for the 8x8 game board, that is then painted in the
-	 * center of the BorderPane. The GridPane contains an ImageView array with
-	 * the specified number of columns.
-	 * 
-	 * @return GridPane
-	 * @see GridPane
+	 * Adds a VBox on the right side of the application. Adds labels highscore,
+	 * point, time and tries.
 	 */
-	public GridPane center_8() {
+	private VBox addRight() {
+		// rightBox
 
-		GridPane tempCenter = new GridPane();
+		VBox rightBox = new VBox();
+		rightBox.setId("rightbox");
 
-		imageView = new ImageView[(int) Math.pow(row_column, 2)];
-		for (int i = 0; i < imageView.length; i++) {
-			int temp = i;
-			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
-			imageView[i].setOnMouseClicked(event -> {
-				gameEngine.getFrontImage(imageView, temp, row_column);
-			});
-		}
+		// Label stats = new Label("Player Stats:\n\n\n");
+		// stats.setAlignment(Pos.TOP_CENTER);
+		Label highscore = new Label("HIGHSCORE");
+		// Label highpoint = new Label("0");
 
-		int index = 0;
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++) {
+		Label points = new Label("POINTS");
+		// Label pointresult = new Label("0");
 
-				tempCenter.add(imageView[index], j, i);
-				index++;
-			}
-		return tempCenter;
+		Label timeLabel = new Label("TIME");
+		// Label time = new Label("0");
+
+		Label tries = new Label("TRIES");
+		// Label presentTries = new Label("0");
+		highpoint.setText("0");
+		pointresult.setText("0");
+		time.setText("0");
+		presentTries.setText("0");
+
+		rightBox.getChildren().addAll(highscore, highpoint, points, pointresult, timeLabel, time, tries, presentTries);
+
+		return rightBox;
 	}
 
 	/**
-	 * Returns a GridPane for the game board.
-	 * <p>
-	 * Returns a GridPane for the 10x10 game board, that is then painted in the
-	 * center of the BorderPane. The GridPane contains an ImageView array with
-	 * the specified number of columns.
-	 * 
-	 * @return GridPane
-	 * @see GridPane
+	 * Adds a Hbox to the bottom of the application. Adds Buttons Rage Quit and
+	 * New Game.
 	 */
-	public GridPane center_10() {
+	private VBox addBottomBox() {
+		// bottomBox
 
-		GridPane tempCenter = new GridPane();
+		VBox bottomBox = new VBox();
+		HBox newsquitBox = new HBox(50);
+		ProgressBar pb = new ProgressBar();
+		pb.setId("progressbar");
+		pb.setPrefHeight(40);
+		pb.setPrefWidth(1000);
 
-		imageView = new ImageView[(int) Math.pow(row_column, 2)];
-		for (int i = 0; i < imageView.length; i++) {
-			int temp = i;
-			imageView[i] = new ImageView(new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
-			imageView[i].setOnMouseClicked(event -> {
-				gameEngine.getFrontImage(imageView, temp, row_column);
-			});
-		}
+		bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
-		int index = 0;
-		for (int i = 0; i < row_column; i++)
-			for (int j = 0; j < row_column; j++) {
+		newsquitBox.setAlignment(Pos.TOP_CENTER);
+		newsquitBox.setPadding(new Insets(20));
+		newsquitBox.setId("bottombox");
+		sQuit.setText("Rage Quit");
+		sQuit.setPrefWidth(150);
+		sQuit.setId("QuitSave");
+		// Button newGame = new Button("New Game");
+		newGame.setText("NEW");
+		newGame.setPrefWidth(150);
+		newGame.setId("NewGame");
 
-				tempCenter.add(imageView[index], j, i);
-				index++;
-			}
-		return tempCenter;
-	}
-
-	public static void main(String[] args) {
-		launch(args);
+		newsquitBox.getChildren().addAll(newGame, sQuit);
+		bottomBox.getChildren().addAll(pb, newsquitBox);
+		return bottomBox;
 	}
 }
