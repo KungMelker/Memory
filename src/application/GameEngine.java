@@ -212,7 +212,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * Schows the right backside of the cards and fade away wrong pairs.
+	 * Shows the right back side of the cards and fade away wrong pairs.
 	 * 
 	 * @param ivArr
 	 * @param index
@@ -248,7 +248,7 @@ public class GameEngine {
 				transitionCard = createTransition(ivArr[pairToCompare[1]],
 						new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 				transitionCard.play();
-				
+
 			}
 
 			tries++;
