@@ -215,7 +215,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * Schows the right backside of the cards and fade away wrong pairs.
+	 * Shows the right back side of the cards and fade away wrong pairs.
 	 * 
 	 * @param ivArr
 	 * @param index
@@ -230,6 +230,7 @@ public class GameEngine {
 
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
+
 
 		} else if (index != pairToCompare[0] ) {
 
