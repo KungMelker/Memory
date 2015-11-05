@@ -230,7 +230,7 @@ public class GameEngine {
 
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
-			//clickMax--;
+
 
 		} else if (index != pairToCompare[0] ) {
 
