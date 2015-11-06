@@ -30,7 +30,6 @@ import javafx.scene.text.Text;
  * @author Sam, Anton, Johan, Melker, Gustav, Simon. Creates the design of the
  *         application. Adds objects, texts, labels and radiobuttons.
  */
-
 public class Main extends Application {
 
 	GameEngine gameEngine = new GameEngine();
@@ -67,7 +66,10 @@ public class Main extends Application {
 		VBox rightBox = addRight();
 		VBox leftBox = addLeft();
 		VBox progress = addBottomBox();
+		
+		ImageView splashImage = new ImageView(new Image("/images/splashimage.png", 400 , 400, true, true));
 
+		root.setCenter(splashImage);
 		root.setTop(topBox);
 		root.setRight(rightBox);
 		root.setLeft(leftBox);
