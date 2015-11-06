@@ -15,12 +15,13 @@ import javafx.util.Duration;
 public class GameEngine {
 
 	Card cards[];
-	int takenCard[];
-	int pairToCompare[] = { -1, -1 };
-	double currentScore;
-	long start, stop, elapsedTime;
-	int tries = 0;
-	int foundPairs = 0;
+	//changed to private
+	private int takenCard[];
+	private int pairToCompare[] = { -1, -1 };
+	private double currentScore;
+	private long start, stop, elapsedTime;
+	private int tries = 0;
+	private int foundPairs = 0;
 	
 	Random rand = new Random();
 
