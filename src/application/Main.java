@@ -37,6 +37,7 @@ import javafx.scene.text.Text;
  */
 public class Main extends Application {
 
+	//TODO check which really needs to be initiated here
 	private GameEngine gameEngine = new GameEngine();
 	private GridPane centerBox = new GridPane();
 	private HighScore hs = new HighScore();
@@ -58,11 +59,13 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		MenuBar menuBar = addMenuBar();
+		//TODO fully implement functioning menuBar
+		//MenuBar menuBar = addMenuBar();
 		// BorderPane root = new BorderPane();
 		// Scene scene = new Scene(root, 1000, 700);
 		Scene scene = new Scene(new VBox());
-		((VBox) scene.getRoot()).getChildren().addAll(menuBar, root);
+		((VBox) scene.getRoot()).getChildren().addAll(root);
+		//((VBox) scene.getRoot()).getChildren().addAll(menuBar, root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 
@@ -95,8 +98,7 @@ public class Main extends Application {
 		launch(args);
 	}
 
-	// TODO
-	// implement parts of it in game engine.
+	// TODO implement parts of it in game engine.
 	private void addGameBoardEvents() {
 		root.setOnMouseClicked(event -> {
 			presentTries.setText(Integer.toString(gameEngine.getTries()));
@@ -149,6 +151,7 @@ public class Main extends Application {
 		});
 	}
 
+	//TODO try to implement same selection method in menuBar
 	private void selectBoardSize() {
 		centerBox.getChildren().clear();
 		switch (row_column) {
@@ -203,8 +206,10 @@ public class Main extends Application {
 
 		Label won = new Label("MERGE\nCOMPLETE");
 		won.setId("win");
-		// won.setRotate(30);
-		won.setAlignment(Pos.BASELINE_CENTER);
+		won.setAlignment(Pos.CENTER);
+		won.setPrefHeight(400);
+		won.setPrefWidth(400);
+
 		GridPane.setConstraints(won, 0, 0, 10, 10);
 		centerBox.getChildren().add(won);
 	}
@@ -251,8 +256,7 @@ public class Main extends Application {
 		return tempCenter;
 	}
 
-	// still not fully implemented
-
+	// TODO still not fully implemented
 	private MenuBar addMenuBar() {
 		MenuBar menuBar = new MenuBar();
 		Menu menuGame = new Menu("Game");
@@ -427,7 +431,8 @@ public class Main extends Application {
 		newGame.setId("NewGame");
 
 		newsquitBox.getChildren().addAll(newGame, sQuit);
-		bottomBox.getChildren().addAll(pb, newsquitBox);
+		//TODO pb goes here when implemented
+		bottomBox.getChildren().addAll(newsquitBox);
 		return bottomBox;
 	}
 }

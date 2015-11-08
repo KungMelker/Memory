@@ -118,11 +118,12 @@
 	-fx-font-family: "Segoe UI Light";
 	-fx-text-fill: #c6646a;
 	-fx-font-weight: bold;
-	-fx-fill: #a6dc7f;
+	-fx-fill: #a6dc7f;/*
 	-fx-stroke: #4d4d4d;
-	-fx-stroke-width: 4;
+	-fx-stroke-width: 4;*/
 	-fx-background-color:#4d4d4d;
-	-fx-opacity: 95%;
+	-fx-opacity: 85%;
+	-fx-padding:10px;
 }
 #NewGame {
 	-fx-font-size: 16pt;
@@ -175,7 +176,7 @@
 	-fx-background-image: null;
 }
 .radio-button .dot {
-	-fx-background-radius: 15px;
+	-fx-background-radius: 20px;
 	-fx-padding: 8px;
 	-fx-mark-highlight-color: grey;
 	-fx-mark-color: #bdde71;
