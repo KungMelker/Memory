@@ -87,7 +87,7 @@ public class GameEngine {
 	 * @return
 	 */
 
-	double calculateScore(int row_column, long eTime) {
+	public double calculateScore(int row_column, long eTime) {
 
 		int decimals = 2;
 		double evener = 100 - row_column * row_column;
