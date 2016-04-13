@@ -15,12 +15,13 @@ import javafx.util.Duration;
 public class GameEngine {
 
 	Card cards[];
-	int takenCard[];
-	int pairToCompare[] = { -1, -1 };
-	double currentScore;
-	long start, stop, elapsedTime;
-	int tries = 0;
-	int foundPairs = 0;
+	//changed to private
+	private int takenCard[];
+	private int pairToCompare[] = { -1, -1 };
+	private double currentScore;
+	private long start, stop, elapsedTime;
+	private int tries = 0;
+	private int foundPairs = 0;
 	
 	Random rand = new Random();
 
@@ -84,7 +85,7 @@ public class GameEngine {
 	 * 
 	 * @param row_column
 	 * @param eTime
-	 * @return
+	 * @return double
 	 */
 
 	public double calculateScore(int row_column, long eTime) {
@@ -160,7 +161,6 @@ public class GameEngine {
 	 * 
 	 * @param row_column
 	 */
-
 	void initBoard(int row_column) {
 
 		int numCards = (int) Math.pow(row_column, 2);
@@ -187,7 +187,6 @@ public class GameEngine {
 	 * @return index.
 	 * 
 	 */
-
 	int randomCard(int max) {
 		int index = 0;
 		boolean foundFree = false;
@@ -208,20 +207,18 @@ public class GameEngine {
 	 * 
 	 * @return true if match / false if not.
 	 */
-
 	boolean compareCards() {
 
 		return (cards[pairToCompare[0]].getValue() == cards[pairToCompare[1]].getValue() ? true : false);
 	}
 
 	/**
-	 * Schows the right backside of the cards and fade away wrong pairs.
+	 * Shows the right back side of the cards and fade away wrong pairs.
 	 * 
 	 * @param ivArr
 	 * @param index
 	 * @param row_column
 	 */
-
 	void getFrontImage(ImageView ivArr[], int index, int row_column) {
 
 		SequentialTransition transitionCard;
@@ -230,7 +227,7 @@ public class GameEngine {
 
 			pairToCompare[0] = index;
 			ivArr[index].setImage(cards[index].getFront());
-			
+
 
 		} else if (index != pairToCompare[0] ) {
 
@@ -252,7 +249,7 @@ public class GameEngine {
 				transitionCard = createTransition(ivArr[pairToCompare[1]],
 						new Image("/images/50.png", 400 / row_column, 400 / row_column, true, true));
 				transitionCard.play();
-				
+
 			}
 
 			tries++;
